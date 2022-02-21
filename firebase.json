@@ -1,0 +1,42 @@
+{
+  "hosting": [
+    {
+      "target": "production",
+      "public": "build",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "/robots.txt",
+          "destination": "/robots.production.txt"
+        },
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "target": "staging",
+      "public": "build",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "/robots.txt",
+          "destination": "/robots.staging.txt"
+        },
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ],
+  "emulators": {
+    "hosting": {
+      "port": 4444
+    },
+    "ui": {
+      "enabled": true
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "hundertschaft-com"
+  },
+  "targets": {
+    "hundertschaft-com": {
+      "hosting": {
+        "staging": [
+          "preview-hundertschaft-com"
+        ],
+        "production": [
+          "cv-din-ooo"
+        ]
+      }
+    }
+  }
+}
