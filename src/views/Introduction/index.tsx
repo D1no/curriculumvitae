@@ -22,7 +22,7 @@ const Introduction: React.FC<ILayoutProps> = ({ debug = false, ...props }) => {
               // TODO: This should probably be calculated. Is based on the number 0 of the font.
               maxWidth="23ch"
             >
-              Text <x.span color="hs-gold">text</x.span> text
+              Access to my <x.span color="hs-gold">CV & Resume</x.span>.
             </x.h1>
             <x.p
               fontWeight="light"
@@ -30,12 +30,7 @@ const Introduction: React.FC<ILayoutProps> = ({ debug = false, ...props }) => {
               text="sm"
               textAlign="justify"
             >
-              Demo Text Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse bibendum sit amet neque non auctor. Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit. Donec ut tempor dolor.
-              Proin laoreet et arcu eu vulputate. Phasellus sed elementum risus.
-              Proin condimentum auctor tortor id blandit. Curabitur laoreet a
-              tortor vitae pellentesque.
+              This application is currently being updated.
             </x.p>
           </x.div>
         </L>
