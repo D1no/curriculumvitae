@@ -17,7 +17,7 @@ export const theme = {
   ...defaultTheme,
   fonts: {
     ...defaultTheme.fonts,
-    cv: `Lato, ${defaultTheme.fonts.sans}`,
+    cv: `Dinos CV, ${defaultTheme.fonts.sans}`,
   },
   colors: {
     ...defaultTheme.colors,
@@ -41,13 +41,15 @@ export const theme = {
  */
 const ApplyFontStyle = createGlobalStyle`
   #cv-page {
-    font-family: ${theme.fonts.cv}
+    font-family: ${theme.fonts.cv};
+    font-weight: ${theme.fontWeights.light};
+    font-size: 0.75rem;
   }
 `;
 
 interface IDesignSystemProps {}
 
-// TODO: Add react suspense for font loading.
+// TODO: Add react suspense for font loading (maybe not necessary).
 // Via Vanilla JS: https://melvingeorge.me/blog/wait-for-fonts-to-load-javascript
 // Possible Implementation: https://gist.github.com/HaNdTriX/1ddbcceff65ca375940474faf3430564
 
