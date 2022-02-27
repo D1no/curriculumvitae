@@ -9,6 +9,7 @@ import {
 
 import Introduction from "views/Introduction";
 
+import CV from "containers/CV";
 import Layout from "containers/Layout";
 
 import About from "./About";
@@ -58,6 +59,7 @@ const Views = () => {
         {/* START: Website Routing */}
 
         <Routes>
+          <Route path="/cv" element={<CV />} />
           <Route element={<Layout />} path="/">
             <Route element={<Introduction />} path="" />
           </Route>
