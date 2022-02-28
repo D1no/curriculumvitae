@@ -50,6 +50,7 @@ const ApplyFontStyle = createGlobalStyle`
     font-weight: ${theme.fontWeights.light};
     font-size: 16px;
     line-height: 16px;
+    letter-spacing: -0.03em;
   }
 `;
 
