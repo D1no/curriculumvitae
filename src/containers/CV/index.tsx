@@ -6,8 +6,19 @@ import DesignSystem from "./DesignSystem";
 
 const FontTest = () => (
   <>
-    <x.p fontWeight="lighter">Default, lighter</x.p>
-    <x.p text="xl">Default</x.p>
+    <x.h1 fontSize="1.125em" fontWeight="bolder" lineHeight="1.25" mb="0.25em">
+      Dino Scheidt
+    </x.h1>
+    <x.p fontSize="0.75em" lineHeight="0.75em" mb="0.25em">
+      Senior Software Engineer
+    </x.p>
+    <x.p fontSize="0.75em" lineHeight="1.16em" my="1.16em">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dictum
+      vehicula lectus, id vehicula est pharetra ac. Sed fermentum mauris non
+      lorem vulputate, ac dictum dui commodo. Nullam ultrices suscipit justo, eu
+      posuere erat ultrices eget. Curabitur at mollis risus, in consectetur est
+      bla consectetur est bla .
+    </x.p>
     <x.p fontWeight="bolder">Default, bolder</x.p>
     <x.p>----</x.p>
     <x.p fontWeight="hairline">Test: hairline</x.p>
@@ -44,7 +55,7 @@ const CV: React.FC<ICVProps> = (props) => {
           flexDirection="column"
           spaceY={4}
         >
-          <x.div bg="red-200">
+          <x.div>
             <FontTest />
           </x.div>
           <x.div bg="red-200">

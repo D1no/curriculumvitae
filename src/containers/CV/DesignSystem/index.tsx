@@ -48,7 +48,8 @@ const ApplyFontStyle = createGlobalStyle`
   #cv-page { 
     font-family: ${theme.fonts.cv};
     font-weight: ${theme.fontWeights.light};
-    font-size: 8px;
+    font-size: 16px;
+    line-height: 16px;
   }
 `;
 
