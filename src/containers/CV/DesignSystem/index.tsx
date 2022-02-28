@@ -4,23 +4,28 @@ import {
   Preflight,
   ThemeProvider,
   createGlobalStyle,
-  defaultTheme,
   generateHexAlphaVariants,
+  x,
 } from "@xstyled/emotion";
 
+import defaultThemeBoxModel from "./defaultThemeBoxModel";
 import "./latofonts.css";
 
 /**
  * Customized xStyled based theme object used in design system.
  */
 export const theme = {
-  ...defaultTheme,
+  ...defaultThemeBoxModel,
   fonts: {
-    ...defaultTheme.fonts,
-    cv: `Dinos CV, ${defaultTheme.fonts.sans}`,
+    ...defaultThemeBoxModel.fonts,
+    cv: `Dinos CV, ${defaultThemeBoxModel.fonts.sans}`,
+  },
+  shadows: {
+    ...defaultThemeBoxModel.shadows,
+    page: "0 3px 3px rgb(0 0 0 / 5%)",
   },
   colors: {
-    ...defaultTheme.colors,
+    ...defaultThemeBoxModel.colors,
     // Generates 'hs-gold-a10', 'hs-gold-a20', ...
     ...generateHexAlphaVariants({
       // Adding Color: Hundertschaft "Gold"
@@ -40,10 +45,10 @@ export const theme = {
  * Sets the default font for "cv-page" going forward.
  */
 const ApplyFontStyle = createGlobalStyle`
-  #cv-page {
+  #cv-page { 
     font-family: ${theme.fonts.cv};
     font-weight: ${theme.fontWeights.light};
-    font-size: 0.75rem;
+    font-size: 8px;
   }
 `;
 
@@ -58,12 +63,18 @@ interface IDesignSystemProps {}
  * Required for any styled outside rendering (like storybook, jest).
  * Higher order component that wraps child components into required theme provider.
  */
-const DesignSystem: React.FC<IDesignSystemProps> = (props) => (
-  <ThemeProvider theme={theme}>
-    <Preflight />
-    <ApplyFontStyle />
-    <div id="cv-page">{props.children}</div>
-  </ThemeProvider>
-);
+const DesignSystem: React.FC<IDesignSystemProps> = (props) => {
+  console.dir(theme);
+
+  return (
+    <ThemeProvider theme={theme}>
+      <Preflight />
+      <ApplyFontStyle />
+      <x.div id="cv-page" display="flex">
+        {props.children}
+      </x.div>
+    </ThemeProvider>
+  );
+};
 
 export default DesignSystem;
