@@ -7,8 +7,6 @@ import {
   generateHexAlphaVariants,
 } from "@xstyled/emotion";
 
-import Introduction from "views/Introduction";
-
 import CV from "containers/CV";
 import Layout from "containers/Layout";
 
@@ -61,7 +59,7 @@ const Views = () => {
         <Routes>
           <Route path="/cv" element={<CV />} />
           <Route element={<Layout />} path="/">
-            <Route element={<Introduction />} path="" />
+            <Route element={<CV />} path="" />
           </Route>
           <Route element={<Layout />} path="/showcase">
             <Route element={<Showcase />} path="" />

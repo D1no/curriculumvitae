@@ -1,6 +1,16 @@
 import { defaultTheme } from "@xstyled/emotion";
 
-const boxModel = {};
+/**
+ * CV BoxModel Extension.
+ * (Over)writes into default theme.
+ */
+const boxModel = {
+  space: {},
+  sizes: {},
+  radii: {},
+  fontSizes: {},
+  lineHeights: {},
+};
 
 /**
  * Selection of box model relevant theme preset objects eligible for auto processing.
@@ -52,21 +62,24 @@ const defaultThemeBoxModel = {
   ...defaultTheme,
   space: {
     ...replaceUnitInBoxModel(defaultTheme.space),
+    ...boxModel.space,
   },
-  size: {
+  sizes: {
     ...replaceUnitInBoxModel(defaultTheme.sizes),
+    ...boxModel.sizes,
   },
   radii: {
     ...replaceUnitInBoxModel(defaultTheme.radii),
+    ...boxModel.radii,
   },
   fontSizes: {
     ...replaceUnitInBoxModel(defaultTheme.fontSizes),
+    ...boxModel.fontSizes,
   },
   lineHeights: {
     ...replaceUnitInBoxModel(defaultTheme.lineHeights),
+    ...boxModel.lineHeights,
   },
 };
-
-console.dir(defaultThemeBoxModel);
 
 export default defaultThemeBoxModel;

@@ -64,8 +64,6 @@ interface IDesignSystemProps {}
  * Higher order component that wraps child components into required theme provider.
  */
 const DesignSystem: React.FC<IDesignSystemProps> = (props) => {
-  console.dir(theme);
-
   return (
     <ThemeProvider theme={theme}>
       <Preflight />
