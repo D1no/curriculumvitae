@@ -69,9 +69,7 @@ const DesignSystem: React.FC<IDesignSystemProps> = (props) => {
     <ThemeProvider theme={theme}>
       <Preflight />
       <ApplyFontStyle />
-      <x.div id="cv-page" display="flex">
-        {props.children}
-      </x.div>
+      <x.div id="cv-page">{props.children}</x.div>
     </ThemeProvider>
   );
 };
