@@ -1,6 +1,6 @@
 import React from "react";
 
-import { x } from "@xstyled/emotion";
+import styled, { x } from "@xstyled/emotion";
 
 import DesignSystem from "./DesignSystem";
 
@@ -174,6 +174,13 @@ const MetaSection = () => (
   </x.section>
 );
 
+/**
+ * Animation for responsiveness.
+ */
+const PageScale = styled(x.div)`
+  transition: all 0.3s ease-in-out;
+`;
+
 interface ICVProps {}
 
 const CV: React.FC<ICVProps> = (props) => {
@@ -181,7 +188,12 @@ const CV: React.FC<ICVProps> = (props) => {
     <DesignSystem>
       <x.div boxShadow="page" display="flex" justifyContent="center">
         {/* TODO: Add proper scaling logic here */}
-        <x.div transform transformOrigin="50%% 0%" h="0" scale="1">
+        <PageScale
+          transform
+          transformOrigin="50%% 0%"
+          h="0"
+          scale={{ _: "0.45", sm: "0.75", md: "0.9", lg: "1" }}
+        >
           <x.div
             bg="white"
             color="black"
@@ -206,7 +218,7 @@ const CV: React.FC<ICVProps> = (props) => {
               <FontTest />
             </x.div>
           </x.div>
-        </x.div>
+        </PageScale>
       </x.div>
     </DesignSystem>
   );
