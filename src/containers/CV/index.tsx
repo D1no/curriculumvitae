@@ -80,17 +80,20 @@ const MetaSection = () => (
     flexDirection="row"
     alignSelf="stretch"
     spaceX="36px"
-    bg="yellow-100"
+    /* bg="yellow-100" */
     alignItems="center"
     justifyContent="center"
   >
-    <x.div w={goldenRatioShortPX} flex="none" bg="green-100">
+    <x.div w={goldenRatioShortPX} flex="none" /* bg="green-100" */>
+      {/* Left Side */}
       <x.p
         fontSize="10px"
         lineHeight="16px"
         fontStyle="italic"
         textAlign="justify"
+        alignItems="center"
       >
+        {/* Keywords */}
         <x.span fontSize="12px" fontWeight="bolder">
           Keywords:
         </x.span>{" "}
@@ -99,12 +102,73 @@ const MetaSection = () => (
         Twins
       </x.p>
     </x.div>
-    <x.div bg="blue-100" alignSelf="stretch" flexGrow="1" display="flex">
-      <x.div bg="orange-100" flexGrow={1}>
-        Icons
+    {/* Right Side */}
+    <x.div
+      /* bg="blue-100" */
+      alignSelf="stretch"
+      flexGrow="1"
+      display="flex"
+      alignItems="center"
+    >
+      {/* Icons Container */}
+      <x.div /* bg="orange-100" */ flexGrow={1}>
+        <x.div
+          display="flex"
+          flexDirection="column"
+          flexWrap="wrap"
+          alignContent="flex-start"
+          /* TODO: Items can overflow container, this just visually limits them to 8 */
+          h="44px"
+          w="88px"
+          overflow="hidden"
+          /* bg="green-100" */
+        >
+          {/* Single Icon */}
+          {[...Array(7)].map((e, i) => (
+            <x.div
+              key={i}
+              h="18px"
+              w="18px"
+              m="2px"
+              bg="blue-500"
+              borderRadius
+              /* Text Style Inside Icon*/
+              fontSize="10px"
+              lineHeight="18px"
+              textAlign="center"
+              fontWeight="normal"
+              color="white"
+            >
+              {i + 1}
+            </x.div>
+          ))}
+        </x.div>
       </x.div>
-      <x.div w={goldenRatioShortPX} bg="purple-100" flex="none">
-        contact
+      <x.div
+        w={goldenRatioShortPX}
+        /* bg="purple-100" */
+        flex="none"
+        fontSize="10px"
+        fontStyle="italic"
+        lineHeight="16px"
+        display="flex"
+        spaceX="16px"
+        pr="12px"
+      >
+        {/* Contact */}
+        <x.div flexGrow={1} textAlign="right">
+          <x.p fontSize="12px" fontWeight="bolder">
+            +4915123456789
+          </x.p>
+          <x.p>verylonglongna@gmail.com</x.p>
+          <x.p>http://mywebsite.com</x.p>
+        </x.div>
+        {/* Social */}
+        <x.div /* bg="blue-100" */>
+          <x.p>LinkedIn (link)</x.p>
+          <x.p>Company (link)</x.p>
+          <x.p>GitHub (link)</x.p>
+        </x.div>
       </x.div>
     </x.div>
   </x.section>
