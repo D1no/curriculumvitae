@@ -121,7 +121,7 @@ const MetaSection = () => (
           h="44px"
           w="88px"
           overflow="hidden"
-          /* bg="green-100" */
+          /* bg="green-200" */
         >
           {/* Single Icon */}
           {[...Array(7)].map((e, i) => (
@@ -129,17 +129,29 @@ const MetaSection = () => (
               key={i}
               h="18px"
               w="18px"
-              m="2px"
+              my="2px"
+              mr="4px"
+              /* Debug */
               bg="blue-500"
+              /* TODO: Decide if the icons should have highlighting. If so, box shadow is probably better. */
               borderRadius
+              border="1px"
+              borderStyle="solid"
+              borderColor="blue-600"
               /* Text Style Inside Icon*/
-              fontSize="10px"
-              lineHeight="18px"
+              fontSize="12px"
+              lineHeight="12px"
               textAlign="center"
-              fontWeight="normal"
+              fontWeight="light"
               color="white"
+              /* Center Number*/
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
             >
-              {i + 1}
+              <x.p display="inline-block" verticalAlign="middle">
+                {i + 1}
+              </x.p>
             </x.div>
           ))}
         </x.div>
@@ -210,8 +222,12 @@ const CV: React.FC<ICVProps> = (props) => {
             flexDirection="column"
             spaceY="16px"
           >
+            {/* START: CV Sections */}
+
             <Header />
             <MetaSection />
+
+            {/* END: CV Sections */}
             <x.div bg="gray-100">
               <FontTest />
             </x.div>
