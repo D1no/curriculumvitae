@@ -2,6 +2,8 @@ import React from "react";
 
 import styled, { x } from "@xstyled/emotion";
 
+import { ILayoutProps } from "containers/Layout/util";
+
 import DesignSystem from "./DesignSystem";
 
 /**
@@ -33,10 +35,16 @@ const FontTest = () => (
 const Header = () => (
   <x.header display="flex" flexDirection="row" alignSelf="stretch">
     <x.div mr="28px">
-      <x.h1 fontSize="18px" fontWeight="bolder" lineHeight="20px" mb="4px">
+      <x.h1
+        fontSize="18px"
+        fontWeight="bolder"
+        lineHeight="20px"
+        mb="4px"
+        letterSpacing="0"
+      >
         Dino Scheidt
       </x.h1>
-      <x.p fontSize="12px" lineHeight="12px" mb="4px">
+      <x.p fontSize="12px" lineHeight="12px" mb="4px" letterSpacing="0">
         Senior Software Engineer
       </x.p>
       <x.p
@@ -187,6 +195,61 @@ const MetaSection = () => (
 );
 
 /**
+ * CV Component: Section Header
+ */
+const SectionHeader: React.FC<{}> = ({ children }) => {
+  return (
+    <x.h2
+      fontSize="18px"
+      lineHeight="28px"
+      letterSpacing="0"
+      textTransform="uppercase"
+    >
+      {children}
+    </x.h2>
+  );
+};
+
+/**
+ * CV Component: Topic Header
+ */
+const TopicHeader: React.FC<{}> = ({ children }) => {
+  return (
+    <x.h2 fontSize="16px" lineHeight="28px" fontWeight="bolder">
+      {children}
+    </x.h2>
+  );
+};
+
+/**
+ * CV Component: Topic Body
+ */
+const TopicBody: React.FC<{}> = ({ children }) => {
+  return (
+    <x.p fontSize="12px" lineHeight="14px" textAlign="justify">
+      {children}
+    </x.p>
+  );
+};
+
+/**
+ * CV Container: Topic
+ */
+const Topic: React.FC<{ title: string }> = ({ title, children }) => {
+  return (
+    <>
+      <TopicHeader>{title}</TopicHeader>
+      <TopicBody>
+        Contributer of TypeScript to React Static (+5k GitHub Stars). Once
+        created a react mobile framework that server side renders for a
+        financial institution. Developing in react native by bridging iOS and
+        Android with detail to CI, gdc efforts & teaching.
+      </TopicBody>
+    </>
+  );
+};
+
+/**
  * CV Main Section: Contains Aside Section and Main Container
  */
 const MainSection = () => (
@@ -198,22 +261,36 @@ const MainSection = () => (
     alignItems="center"
     justifyContent="center"
     /* Debug */
-    bg="yellow-100"
+    /* bg="yellow-100" */
   >
-    <x.div w={goldenRatioShortPX} flex="none" /* Debug */ bg="green-100">
-      {/* Left Side */}
-      AsideSection
+    <x.div
+      w={goldenRatioShortPX}
+      flex="none"
+      /* Debug */
+      /* bg="green-100" */
+    >
+      {/* START: Aside Container */}
+
+      <SectionHeader>Qualification</SectionHeader>
+      <Topic title="Software Engineering" />
+      <Topic title="Product Architecture" />
+
+      {/* END: Aside Container */}
     </x.div>
     {/* Right Side */}
     <x.div
       alignSelf="stretch"
       flexGrow="1"
-      display="flex"
-      alignItems="center"
       /* Debug */
-      bg="blue-100"
+      /* bg="blue-100" */
     >
-      Main Container
+      {/* START: Main Container */}
+
+      <SectionHeader>Experience</SectionHeader>
+      <Topic title="Software Engineering" />
+      <Topic title="Product Architecture" />
+
+      {/* END: Main Container */}
     </x.div>
   </x.section>
 );
