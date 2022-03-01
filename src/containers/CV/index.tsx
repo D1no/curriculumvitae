@@ -187,6 +187,38 @@ const MetaSection = () => (
 );
 
 /**
+ * CV Main Section: Contains Aside Section and Main Container
+ */
+const MainSection = () => (
+  <x.section
+    display="flex"
+    flexDirection="row"
+    alignSelf="stretch"
+    spaceX="36px"
+    alignItems="center"
+    justifyContent="center"
+    /* Debug */
+    bg="yellow-100"
+  >
+    <x.div w={goldenRatioShortPX} flex="none" /* Debug */ bg="green-100">
+      {/* Left Side */}
+      AsideSection
+    </x.div>
+    {/* Right Side */}
+    <x.div
+      alignSelf="stretch"
+      flexGrow="1"
+      display="flex"
+      alignItems="center"
+      /* Debug */
+      bg="blue-100"
+    >
+      Main Container
+    </x.div>
+  </x.section>
+);
+
+/**
  * Animation for responsiveness.
  */
 const PageScale = styled(x.div)`
@@ -226,6 +258,7 @@ const CV: React.FC<ICVProps> = (props) => {
 
             <Header />
             <MetaSection />
+            <MainSection />
 
             {/* END: CV Sections */}
             <x.div bg="gray-100">
