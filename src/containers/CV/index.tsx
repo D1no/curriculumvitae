@@ -192,7 +192,8 @@ const CV: React.FC<ICVProps> = (props) => {
           transform
           transformOrigin="50%% 0%"
           h="0"
-          scale={{ _: "0.45", sm: "0.75", md: "0.9", lg: "1" }}
+          /* TODO: Discriminate between iphone mini and iphone max style phones. */
+          scale={{ _: "0.45", sm: "0.75", md: "0.9", lg: "1", xl: "1.4" }}
         >
           <x.div
             bg="white"
