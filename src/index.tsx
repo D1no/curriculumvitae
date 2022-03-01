@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import Views from "views";
 
-import reportWebVitals from "./reportWebVitals";
+// import reportWebVitals from "./reportWebVitals";
 
 /**
  * Render of the Website.
