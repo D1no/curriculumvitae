@@ -233,6 +233,44 @@ const TopicBody: React.FC<{}> = ({ children }) => {
 };
 
 /**
+ * CV Component: Topic Labeled List Item (two lines 2x14px)
+ * List item for the topic section.
+ */
+const TopicLabeledListItem: React.FC<{ label?: string }> = ({
+  label = "Empty Label",
+  children = "This is a test to see if the line fits and does wrap to the next line for alignment.",
+}) => {
+  // TODO: This should be a shared configurable generic labeled list item component.
+  return (
+    <x.div
+      h="28px"
+      display="flex"
+      flexDirection="row"
+      pt="4px"
+      fontSize="10px"
+      lineHeight="12px"
+      /* FIXME: Ellipsis not showing. Overflow text is simply getting clipped */
+      textOverflow="ellipsis"
+      overflow="hidden"
+    >
+      <x.div
+        fontSize="8px"
+        lineHeight="10px"
+        w="28px"
+        mt="2px"
+        mr="2px"
+        ml="6px"
+        fontWeight="bolder"
+        flex="none"
+      >
+        {label}
+      </x.div>
+      <x.div>{children}</x.div>
+    </x.div>
+  );
+};
+
+/**
  * CV Container: Topic
  */
 const Topic: React.FC<{ title: string }> = ({ title, children }) => {
@@ -240,11 +278,19 @@ const Topic: React.FC<{ title: string }> = ({ title, children }) => {
     <>
       <TopicHeader>{title}</TopicHeader>
       <TopicBody>
-        Contributer of TypeScript to React Static (+5k GitHub Stars). Once
+        Contributor of TypeScript to React Static (+5k GitHub Stars). Once
         created a react mobile framework that server side renders for a
         financial institution. Developing in react native by bridging iOS and
         Android with detail to CI, gdc efforts & teaching.
       </TopicBody>
+      <TopicLabeledListItem label="React Native">
+        This is a test to see if the line fits and correctly wraps to the next
+        line.
+      </TopicLabeledListItem>
+      <TopicLabeledListItem />
+      <TopicLabeledListItem />
+      <TopicLabeledListItem />
+      <TopicLabeledListItem />
     </>
   );
 };
