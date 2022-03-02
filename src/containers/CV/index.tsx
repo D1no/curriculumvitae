@@ -346,6 +346,8 @@ const RemarkLabeledListItem: React.FC<{ label?: string }> = ({
       <x.div
         fontSize={pxB(8)}
         lineHeight={pxH(10)}
+        /* TODO: This should depend on the golden ratio since the label pushes content to the right,
+        which vertically aligns with the profile summary text block end.  */
         w={pxW(44)}
         mt={pxH(2)}
         mr={pxW(6)}
