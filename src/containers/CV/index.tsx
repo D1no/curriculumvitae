@@ -2,9 +2,7 @@ import React from "react";
 
 import styled, { x } from "@xstyled/emotion";
 
-import { ILayoutProps } from "containers/Layout/util";
-
-import DesignSystem, { pxH, sizeFromBase } from "./DesignSystem";
+import DesignSystem, { pxB, pxH, pxW, sizeFromBase } from "./DesignSystem";
 
 /**
  * Document constant for flex box pushing according to golden ratio.
@@ -34,23 +32,28 @@ const FontTest = () => (
  */
 const Header = () => (
   <x.section display="flex" flexDirection="row" alignSelf="stretch">
-    <x.div mr="28px">
+    <x.div mr={pxW(28)}>
       <x.h1
-        fontSize="18px"
+        fontSize={pxB(18)}
         fontWeight="bolder"
-        lineHeight="20px"
-        mb="4px"
+        lineHeight={pxH(20)}
+        mb={pxH(4)}
         letterSpacing="0"
       >
         Dino Scheidt
       </x.h1>
-      <x.p fontSize="12px" lineHeight="12px" mb="4px" letterSpacing="0">
+      <x.p
+        fontSize={pxB(12)}
+        lineHeight={pxH(12)}
+        mb={pxH(4)}
+        letterSpacing="0"
+      >
         Senior Software Engineer
       </x.p>
       <x.p
-        fontSize="12px"
-        lineHeight="14px"
-        my="12px"
+        fontSize={pxB(12)}
+        lineHeight={pxH(14)}
+        my={pxH(12)}
         letterSpacing="-0.03em"
         textAlign="justify"
         fontStyle="italic"
@@ -64,7 +67,7 @@ const Header = () => (
     </x.div>
     <x.div
       w={goldenRatioShortPX}
-      h="136px"
+      h={pxH(136)}
       bg="pink-100"
       flexGrow="1"
       flex="none"
@@ -72,7 +75,7 @@ const Header = () => (
       alignItems="center"
       justifyContent="center"
     >
-      <x.div fontWeight="hairline" fontSize="18px">
+      <x.div fontWeight="hairline" fontSize={pxB(18)}>
         Cover Image
       </x.div>
     </x.div>
@@ -88,7 +91,7 @@ const MetaSection = () => (
     display="flex"
     flexDirection="row"
     alignSelf="stretch"
-    spaceX="36px"
+    spaceX={pxW(36)}
     /* bg="yellow-100" */
     alignItems="center"
     justifyContent="center"
@@ -96,14 +99,14 @@ const MetaSection = () => (
     <x.div w={goldenRatioShortPX} flex="none" /* bg="green-100" */>
       {/* Left Side */}
       <x.p
-        fontSize="10px"
-        lineHeight="16px"
+        fontSize={pxB(10)}
+        lineHeight={pxH(16)}
         fontStyle="italic"
         textAlign="justify"
         alignItems="center"
       >
         {/* Keywords */}
-        <x.h4 fontSize="12px" fontWeight="bolder" display="inline-block">
+        <x.h4 fontSize={pxB(12)} fontWeight="bolder" display="inline-block">
           Keywords
         </x.h4>{" "}
         Front-End, Back-End, ReactJS, React-Native, Artificial Intelligence,
@@ -127,8 +130,8 @@ const MetaSection = () => (
           flexWrap="wrap"
           alignContent="flex-start"
           /* TODO: Items can overflow container, this just visually limits them to 8 */
-          h="44px"
-          w="88px"
+          h={pxH(44)}
+          w={pxW(88)}
           overflow="hidden"
           /* bg="green-200" */
         >
@@ -136,20 +139,20 @@ const MetaSection = () => (
           {[...Array(7)].map((e, i) => (
             <x.div
               key={i}
-              h="18px"
-              w="18px"
-              my="2px"
-              mr="4px"
+              h={pxH(18)}
+              w={pxW(18)}
+              my={pxH(2)}
+              mr={pxW(4)}
               /* Debug */
               bg="blue-500"
               /* TODO: Decide if the icons should have highlighting. If so, box shadow is probably better. */
               borderRadius
-              border="1px"
+              border={pxW(1)}
               borderStyle="solid"
               borderColor="blue-600"
               /* Text Style Inside Icon*/
-              fontSize="12px"
-              lineHeight="12px"
+              fontSize={pxB(12)}
+              lineHeight={pxH(12)}
               textAlign="center"
               fontWeight="light"
               color="white"
@@ -169,16 +172,16 @@ const MetaSection = () => (
         w={goldenRatioShortPX}
         /* bg="purple-100" */
         flex="none"
-        fontSize="10px"
+        fontSize={pxB(10)}
         fontStyle="italic"
-        lineHeight="16px"
+        lineHeight={pxH(16)}
         display="flex"
-        spaceX="16px"
-        pr="12px"
+        spaceX={pxW(16)}
+        pr={pxW(12)}
       >
         {/* Contact */}
         <x.div flexGrow={1} textAlign="right">
-          <x.p fontSize="12px" fontWeight="bolder">
+          <x.p fontSize={pxB(12)} fontWeight="bolder">
             +4915123456789
           </x.p>
           <x.p>verylonglongna@gmail.com</x.p>
@@ -201,8 +204,8 @@ const MetaSection = () => (
 const SectionHeader: React.FC<{}> = ({ children }) => {
   return (
     <x.h2
-      fontSize="18px"
-      lineHeight="28px"
+      fontSize={pxB(18)}
+      lineHeight={pxH(28)}
       letterSpacing="0"
       textTransform="uppercase"
     >
@@ -225,7 +228,7 @@ const ElementTitle: React.FC<{ subtitle?: string }> = ({
     if (!content) return;
 
     return (
-      <x.span fontSize="12px" fontWeight="light" ml="1px">
+      <x.span fontSize={pxB(12)} fontWeight="light" ml={pxW(1)}>
         {" " /* <- Needed for screen readers. */}
         {content}
       </x.span>
@@ -233,7 +236,12 @@ const ElementTitle: React.FC<{ subtitle?: string }> = ({
   };
 
   return (
-    <x.h3 h="28px" fontSize="16px" lineHeight="28px" fontWeight="normal">
+    <x.h3
+      h={pxH(28)}
+      fontSize={pxB(16)}
+      lineHeight={pxH(28)}
+      fontWeight="normal"
+    >
       {children}
       {renderSubtitle()}
     </x.h3>
@@ -245,7 +253,7 @@ const ElementTitle: React.FC<{ subtitle?: string }> = ({
  */
 const TopicBody: React.FC<{}> = ({ children }) => {
   return (
-    <x.p fontSize="12px" lineHeight="14px" textAlign="justify">
+    <x.p fontSize={pxB(12)} lineHeight={pxH(14)} textAlign="justify">
       {children}
     </x.p>
   );
@@ -262,23 +270,23 @@ const TopicLabeledListItem: React.FC<{ label?: string }> = ({
   // TODO: This should be a shared configurable generic labeled list item component.
   return (
     <x.div
-      h="28px"
+      h={sizeFromBase({ times: 2 })}
       display="flex"
       flexDirection="row"
-      pt="4px"
-      fontSize="10px"
-      lineHeight="12px"
+      pt={pxH(4)}
+      fontSize={pxB(10)}
+      lineHeight={pxH(12)}
       /* FIXME: Ellipsis not showing. Overflow text is simply getting clipped */
       textOverflow="ellipsis"
       overflow="hidden"
     >
       <x.div
-        fontSize="8px"
-        lineHeight="10px"
-        w="28px"
-        mt="2px"
-        mr="2px"
-        ml="6px"
+        fontSize={pxB(8)}
+        lineHeight={pxH(10)}
+        w={pxW(28)}
+        mt={pxH(2)}
+        mr={pxW(2)}
+        ml={pxW(6)}
         fontWeight="bolder"
         flex="none"
       >
@@ -349,7 +357,7 @@ const MainSection = () => (
     display="flex"
     flexDirection="row"
     alignSelf="stretch"
-    spaceX="36px"
+    spaceX={pxW(36)}
     alignItems="center"
     justifyContent="center"
     /* Debug */
@@ -411,16 +419,16 @@ const CV: React.FC<ICVProps> = (props) => {
             bg="white"
             color="black"
             /* Page Dimensions (A4) */
-            w="800px"
-            h="1132px"
+            w={pxW(800)}
+            h={pxH(1132)}
             /* Trim (A4) */
-            px="128px"
-            pt="128px"
-            pb="64px"
+            px={pxW(128)}
+            pt={pxH(128)}
+            pb={pxH(64)}
             /* Box Model */
             display="flex"
             flexDirection="column"
-            spaceY="16px"
+            spaceY={pxH(16)}
           >
             {/* START: CV Sections */}
 

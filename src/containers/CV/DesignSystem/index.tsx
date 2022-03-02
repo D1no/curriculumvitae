@@ -17,6 +17,8 @@ import "./latofonts.css";
  * =================================================================
  */
 
+// TODO: After design phase, a histogram needs to be made of all called in pxX sizes for consistency validation and search / replace.
+
 /**
  * Utility: Get a height string as a multiple of the grid base height.
  * Defaults to base = 14px.
@@ -27,7 +29,7 @@ export const sizeFromBase = ({
   double = false,
   times = 1,
 } = {}): string => {
-  if (double == false && times == 1) {
+  if (double === false && times === 1) {
     return `${baseLineHeight}${unit}`;
   } else if (double) {
     return `${2 * baseLineHeight * times}${unit}`;
@@ -37,7 +39,7 @@ export const sizeFromBase = ({
 };
 
 /**
- * General Pixel — Utility Hock: General pixel sizes
+ * General Pixel — Utility Hock: General pixel sizes. I.e. Font Size and Line Height.
  * (Used to adjust the box model after relationship sizing,
  * since the design is pixel based.)
  */
