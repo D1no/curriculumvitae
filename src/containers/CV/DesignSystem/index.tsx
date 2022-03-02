@@ -51,6 +51,16 @@ export const pxB = (px: number): string => {
 };
 
 /**
+ * General Base Size in Raw — Utility Hock: General sizes. I.e. SVG etc that don't take units.
+ * (Used to adjust the box model after relationship sizing,
+ * since the design is pixel based.)
+ */
+export const pxBraw = (px: number): number => {
+  // TODO: Connect to relative sizeFromBase calculation to obtain ratios. Should then be converted to static information of the theme for performance reasons.
+  return px * globalSizeMultiplier;
+};
+
+/**
  * Height Pixel — Utility Hock: Height related pixel sizes.
  * (Used to adjust the box model after relationship sizing,
  * since the design is pixel based.)
@@ -98,6 +108,10 @@ export const theme = {
       "doc-overlay": "#0D0C0C",
       // Like Button
       "doc-primary": "#0574E3",
+      // Muted CV content
+      "cv-muted": "#545454",
+      // CV Vertical Decor Line
+      "cv-decor": "#c4c4c4",
     }),
   },
 };

@@ -2,7 +2,13 @@ import React from "react";
 
 import styled, { x } from "@xstyled/emotion";
 
-import DesignSystem, { pxB, pxH, pxW, sizeFromBase } from "./DesignSystem";
+import DesignSystem, {
+  pxB,
+  pxBraw,
+  pxH,
+  pxW,
+  sizeFromBase,
+} from "./DesignSystem";
 
 /**
  * Document constant for flex box pushing according to golden ratio.
@@ -236,6 +242,24 @@ const ElementTitle: React.FC<{ subtitle?: string }> = ({
     );
   };
 
+  const renderDecorOr = (content: typeof children) => {
+    if (content) return content;
+
+    return (
+      <x.span
+        w={pxW(14)}
+        display="inline-block"
+        textAlign="center"
+        /* debug */
+        /* bg="yellow-200" */
+      >
+        <x.svg viewBox="0 0 3 3" w={pxB(3)} h={pxB(3)} display="inline-block">
+          <circle cx="50%" cy="50%" r={pxBraw(1.5)} />
+        </x.svg>
+      </x.span>
+    );
+  };
+
   return (
     <x.h3
       h={pxH(28)}
@@ -243,7 +267,7 @@ const ElementTitle: React.FC<{ subtitle?: string }> = ({
       lineHeight={pxH(28)}
       fontWeight="normal"
     >
-      {children}
+      {renderDecorOr(children)}
       {renderSubtitle()}
     </x.h3>
   );
@@ -299,6 +323,43 @@ const TopicLabeledListItem: React.FC<{ label?: string }> = ({
 };
 
 /**
+ * CV Component: Remark Labeled List Item (two lines 2x14px)
+ * Labeled List item used i.e. in the experience section within the Remark area
+ */
+const RemarkLabeledListItem: React.FC<{ label?: string }> = ({
+  label = "Empty Label",
+  children = "This is a test to see if the line fits and does wrap to the next line for alignment.",
+}) => {
+  // TODO: This should be a shared configurable generic labeled list item component.
+  return (
+    <x.div
+      h={sizeFromBase({ times: 2 })}
+      display="flex"
+      flexDirection="row"
+      pt={pxH(4)}
+      fontSize={pxB(10)}
+      lineHeight={pxH(12)}
+      /* FIXME: Ellipsis not showing. Overflow text is simply getting clipped */
+      textOverflow="ellipsis"
+      overflow="hidden"
+    >
+      <x.div
+        fontSize={pxB(8)}
+        lineHeight={pxH(10)}
+        w={pxW(44)}
+        mt={pxH(2)}
+        mr={pxW(6)}
+        fontWeight="bolder"
+        flex="none"
+      >
+        {label}
+      </x.div>
+      <x.div>{children}</x.div>
+    </x.div>
+  );
+};
+
+/**
  * CV Container: Topic
  */
 const Topic: React.FC<{ title: string }> = ({ title, children }) => {
@@ -333,7 +394,7 @@ const Caption: React.FC<{
       display="flex"
       flexDirection="column"
       /* Debug */
-      bg="yellow-300"
+      /* bg="yellow-300" */
     >
       <x.p
         fontSize={pxH(10)}
@@ -342,11 +403,57 @@ const Caption: React.FC<{
         textOverflow="ellipsis"
         overflow="hidden"
         /* Debug */
-        bg="blue-200"
+        /* bg="blue-200" */
       >
         {children}
       </x.p>
     </x.div>
+  );
+};
+
+/**
+ *
+ *
+ */
+
+const Record: React.FC<{}> = () => {
+  return (
+    <>
+      <ElementTitle subtitle="Software Engineer">Example Inc.</ElementTitle>
+      <Caption>Since 2123 · Berlin, Germany</Caption>
+      <x.div display="flex">
+        {/* Left Decor Section */}
+        <x.div
+          w={pxW(14)}
+          flexShrink="0"
+          py={pxH(2)}
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+        >
+          {/* Vertical Line next to content. Can't directly use SVG as
+          background image in CRA, so this will do. */}
+          <x.div
+            bg="cv-decor"
+            flexGrow="1"
+            w={pxW(1)}
+            borderRadius="full"
+          ></x.div>
+        </x.div>
+        <x.div color="cv-muted" lineHeight={pxB(14)} fontSize={pxB(12)}>
+          <x.div textAlign="justify">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+            dictum vehicula lectus, id vehicula est pharetra ac. Sed fermentum
+            mauris non lorem vulputate, ac dictum dui commodo. Nullam ultrices
+            suscipit justo, eu auris
+          </x.div>
+          <RemarkLabeledListItem label="Solution & Technology">
+            This is a test to see if the line fits and correctly wraps to the
+            next line.
+          </RemarkLabeledListItem>
+        </x.div>
+      </x.div>
+    </>
   );
 };
 
@@ -359,7 +466,6 @@ const MainSection = () => (
     flexDirection="row"
     alignSelf="stretch"
     spaceX={pxW(36)}
-    alignItems="center"
     justifyContent="center"
     /* Debug */
     /* bg="yellow-100" */
@@ -386,10 +492,12 @@ const MainSection = () => (
       /* bg="blue-100" */
     >
       {/* START: Main Container */}
-
       <SectionHeader>Experience</SectionHeader>
-      <ElementTitle subtitle="Software Engineer">Example Inc.</ElementTitle>
+      <Record />
+      <ElementTitle subtitle="Software Engineer" />
       <Caption>Since 2123 · Berlin, Germany</Caption>
+      <Record />
+      <Record />
       {/* END: Main Container */}
     </x.main>
   </x.div>
@@ -438,9 +546,6 @@ const CV: React.FC<ICVProps> = (props) => {
             <MainSection />
 
             {/* END: CV Sections */}
-            <x.div bg="gray-100">
-              <FontTest />
-            </x.div>
             <x.div bg="gray-100">
               <FontTest />
             </x.div>
