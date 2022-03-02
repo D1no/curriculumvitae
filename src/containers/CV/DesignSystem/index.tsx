@@ -19,6 +19,8 @@ import "./latofonts.css";
 
 // TODO: After design phase, a histogram needs to be made of all called in pxX sizes for consistency validation and search / replace.
 
+const globalSizeMultiplier = 1;
+
 /**
  * Utility: Get a height string as a multiple of the grid base height.
  * Defaults to base = 14px.
@@ -30,11 +32,11 @@ export const sizeFromBase = ({
   times = 1,
 } = {}): string => {
   if (double === false && times === 1) {
-    return `${baseLineHeight}${unit}`;
+    return `${baseLineHeight * globalSizeMultiplier}${unit}`;
   } else if (double) {
-    return `${2 * baseLineHeight * times}${unit}`;
+    return `${2 * baseLineHeight * times * globalSizeMultiplier}${unit}`;
   } else {
-    return `${baseLineHeight * times}${unit}`;
+    return `${baseLineHeight * times * globalSizeMultiplier}${unit}`;
   }
 };
 
@@ -45,7 +47,7 @@ export const sizeFromBase = ({
  */
 export const pxB = (px: number): string => {
   // TODO: Connect to relative sizeFromBase calculation to obtain ratios. Should then be converted to static information of the theme for performance reasons.
-  return `${px}px`;
+  return `${px * globalSizeMultiplier}px`;
 };
 
 /**

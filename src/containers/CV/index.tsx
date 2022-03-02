@@ -9,7 +9,7 @@ import DesignSystem, { pxB, pxH, pxW, sizeFromBase } from "./DesignSystem";
  * Width 544px (34rem at 16px) = Long 366.21 + Short 207.790
  * Short ~208px (=13rem at 16px)
  */
-const goldenRatioShortPX = "208px";
+const goldenRatioShortPX = pxW(208);
 
 const FontTest = () => (
   <x.div>
