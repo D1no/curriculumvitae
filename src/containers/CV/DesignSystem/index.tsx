@@ -12,6 +12,63 @@ import defaultThemeBoxModel from "./defaultThemeBoxModel";
 import "./latofonts.css";
 
 /**
+ * =================================================================
+ * BoxModel Utilities. Point for entry to change to relative sizing.
+ * =================================================================
+ */
+
+/**
+ * Utility: Get a height string as a multiple of the grid base height.
+ * Defaults to base = 14px.
+ */
+export const sizeFromBase = ({
+  baseLineHeight = 14,
+  unit = "px",
+  double = false,
+  times = 1,
+} = {}): string => {
+  if (double == false && times == 1) {
+    return `${baseLineHeight}${unit}`;
+  } else if (double) {
+    return `${2 * baseLineHeight * times}${unit}`;
+  } else {
+    return `${baseLineHeight * times}${unit}`;
+  }
+};
+
+/**
+ * General Pixel — Utility Hock: General pixel sizes
+ * (Used to adjust the box model after relationship sizing,
+ * since the design is pixel based.)
+ */
+export const pxB = (px: number): string => {
+  // TODO: Connect to relative sizeFromBase calculation to obtain ratios. Should then be converted to static information of the theme for performance reasons.
+  return `${px}px`;
+};
+
+/**
+ * Height Pixel — Utility Hock: Height related pixel sizes.
+ * (Used to adjust the box model after relationship sizing,
+ * since the design is pixel based.)
+ */
+export const pxH = (px: number): string => {
+  return pxB(px);
+};
+
+/**
+ * Width Pixel — Utility Hock: Width related pixel sizes.
+ * (Used to adjust the box model after relationship sizing,
+ * since the design is pixel based.)
+ */
+export const pxW = (px: number): string => {
+  return pxB(px);
+};
+
+/**
+ * =================================================================
+ */
+
+/**
  * Customized xStyled based theme object used in design system.
  */
 export const theme = {
