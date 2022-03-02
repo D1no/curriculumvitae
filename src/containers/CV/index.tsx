@@ -285,20 +285,26 @@ const TopicBody: React.FC<{}> = ({ children }) => {
 };
 
 /**
+ * =================================================================
+ */
+// TODO: Merge the following two components
+
+/**
  * CV Component: Topic Labeled List Item (two lines 2x14px)
  * List item for the topic section.
  */
-const TopicLabeledListItem: React.FC<{ label?: string }> = ({
+const TopicLabeledListItem: React.FC<{ label?: string; double?: boolean }> = ({
   label = "Empty Label",
+  double = false,
   children = "This is a test to see if the line fits and does wrap to the next line for alignment.",
 }) => {
   // TODO: This should be a shared configurable generic labeled list item component.
   return (
     <x.div
-      h={sizeFromBase({ times: 2 })}
+      h={sizeFromBase({ double: double })}
       display="flex"
       flexDirection="row"
-      pt={pxH(4)}
+      pt={double ? pxH(3) : pxH(2)}
       fontSize={pxB(10)}
       lineHeight={pxH(12)}
       /* FIXME: Ellipsis not showing. Overflow text is simply getting clipped */
@@ -326,17 +332,18 @@ const TopicLabeledListItem: React.FC<{ label?: string }> = ({
  * CV Component: Remark Labeled List Item (two lines 2x14px)
  * Labeled List item used i.e. in the experience section within the Remark area
  */
-const RemarkLabeledListItem: React.FC<{ label?: string }> = ({
+const RemarkLabeledListItem: React.FC<{ label?: string; double?: boolean }> = ({
   label = "Empty Label",
+  double = false,
   children = "This is a test to see if the line fits and does wrap to the next line for alignment.",
 }) => {
   // TODO: This should be a shared configurable generic labeled list item component.
   return (
     <x.div
-      h={sizeFromBase({ times: 2 })}
+      h={sizeFromBase({ double: double })}
       display="flex"
       flexDirection="row"
-      pt={pxH(4)}
+      pt={double ? pxH(3) : pxH(2)}
       fontSize={pxB(10)}
       lineHeight={pxH(12)}
       /* FIXME: Ellipsis not showing. Overflow text is simply getting clipped */
@@ -362,6 +369,10 @@ const RemarkLabeledListItem: React.FC<{ label?: string }> = ({
 };
 
 /**
+ * =================================================================
+ */
+
+/**
  * CV Container: Topic
  */
 const Topic: React.FC<{ title: string }> = ({ title, children }) => {
@@ -374,7 +385,7 @@ const Topic: React.FC<{ title: string }> = ({ title, children }) => {
         financial institution. Developing in react native by bridging iOS and
         Android with detail to CI, gdc efforts & teaching.
       </TopicBody>
-      <TopicLabeledListItem label="React Native">
+      <TopicLabeledListItem label="React Native" double>
         This is a test to see if the line fits and correctly wraps to the next
         line.
       </TopicLabeledListItem>
@@ -391,8 +402,8 @@ const Caption: React.FC<{
   return (
     <x.div
       h={sizeFromBase({ double: double })}
-      pt={double ? pxH(1) : pxH(0)}
-      pb={double ? pxH(3) : pxH(2)}
+      pt={double ? pxH(2) : pxH(3)}
+      pb={double ? pxH(2) : pxH(1)}
       display="flex"
       flexDirection="column"
       /* Debug */
@@ -400,7 +411,8 @@ const Caption: React.FC<{
     >
       <x.p
         fontSize={pxH(10)}
-        lineHeight={pxH(12)}
+        lineHeight={double ? pxH(12) : pxH(10)}
+        textAlign="justify"
         /* FIXME: Ellipsis not showing. Overflow text is simply getting clipped */
         textOverflow="ellipsis"
         overflow="hidden"
@@ -413,6 +425,42 @@ const Caption: React.FC<{
   );
 };
 
+const Remark: React.FC<{ body?: string; small?: boolean }> = ({
+  body,
+  small = false,
+  children,
+}) => {
+  return (
+    <x.div display="flex">
+      {/* Left Decor Section */}
+      <x.div
+        w={pxW(14)}
+        flexShrink="0"
+        py={pxH(2)}
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+      >
+        {/* Vertical Line next to content. Can't directly use SVG as
+          background image in CRA, so this will do. */}
+        <x.div
+          bg="cv-decor"
+          flexGrow="1"
+          w={pxW(1)}
+          borderRadius="full"
+        ></x.div>
+      </x.div>
+      <x.div
+        color="cv-muted"
+        lineHeight={pxB(14)}
+        fontSize={small ? pxB(10) : pxB(12)}
+      >
+        {body ? <x.div textAlign="justify">{body}</x.div> : undefined}
+        {children}
+      </x.div>
+    </x.div>
+  );
+};
 /**
  *
  *
@@ -423,38 +471,17 @@ const Record: React.FC<{}> = () => {
     <>
       <ElementTitle subtitle="Software Engineer">Example Inc.</ElementTitle>
       <Caption>Since 2123 · Berlin, Germany</Caption>
-      <x.div display="flex">
-        {/* Left Decor Section */}
-        <x.div
-          w={pxW(14)}
-          flexShrink="0"
-          py={pxH(2)}
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-        >
-          {/* Vertical Line next to content. Can't directly use SVG as
-          background image in CRA, so this will do. */}
-          <x.div
-            bg="cv-decor"
-            flexGrow="1"
-            w={pxW(1)}
-            borderRadius="full"
-          ></x.div>
-        </x.div>
-        <x.div color="cv-muted" lineHeight={pxB(14)} fontSize={pxB(12)}>
-          <x.div textAlign="justify">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+      <Remark
+        body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
             dictum vehicula lectus, id vehicula est pharetra ac. Sed fermentum
             mauris non lorem vulputate, ac dictum dui commodo. Nullam ultrices
-            suscipit justo, eu auris
-          </x.div>
-          <RemarkLabeledListItem label="Solution & Technology">
-            This is a test to see if the line fits and correctly wraps to the
-            next line.
-          </RemarkLabeledListItem>
-        </x.div>
-      </x.div>
+            suscipit justo, eu auris"
+      >
+        <RemarkLabeledListItem label="Solution & Technology" double>
+          This is a test to see if the line fits and correctly wraps to the next
+          line.
+        </RemarkLabeledListItem>
+      </Remark>
     </>
   );
 };
@@ -472,7 +499,7 @@ const MainSection = () => (
     /* Debug */
     /* bg="yellow-100" */
   >
-    <x.section
+    <x.div
       w={goldenRatioShortPX}
       flex="none"
       /* Debug */
@@ -480,12 +507,53 @@ const MainSection = () => (
     >
       {/* START: Aside Container */}
 
-      <SectionHeader>Qualification</SectionHeader>
-      <Topic title="Software Engineering" />
-      <Topic title="Product Architecture" />
+      {/* Qualification */}
+      <x.section pb={pxH(14)}>
+        <SectionHeader>Qualification</SectionHeader>
+        <Topic title="Software Engineering" />
+        <Topic title="Product Architecture" />
+      </x.section>
+
+      {/* Education */}
+      <x.section pb={pxH(14)}>
+        <SectionHeader>Education</SectionHeader>
+        <ElementTitle subtitle="St. Petersburg Russia">GSOM</ElementTitle>
+        <Caption double>
+          2015 · Ranked #1 in Russia. Term of courses in finance & teaching
+          programmatic marketing.
+        </Caption>
+        <TopicLabeledListItem label="Major">
+          Information Systems
+        </TopicLabeledListItem>
+        <TopicLabeledListItem label="Focus" double>
+          This is a test to see if the line fits and correctly wraps to the next
+          line.
+        </TopicLabeledListItem>
+        <TopicLabeledListItem label="GPA">
+          1.6 (scale 1 to 5; 1.0 best); top 11%
+        </TopicLabeledListItem>
+        <Remark
+          small
+          body="Patroned to a scholarship by the board in the field of Digital Transformation."
+        />
+        <Caption>Since 2123 · Berlin, Germany</Caption>
+        <TopicLabeledListItem label="AI / ML Field" double>
+          This is a test to see if the line fits and correctly wraps to the next
+          line.
+        </TopicLabeledListItem>
+        <Remark
+          small
+          body="Patroned to a scholarship by the board in the field of Digital Transformation."
+        />
+        <Caption>Since 2123 · Berlin, Germany</Caption>
+        <Remark
+          small
+          body="Patroned to a scholarship by the board in the field of Digital Transformation."
+        />
+      </x.section>
 
       {/* END: Aside Container */}
-    </x.section>
+    </x.div>
     {/* Right Side */}
     <x.main
       alignSelf="stretch"
