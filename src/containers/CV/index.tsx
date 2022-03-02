@@ -487,6 +487,72 @@ const Record: React.FC<{}> = () => {
 };
 
 /**
+ * CV Element: Table as labeled list.
+ */
+const TableLabeledList = () => {
+  const LabeledRow = () => {
+    return (
+      <x.tr py={pxH(1)}>
+        <x.td
+          w={pxH(44)}
+          fontSize={pxB(8)}
+          fontWeight="bolder"
+          textOverflow="ellipsis"
+          overflow="hidden"
+          pt={pxH(2)}
+          pl={pxW(6)}
+          pr={pxW(2)}
+        >
+          2018/11
+        </x.td>
+        <x.td
+          w={pxH(40)}
+          maxWidth={pxH(40)}
+          fontSize={pxB(8)}
+          fontWeight="bolder"
+          textOverflow="ellipsis"
+          overflow="hidden"
+          pt={pxH(2)}
+          pr={pxW(2)}
+        >
+          Publication
+        </x.td>
+        <td>Was erwartet der Kunde im Omnichannel?</td>
+      </x.tr>
+    );
+  };
+
+  return (
+    <x.div /* bg="green-100" */>
+      <x.table
+        tableLayout="auto"
+        fontSize={pxB(10)}
+        lineHeight={pxB(10)}
+        textAlign="left"
+        textOverflow="ellipsis"
+        overflow="hidden"
+        verticalAlign="top"
+      >
+        {/* TODO: Continues here. Box not modeled yet. */}
+        <thead>
+          <x.tr display="none">
+            <x.th w={pxH(44)}>Date</x.th>
+            <x.th w={pxH(40)}>Type</x.th>
+            <x.th>Topic</x.th>
+          </x.tr>
+        </thead>
+        <tbody>
+          <LabeledRow />
+          <LabeledRow />
+          <LabeledRow />
+          <LabeledRow />
+        </tbody>
+      </x.table>
+    </x.div>
+  );
+};
+
+/**
  * CV Main Section: Contains Aside Section and Main Container
  */
 const MainSection = () => (
@@ -584,96 +650,9 @@ const MainSection = () => (
         <ElementTitle subtitle="Software Engineer" />
         <Caption>Since 2123 · Berlin, Germany</Caption>
 
-        {/* START: Labeled List */}
-        <x.div bg="green-100">
-          <x.table
-            tableLayout="auto"
-            fontSize={pxB(10)}
-            lineHeight={pxB(10)}
-            textAlign="left"
-            textOverflow="ellipsis"
-            overflow="hidden"
-            verticalAlign="top"
-          >
-            {/* TODO: Continues here. Box modeled yet. */}
-            <thead>
-              <tr>
-                <x.th w={pxH(44)}>Time</x.th>
-                <x.th w={pxH(48)}>Type</x.th>
-                <x.th>Description</x.th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <x.td
-                  w={pxH(44)}
-                  fontSize={pxB(8)}
-                  fontWeight="bolder"
-                  textOverflow="ellipsis"
-                  overflow="hidden"
-                >
-                  2018/11
-                </x.td>
-                <x.td
-                  w={pxH(48)}
-                  maxWidth={pxH(48)}
-                  fontSize={pxB(8)}
-                  fontWeight="bolder"
-                  textOverflow="ellipsis"
-                  overflow="hidden"
-                >
-                  Puasdasdsadsdasdasd
-                </x.td>
-                <td>Was erwartet der Kunde im Omnichannel?</td>
-              </tr>
-              <tr>
-                <x.td
-                  w={pxH(44)}
-                  fontSize={pxB(8)}
-                  fontWeight="bolder"
-                  textOverflow="ellipsis"
-                  overflow="hidden"
-                >
-                  2018/11
-                </x.td>
-                <x.td
-                  w={pxH(48)}
-                  maxWidth={pxH(48)}
-                  fontSize={pxB(8)}
-                  fontWeight="bolder"
-                  textOverflow="ellipsis"
-                  overflow="hidden"
-                >
-                  Puasdasdsadsdasdasd
-                </x.td>
-                <td>Was erwartet der Kunde im Omnichannel?</td>
-              </tr>
-              <tr>
-                <x.td
-                  w={pxH(44)}
-                  fontSize={pxB(8)}
-                  fontWeight="bolder"
-                  textOverflow="ellipsis"
-                  overflow="hidden"
-                >
-                  2018/11
-                </x.td>
-                <x.td
-                  w={pxH(48)}
-                  maxWidth={pxH(48)}
-                  fontSize={pxB(8)}
-                  fontWeight="bolder"
-                  textOverflow="ellipsis"
-                  overflow="hidden"
-                >
-                  Puasdasdsadsdasdasd
-                </x.td>
-                <td>Was erwartet der Kunde im Omnichannel?</td>
-              </tr>
-            </tbody>
-          </x.table>
-        </x.div>
-        {/* END: Labeled List */}
+        {/* START: Labeled List Table */}
+        <TableLabeledList />
+        {/* END: Labeled List Table */}
       </x.section>
       {/* END: Honours & Media  */}
     </x.div>
