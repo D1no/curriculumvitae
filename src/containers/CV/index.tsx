@@ -4,7 +4,7 @@ import styled, { x } from "@xstyled/emotion";
 
 import { ILayoutProps } from "containers/Layout/util";
 
-import DesignSystem from "./DesignSystem";
+import DesignSystem, { pxH, sizeFromBase } from "./DesignSystem";
 
 /**
  * Document constant for flex box pushing according to golden ratio.
@@ -33,7 +33,7 @@ const FontTest = () => (
  * CV Header: Contains the profile information and cover image.
  */
 const Header = () => (
-  <x.header display="flex" flexDirection="row" alignSelf="stretch">
+  <x.section display="flex" flexDirection="row" alignSelf="stretch">
     <x.div mr="28px">
       <x.h1
         fontSize="18px"
@@ -76,7 +76,7 @@ const Header = () => (
         Cover Image
       </x.div>
     </x.div>
-  </x.header>
+  </x.section>
 );
 
 /**
@@ -84,6 +84,7 @@ const Header = () => (
  */
 const MetaSection = () => (
   <x.section
+    aria-label="Information"
     display="flex"
     flexDirection="row"
     alignSelf="stretch"
@@ -102,9 +103,9 @@ const MetaSection = () => (
         alignItems="center"
       >
         {/* Keywords */}
-        <x.span fontSize="12px" fontWeight="bolder">
-          Keywords:
-        </x.span>{" "}
+        <x.h4 fontSize="12px" fontWeight="bolder" display="inline-block">
+          Keywords
+        </x.h4>{" "}
         Front-End, Back-End, ReactJS, React-Native, Artificial Intelligence,
         Node.js, Python, CQRS, Microsoft, Google, Azure, Dask, Ray, Digital
         Twins
@@ -211,13 +212,31 @@ const SectionHeader: React.FC<{}> = ({ children }) => {
 };
 
 /**
- * CV Component: Topic Header
+ * CV Component: Element Header. Use
  */
-const TopicHeader: React.FC<{}> = ({ children }) => {
+const ElementTitle: React.FC<{ subtitle?: string }> = ({
+  children,
+  subtitle,
+}) => {
+  /**
+   * Renders small text next to title.
+   */
+  const renderSubtitle = (content: typeof subtitle = subtitle) => {
+    if (!content) return;
+
+    return (
+      <x.span fontSize="12px" fontWeight="light" ml="1px">
+        {" " /* <- Needed for screen readers. */}
+        {content}
+      </x.span>
+    );
+  };
+
   return (
-    <x.h2 fontSize="16px" lineHeight="28px" fontWeight="bolder">
+    <x.h3 h="28px" fontSize="16px" lineHeight="28px" fontWeight="normal">
       {children}
-    </x.h2>
+      {renderSubtitle()}
+    </x.h3>
   );
 };
 
@@ -276,7 +295,7 @@ const TopicLabeledListItem: React.FC<{ label?: string }> = ({
 const Topic: React.FC<{ title: string }> = ({ title, children }) => {
   return (
     <>
-      <TopicHeader>{title}</TopicHeader>
+      <ElementTitle>{title}</ElementTitle>
       <TopicBody>
         Contributor of TypeScript to React Static (+5k GitHub Stars). Once
         created a react mobile framework that server side renders for a
@@ -287,11 +306,38 @@ const Topic: React.FC<{ title: string }> = ({ title, children }) => {
         This is a test to see if the line fits and correctly wraps to the next
         line.
       </TopicLabeledListItem>
-      <TopicLabeledListItem />
-      <TopicLabeledListItem />
-      <TopicLabeledListItem />
-      <TopicLabeledListItem />
     </>
+  );
+};
+
+/**
+ * CV Component: Caption. The small text usually under titles.
+ */
+const Caption: React.FC<{
+  double?: boolean;
+}> = ({ double = false, children }) => {
+  return (
+    <x.div
+      h={sizeFromBase({ double: double })}
+      pt={double ? pxH(1) : pxH(0)}
+      pb={double ? pxH(3) : pxH(2)}
+      display="flex"
+      flexDirection="column"
+      /* Debug */
+      bg="yellow-300"
+    >
+      <x.p
+        fontSize={pxH(10)}
+        lineHeight={pxH(12)}
+        /* FIXME: Ellipsis not showing. Overflow text is simply getting clipped */
+        textOverflow="ellipsis"
+        overflow="hidden"
+        /* Debug */
+        bg="blue-200"
+      >
+        {children}
+      </x.p>
+    </x.div>
   );
 };
 
@@ -299,7 +345,7 @@ const Topic: React.FC<{ title: string }> = ({ title, children }) => {
  * CV Main Section: Contains Aside Section and Main Container
  */
 const MainSection = () => (
-  <x.section
+  <x.div
     display="flex"
     flexDirection="row"
     alignSelf="stretch"
@@ -309,7 +355,7 @@ const MainSection = () => (
     /* Debug */
     /* bg="yellow-100" */
   >
-    <x.div
+    <x.section
       w={goldenRatioShortPX}
       flex="none"
       /* Debug */
@@ -322,9 +368,9 @@ const MainSection = () => (
       <Topic title="Product Architecture" />
 
       {/* END: Aside Container */}
-    </x.div>
+    </x.section>
     {/* Right Side */}
-    <x.div
+    <x.main
       alignSelf="stretch"
       flexGrow="1"
       /* Debug */
@@ -333,12 +379,11 @@ const MainSection = () => (
       {/* START: Main Container */}
 
       <SectionHeader>Experience</SectionHeader>
-      <Topic title="Software Engineering" />
-      <Topic title="Product Architecture" />
-
+      <ElementTitle subtitle="Software Engineer">Example Inc.</ElementTitle>
+      <Caption>Since 2123 · Berlin, Germany</Caption>
       {/* END: Main Container */}
-    </x.div>
-  </x.section>
+    </x.main>
+  </x.div>
 );
 
 /**
