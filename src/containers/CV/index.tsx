@@ -502,20 +502,21 @@ const MainSection = () => (
     <x.div
       w={goldenRatioShortPX}
       flex="none"
+      spaceY={pxH(14)}
       /* Debug */
       /* bg="green-100" */
     >
       {/* START: Aside Container */}
 
       {/* Qualification */}
-      <x.section pb={pxH(14)}>
+      <x.section>
         <SectionHeader>Qualification</SectionHeader>
         <Topic title="Software Engineering" />
         <Topic title="Product Architecture" />
       </x.section>
 
       {/* Education */}
-      <x.section pb={pxH(14)}>
+      <x.section>
         <SectionHeader>Education</SectionHeader>
         <ElementTitle subtitle="St. Petersburg Russia">GSOM</ElementTitle>
         <Caption double>
@@ -551,25 +552,131 @@ const MainSection = () => (
           body="Patroned to a scholarship by the board in the field of Digital Transformation."
         />
       </x.section>
+      {/* END: Education */}
 
       {/* END: Aside Container */}
     </x.div>
     {/* Right Side */}
-    <x.main
-      alignSelf="stretch"
-      flexGrow="1"
+
+    <x.div spaceY={pxH(14)}>
+      {/* START: Experience / Main Container */}
+      {/* FIXME: Safari Reader - When the main container is inside here, safari reader mode isn't recognized. */}
+      <x.main
       /* Debug */
       /* bg="blue-100" */
-    >
-      {/* START: Main Container */}
-      <SectionHeader>Experience</SectionHeader>
-      <Record />
-      <ElementTitle subtitle="Software Engineer" />
-      <Caption>Since 2123 · Berlin, Germany</Caption>
-      <Record />
-      <Record />
-      {/* END: Main Container */}
-    </x.main>
+      >
+        <SectionHeader>Experience</SectionHeader>
+        <Record />
+        <ElementTitle subtitle="Software Engineer" />
+        <Caption>Since 2123 · Berlin, Germany</Caption>
+        <Record />
+        <Record />
+      </x.main>
+      {/* END: Experience / Main Container */}
+
+      {/* START: Honours & Media  */}
+      <x.section
+
+      /* Debug */
+      /* bg="blue-100" */
+      >
+        <SectionHeader>Honours & Media</SectionHeader>
+        <ElementTitle subtitle="Software Engineer" />
+        <Caption>Since 2123 · Berlin, Germany</Caption>
+
+        {/* START: Labeled List */}
+        <x.div bg="green-100">
+          <x.table
+            tableLayout="auto"
+            fontSize={pxB(10)}
+            lineHeight={pxB(10)}
+            textAlign="left"
+            textOverflow="ellipsis"
+            overflow="hidden"
+            verticalAlign="top"
+          >
+            {/* TODO: Continues here. Box modeled yet. */}
+            <thead>
+              <tr>
+                <x.th w={pxH(44)}>Time</x.th>
+                <x.th w={pxH(48)}>Type</x.th>
+                <x.th>Description</x.th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <x.td
+                  w={pxH(44)}
+                  fontSize={pxB(8)}
+                  fontWeight="bolder"
+                  textOverflow="ellipsis"
+                  overflow="hidden"
+                >
+                  2018/11
+                </x.td>
+                <x.td
+                  w={pxH(48)}
+                  maxWidth={pxH(48)}
+                  fontSize={pxB(8)}
+                  fontWeight="bolder"
+                  textOverflow="ellipsis"
+                  overflow="hidden"
+                >
+                  Puasdasdsadsdasdasd
+                </x.td>
+                <td>Was erwartet der Kunde im Omnichannel?</td>
+              </tr>
+              <tr>
+                <x.td
+                  w={pxH(44)}
+                  fontSize={pxB(8)}
+                  fontWeight="bolder"
+                  textOverflow="ellipsis"
+                  overflow="hidden"
+                >
+                  2018/11
+                </x.td>
+                <x.td
+                  w={pxH(48)}
+                  maxWidth={pxH(48)}
+                  fontSize={pxB(8)}
+                  fontWeight="bolder"
+                  textOverflow="ellipsis"
+                  overflow="hidden"
+                >
+                  Puasdasdsadsdasdasd
+                </x.td>
+                <td>Was erwartet der Kunde im Omnichannel?</td>
+              </tr>
+              <tr>
+                <x.td
+                  w={pxH(44)}
+                  fontSize={pxB(8)}
+                  fontWeight="bolder"
+                  textOverflow="ellipsis"
+                  overflow="hidden"
+                >
+                  2018/11
+                </x.td>
+                <x.td
+                  w={pxH(48)}
+                  maxWidth={pxH(48)}
+                  fontSize={pxB(8)}
+                  fontWeight="bolder"
+                  textOverflow="ellipsis"
+                  overflow="hidden"
+                >
+                  Puasdasdsadsdasdasd
+                </x.td>
+                <td>Was erwartet der Kunde im Omnichannel?</td>
+              </tr>
+            </tbody>
+          </x.table>
+        </x.div>
+        {/* END: Labeled List */}
+      </x.section>
+      {/* END: Honours & Media  */}
+    </x.div>
   </x.div>
 );
 
@@ -614,11 +721,6 @@ const CV: React.FC<ICVProps> = (props) => {
             <Header />
             <MetaSection />
             <MainSection />
-
-            {/* END: CV Sections */}
-            <x.div bg="gray-100">
-              <FontTest />
-            </x.div>
           </x.div>
         </PageScale>
       </x.div>
