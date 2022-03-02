@@ -106,9 +106,10 @@ const MetaSection = () => (
         alignItems="center"
       >
         {/* Keywords */}
-        <x.h4 fontSize={pxB(12)} fontWeight="bolder" display="inline-block">
+        {/* TODO: Accessibility this should be a header but outside of the p tag. */}
+        <x.span fontSize={pxB(12)} fontWeight="bolder" display="inline-block">
           Keywords
-        </x.h4>{" "}
+        </x.span>{" "}
         Front-End, Back-End, ReactJS, React-Native, Artificial Intelligence,
         Node.js, Python, CQRS, Microsoft, Google, Azure, Dask, Ray, Digital
         Twins
