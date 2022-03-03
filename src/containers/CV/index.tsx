@@ -3,19 +3,18 @@ import React from "react";
 import styled, { x } from "@xstyled/emotion";
 
 import DesignSystem, {
+  goldenRatioGridStep,
+  goldenRatioLongSection,
+  goldenRatioPageHeight,
+  goldenRatioPageMargin,
+  goldenRatioPageWidth,
+  goldenRatioShortPX,
   pxB,
   pxBraw,
   pxH,
   pxW,
   sizeFromBase,
 } from "./DesignSystem";
-
-/**
- * Document constant for flex box pushing according to golden ratio.
- * Width 544px (34rem at 16px) = Long 366.21 + Short 207.790
- * Short ~208px (=13rem at 16px)
- */
-const goldenRatioShortPX = pxW(208);
 
 const FontTest = () => (
   <x.div>
@@ -490,40 +489,57 @@ const Record: React.FC<{}> = () => {
  * CV Element: Table as labeled list.
  */
 const TableLabeledList = () => {
+  const widthFirstLabel = 5.5 * goldenRatioGridStep; // 44
+  const widthSecondLabel = 6 * goldenRatioGridStep; // 48
+  const widthDetail =
+    goldenRatioLongSection - widthFirstLabel - widthSecondLabel;
+
   const LabeledRow = () => {
     return (
-      <x.tr py={pxH(1)}>
+      <x.tr h={pxH(14)} maxHeight={pxH(14)} py={pxH(1)} whiteSpace="nowrap">
         <x.td
-          w={pxH(44)}
+          w={pxW(widthFirstLabel)}
+          maxWidth={pxW(widthFirstLabel)}
           fontSize={pxB(8)}
-          fontWeight="bolder"
-          textOverflow="ellipsis"
-          overflow="hidden"
+          lineHeight={pxB(8)}
           pt={pxH(2)}
           pl={pxW(6)}
           pr={pxW(2)}
+          fontWeight="bolder"
+          textOverflow="ellipsis"
+          overflow="hidden"
         >
           2018/11
         </x.td>
         <x.td
-          w={pxH(40)}
-          maxWidth={pxH(40)}
+          w={pxW(widthSecondLabel)}
+          maxWidth={pxW(widthSecondLabel)}
           fontSize={pxB(8)}
+          lineHeight={pxB(8)}
+          pt={pxH(2)}
+          pr={pxW(2)}
           fontWeight="bolder"
           textOverflow="ellipsis"
           overflow="hidden"
-          pt={pxH(2)}
-          pr={pxW(2)}
         >
           Publication
         </x.td>
-        <td>Was erwartet der Kunde im Omnichannel?</td>
+        <x.td
+          w={pxW(widthDetail)}
+          maxWidth={pxW(widthDetail)}
+          fontSize={pxB(10)}
+          lineHeight={pxB(10)}
+          textOverflow="ellipsis"
+          overflow="hidden"
+        >
+          Was erwartet der Kunde im Omnichannel?
+        </x.td>
       </x.tr>
     );
   };
 
   return (
-    <x.div /* bg="green-100" */>
+    <x.div /* bg="green-100" */ display="flex" flexDirection="column">
       <x.table
         tableLayout="auto"
         fontSize={pxB(10)}
@@ -532,6 +548,9 @@ const TableLabeledList = () => {
         textOverflow="ellipsis"
         overflow="hidden"
         verticalAlign="top"
+        cellSpacing="0"
+        cellPadding="0"
+        border="none"
       >
         {/* TODO: Continues here. Box not modeled yet. */}
         <thead>
@@ -647,9 +666,6 @@ const MainSection = () => (
       /* bg="blue-100" */
       >
         <SectionHeader>Honours & Media</SectionHeader>
-        <ElementTitle subtitle="Software Engineer" />
-        <Caption>Since 2123 · Berlin, Germany</Caption>
-
         {/* START: Labeled List Table */}
         <TableLabeledList />
         {/* END: Labeled List Table */}
@@ -684,12 +700,12 @@ const CV: React.FC<ICVProps> = (props) => {
             bg="white"
             color="black"
             /* Page Dimensions (A4) */
-            w={pxW(800)}
-            h={pxH(1132)}
+            w={pxW(goldenRatioPageWidth)}
+            h={pxH(goldenRatioPageHeight)}
             /* Trim (A4) */
-            px={pxW(128)}
-            pt={pxH(128)}
-            pb={pxH(64)}
+            px={pxW(goldenRatioPageMargin)}
+            pt={pxH(goldenRatioPageMargin)}
+            pb={pxH(goldenRatioPageMargin / 2)}
             /* Box Model */
             display="flex"
             flexDirection="column"

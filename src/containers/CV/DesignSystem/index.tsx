@@ -19,7 +19,7 @@ import "./latofonts.css";
 
 // TODO: After design phase, a histogram needs to be made of all called in pxX sizes for consistency validation and search / replace.
 
-const globalSizeMultiplier = 1;
+export const globalSizeMultiplier = 1;
 
 /**
  * Utility: Get a height string as a multiple of the grid base height.
@@ -77,6 +77,45 @@ export const pxH = (px: number): string => {
 export const pxW = (px: number): string => {
   return pxB(px);
 };
+
+/**
+ * Document constant for flex box pushing according to golden ratio.
+ * Width 544px (34rem at 16px) = Long 366.21 + Short 207.790
+ * Short ~208px (=13rem at 16px)
+ */
+
+// TODO: This should just be one class object that also caches.
+
+export const goldenRatioGridStep = 8;
+
+export const goldenRatioWhole = 68 * goldenRatioGridStep; // 544px
+export const goldenRatioShort = 26 * goldenRatioGridStep; // 208px
+export const goldenRatioLong = goldenRatioWhole - goldenRatioShort;
+
+export const goldenRatioPageWidth = 100 * goldenRatioGridStep; // 800px
+export const goldenRatioPageHeight = 141.5 * goldenRatioGridStep; // 1132px
+export const goldenRatioPageMargin =
+  (goldenRatioPageWidth - goldenRatioWhole) / 2; // 128
+
+// Visual space (margin) from short golden ratio to begin of content within long golden ratio.
+export const goldenRatioSectionSpacer = 4.5 * goldenRatioGridStep; // 36px
+export const goldenRatioContentSpacer = 3.5 * goldenRatioGridStep; // 28px
+
+export const goldenRatioLongSection =
+  goldenRatioLong - goldenRatioSectionSpacer;
+export const goldenRatioLongContent =
+  goldenRatioLong - goldenRatioContentSpacer;
+
+// As Pixel
+export const goldenRatioShortPX = pxW(goldenRatioShort);
+export const goldenRatioLongPX = pxW(goldenRatioLong);
+
+export const goldenRatioLongSectionPX = pxW(
+  goldenRatioLong - goldenRatioSectionSpacer,
+);
+export const goldenRatioLongContentPX = pxW(
+  goldenRatioLong - goldenRatioContentSpacer,
+);
 
 /**
  * =================================================================
