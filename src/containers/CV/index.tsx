@@ -493,16 +493,22 @@ const TableLabeledList = () => {
   const widthSecondLabel = 6 * goldenRatioGridStep; // 48
   const widthDetail =
     goldenRatioLongSection - widthFirstLabel - widthSecondLabel;
+  const labelTopPadding = 2;
 
   const LabeledRow = () => {
     return (
-      <x.tr h={pxH(14)} maxHeight={pxH(14)} py={pxH(1)} whiteSpace="nowrap">
+      <x.tr
+        h={pxH(14)}
+        maxHeight={pxH(14)}
+        whiteSpace="nowrap"
+        verticalAlign="baseline"
+      >
         <x.td
           w={pxW(widthFirstLabel)}
           maxWidth={pxW(widthFirstLabel)}
           fontSize={pxB(8)}
           lineHeight={pxB(8)}
-          pt={pxH(2)}
+          pt={pxH(labelTopPadding)}
           pl={pxW(6)}
           pr={pxW(2)}
           fontWeight="bolder"
@@ -515,8 +521,8 @@ const TableLabeledList = () => {
           w={pxW(widthSecondLabel)}
           maxWidth={pxW(widthSecondLabel)}
           fontSize={pxB(8)}
-          lineHeight={pxB(8)}
-          pt={pxH(2)}
+          lineHeight={pxB(10)}
+          pt={pxH(labelTopPadding)}
           pr={pxW(2)}
           fontWeight="bolder"
           textOverflow="ellipsis"
@@ -539,7 +545,7 @@ const TableLabeledList = () => {
   };
 
   return (
-    <x.div /* bg="green-100" */ display="flex" flexDirection="column">
+    <x.div /* bg="green-100" */>
       <x.table
         tableLayout="auto"
         fontSize={pxB(10)}
