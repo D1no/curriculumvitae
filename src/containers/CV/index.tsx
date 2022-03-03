@@ -312,9 +312,11 @@ const TopicLabeledListItem: React.FC<{ label?: string; double?: boolean }> = ({
     >
       <x.div
         fontSize={pxB(8)}
-        lineHeight={pxH(10)}
         w={pxW(28)}
-        mt={pxH(2)}
+        /* FIXME: This 1 vs 2px Remark Margin to align the baseline is not clean
+        and can lead to differences between safari vs chrome vs firefox */
+        lineHeight={pxH(9)} // <-
+        mt={pxW(2)} // <-
         mr={pxW(2)}
         ml={pxW(6)}
         fontWeight="bolder"
@@ -351,11 +353,13 @@ const RemarkLabeledListItem: React.FC<{ label?: string; double?: boolean }> = ({
     >
       <x.div
         fontSize={pxB(8)}
-        lineHeight={pxH(10)}
         /* TODO: This should depend on the golden ratio since the label pushes content to the right,
         which vertically aligns with the profile summary text block end.  */
         w={pxW(44)}
-        mt={pxH(2)}
+        /* FIXME: This 1 vs 2px Remark Margin to align the baseline is not clean
+        and can lead to differences between safari vs chrome vs firefox */
+        lineHeight={pxH(9)} // <-
+        mt={pxH(2)} // <-
         mr={pxW(6)}
         fontWeight="bolder"
         flex="none"
@@ -697,7 +701,10 @@ const CV: React.FC<ICVProps> = (props) => {
         {/* TODO: Add proper scaling logic here */}
         <PageScale
           transform
-          transformOrigin="50%% 0%"
+          transformOrigin={
+            // TODO: Scaling in dev shouldn't be different. -> Storybook
+            process.env.NODE_ENV === "development" ? "75% 0%" : "50% 0%"
+          }
           h="0"
           /* TODO: Discriminate between iphone mini and iphone max style phones. */
           scale={{ _: "0.45", sm: "0.75", md: "0.9", lg: "1", xl: "1.4" }}
