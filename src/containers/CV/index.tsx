@@ -8,6 +8,7 @@ import DesignSystem, {
   goldenRatioPageHeight,
   goldenRatioPageMargin,
   goldenRatioPageWidth,
+  goldenRatioSectionSpacerPX,
   goldenRatioShortPX,
   pxB,
   pxBraw,
@@ -725,7 +726,7 @@ const MainSection = () => (
     display="flex"
     flexDirection="row"
     alignSelf="stretch"
-    spaceX={pxW(36)}
+    spaceX={goldenRatioSectionSpacerPX}
     justifyContent="center"
     /* Debug */
     /* bg="yellow-100" */
@@ -897,6 +898,53 @@ const CV: React.FC<ICVProps> = (props) => {
             <Header />
             <MetaSection />
             <MainSection />
+
+            {/* Footer */}
+            <x.div
+              flexGrow={1}
+              display="flex"
+              flexDirection="column"
+              justifyContent="flex-end"
+            >
+              {/* Footer Decor */}
+              <x.div display="flex" h={pxH(14)} alignItems="center">
+                <x.div
+                  col={goldenRatioShortPX}
+                  bg="black"
+                  borderRadius="full"
+                  h={pxH(1)}
+                />
+                <x.div col={goldenRatioSectionSpacerPX}>
+                  <x.svg viewBox="0 0 3 3" w={pxB(3)} h={pxB(3)} mx="auto">
+                    <circle cx="50%" cy="50%" r={pxBraw(1.5)} />
+                  </x.svg>
+                </x.div>
+                <x.div col bg="black" borderRadius="full" h={pxH(1)} />
+              </x.div>
+
+              <x.div
+                display="flex"
+                spaceX={goldenRatioSectionSpacerPX}
+                fontSize={pxB(10)}
+                lineHeight={pxB(14)}
+              >
+                <x.div col={goldenRatioShortPX} /* bg="gray-200" */>
+                  <x.p>
+                    <i>Online: https://cvdrive.link/0c44298fc1c149af</i>
+                  </x.p>
+                  <x.p>
+                    Provided on 2018-08-11 in kind GDPR compliance to
+                    “Recruiting Company Inc, London-UK”.
+                  </x.p>
+                </x.div>
+
+                <x.div col /* bg="gray-200" */>
+                  Qualitative Interpretation (Harvey Ball)
+                </x.div>
+              </x.div>
+            </x.div>
+            {/* END: Footer */}
+            {/* END: CV Sections */}
           </x.div>
         </PageScale>
       </x.div>

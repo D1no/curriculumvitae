@@ -110,6 +110,9 @@ export const goldenRatioLongContent =
 export const goldenRatioShortPX = pxW(goldenRatioShort);
 export const goldenRatioLongPX = pxW(goldenRatioLong);
 
+export const goldenRatioSectionSpacerPX = pxW(goldenRatioSectionSpacer);
+export const goldenRatioContentSpacerPX = pxW(goldenRatioContentSpacer);
+
 export const goldenRatioLongSectionPX = pxW(
   goldenRatioLong - goldenRatioSectionSpacer,
 );
