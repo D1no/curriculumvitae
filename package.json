@@ -54,6 +54,14 @@
     "overrides": [
       {
         "files": [
+          "**/**"
+        ],
+        "rules": {
+          "no-unused-vars": "warn"
+        }
+      },
+      {
+        "files": [
           "**/*.stories.*"
         ],
         "rules": {
