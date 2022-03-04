@@ -489,22 +489,60 @@ const Record: React.FC<{}> = () => {
   );
 };
 
+type tableLabeledRow = {
+  label1?: string;
+  label2?: string;
+  subject?: string;
+  remark?: string;
+  detailed?: boolean;
+};
+
 /**
  * CV Element: Table as labeled list.
  */
-const TableLabeledList = () => {
+const TableLabeledList: React.FC<{
+  showHeader?: boolean;
+  columnNames?: [string, string, string];
+  rows?: tableLabeledRow[];
+}> = ({
+  showHeader = false,
+  columnNames = ["column1", "column2", "column3"],
+  rows = [
+    {
+      label1: "label1",
+      label2: "label2",
+      subject: "subject",
+    },
+  ],
+}) => {
+  // Column names
+  const [column1, column2, column3] = columnNames;
+
   // Sizing Constants
   const widthFirstLabel = 5.5 * goldenRatioGridStep; // 44
   const widthSecondLabel = 6 * goldenRatioGridStep; // 48
   const widthContentColumn =
     goldenRatioLongSection - widthFirstLabel - widthSecondLabel;
 
+  const label1Indent = 6;
+  const label2Indent = 2;
+
   /**
    * Row for a three column table. I.e. time, type, subject with an option (detailed = true) to show
    * an additional 0.5 line remark under the content of the last column (i.e. remark under subject). */
-  const LabeledRow: React.FC<{ detailed?: boolean }> = ({
-    detailed = false,
+  const LabeledRow: React.FC<tableLabeledRow> = ({
+    detailed,
+    label1 = "label1",
+    label2 = "label2",
+    subject = "subject",
+    remark,
+    // <- Readability: Destructuring done here to get properties directly. Potentially confusing for beginners.
   }) => {
+    // Automatically show remark if no instruction given and remark available
+    if (detailed === undefined && remark !== undefined) {
+      detailed = true;
+    }
+
     /**
      *  Label style used in first and second column. */
     const Label: React.FC<{}> = ({ children }) => {
@@ -523,11 +561,7 @@ const TableLabeledList = () => {
     /**
      *  Third column Subject content */
     const SubjectLine: React.FC<{}> = ({ children }) => {
-      return (
-        <x.span fontSize={pxB(10)} lineHeight={pxB(10)}>
-          {children}
-        </x.span>
-      );
+      return <x.span>{children}</x.span>;
     };
 
     /**
@@ -541,11 +575,12 @@ const TableLabeledList = () => {
       return (
         <>
           <x.span
+            fontStyle="italic"
+            color="cv-muted"
             fontSize={pxB(8)}
             lineHeight={pxB(8)}
             mt={pxH(1)}
             display="block"
-            fontStyle="italic"
             textOverflow="ellipsis"
             overflow="hidden"
           >
@@ -560,38 +595,40 @@ const TableLabeledList = () => {
         h={pxH(detailed ? 21 : 14)}
         maxHeight={pxH(detailed ? 21 : 14)}
         display="block"
-        pt={pxH(detailed ? 1 : 2)}
-        pb={pxH(detailed ? 1 : 2)}
+        pt={pxH(1)}
+        pb={pxH(1)}
         whiteSpace="nowrap"
         verticalAlign="baseline"
       >
         <x.td
           w={pxW(widthFirstLabel)}
           maxWidth={pxW(widthFirstLabel)}
-          pl={pxW(6)}
+          pl={pxW(label1Indent)}
           pr={pxW(2)}
           textOverflow="ellipsis"
           overflow="hidden"
         >
-          <Label>2018/11</Label>
+          <Label>{label1}</Label>
         </x.td>
         <x.td
           w={pxW(widthSecondLabel)}
           maxWidth={pxW(widthSecondLabel)}
-          pr={pxW(2)}
+          pr={pxW(label2Indent)}
           textOverflow="ellipsis"
           overflow="hidden"
         >
-          <Label>Publication</Label>
+          <Label>{label2}</Label>
         </x.td>
         <x.td
           w={pxW(widthContentColumn)}
           maxWidth={pxW(widthContentColumn)}
+          fontSize={pxB(10)}
+          lineHeight={pxB(detailed ? 10 : 12)}
           textOverflow="ellipsis"
           overflow="hidden"
         >
-          <SubjectLine>Was erwartet der Kunde im Omnichannel?</SubjectLine>
-          <RemarkLine>Published in POS Kompakt Magazine</RemarkLine>
+          <SubjectLine>{subject}</SubjectLine>
+          <RemarkLine>{remark}</RemarkLine>
         </x.td>
       </x.tr>
     );
@@ -612,17 +649,69 @@ const TableLabeledList = () => {
     >
       {/* TODO: Continues here. Box not modeled yet. */}
       <thead>
-        <x.tr display="none">
-          <x.th w={pxH(44)}>Date</x.th>
-          <x.th w={pxH(40)}>Type</x.th>
-          <x.th>Topic</x.th>
+        <x.tr
+          display={showHeader ? "block" : "none"}
+          // Style
+          fontSize={pxB(8)}
+          lineHeight={pxB(10)}
+          fontStyle="italic"
+          // Box Model
+          h={pxH(12)}
+          borderBottom="1px solid"
+          borderColor="cv-decor"
+          maxHeight={pxH(12)}
+          mb={pxH(1)}
+          whiteSpace="nowrap"
+          verticalAlign="baseline"
+        >
+          <x.th
+            fontWeight="normal"
+            color="cv-muted"
+            // Box Model
+            w={pxW(widthFirstLabel)}
+            maxWidth={pxW(widthFirstLabel)}
+            pl={pxW(label1Indent)}
+            textOverflow="ellipsis"
+            overflow="hidden"
+          >
+            {column1}
+          </x.th>
+          <x.th
+            fontWeight="normal"
+            color="cv-muted"
+            // Box Model
+            w={pxW(widthSecondLabel)}
+            maxWidth={pxW(widthSecondLabel)}
+            pr={pxW(label2Indent)}
+            textOverflow="ellipsis"
+            overflow="hidden"
+          >
+            {column2}
+          </x.th>
+          <x.th
+            fontWeight="normal"
+            color="cv-muted"
+            // Box Model
+            w={pxW(widthContentColumn)}
+            maxWidth={pxW(widthContentColumn)}
+            textOverflow="ellipsis"
+            overflow="hidden"
+          >
+            {column3}
+          </x.th>
         </x.tr>
       </thead>
       <tbody>
-        <LabeledRow />
-        <LabeledRow detailed />
-        <LabeledRow />
-        <LabeledRow />
+        {rows.map((row, i) => (
+          <LabeledRow
+            key={i}
+            label1={row.label1}
+            label2={row.label2}
+            subject={row.subject}
+            remark={row.remark}
+            detailed={row.detailed}
+          />
+        ))}
       </tbody>
     </x.table>
   );
@@ -724,7 +813,39 @@ const MainSection = () => (
       >
         <SectionHeader>Honours & Media</SectionHeader>
         {/* START: Labeled List Table */}
-        <TableLabeledList />
+        <TableLabeledList
+          columnNames={["Data", "Format", "Topic / Remark"]}
+          rows={[
+            {
+              label1: "2018/02",
+              label2: "Speaker",
+              subject: "Bridging Augmented Reality & React Native",
+            },
+            {
+              label1: "2018/11",
+              label2: "Article",
+              subject: "Was erwartet der Kunde im Omnichannel?",
+            },
+            {
+              label1: "2018/04",
+              label2: "Speaker",
+              subject: "ReactJS in the Enterprise",
+              remark: "Atlasian Inc. / Mind Space Berlin",
+            },
+            {
+              label1: "2018/02",
+              label2: "Speaker",
+              subject: "Bridging Augmented Reality & React Native",
+              remark: "React Day Berlin",
+            },
+            {
+              label1: "2018/02",
+              label2: "Speaker",
+              subject: "Bridging Augmented Reality & React Native",
+              remark: "React Day Berlin",
+            },
+          ]}
+        />
         {/* END: Labeled List Table */}
       </x.section>
       {/* END: Honours & Media  */}
