@@ -100,6 +100,7 @@ export const goldenRatioPageMargin =
 // Visual space (margin) from short golden ratio to begin of content within long golden ratio.
 export const goldenRatioSectionSpacer = 4.5 * goldenRatioGridStep; // 36px
 export const goldenRatioContentSpacer = 3.5 * goldenRatioGridStep; // 28px
+export const goldenRatioElementSpacer = 2 * goldenRatioGridStep; // 16px
 
 export const goldenRatioLongSection =
   goldenRatioLong - goldenRatioSectionSpacer;
@@ -112,6 +113,7 @@ export const goldenRatioLongPX = pxW(goldenRatioLong);
 
 export const goldenRatioSectionSpacerPX = pxW(goldenRatioSectionSpacer);
 export const goldenRatioContentSpacerPX = pxW(goldenRatioContentSpacer);
+export const goldenRatioElementSpacerPX = pxW(goldenRatioElementSpacer);
 
 export const goldenRatioLongSectionPX = pxW(
   goldenRatioLong - goldenRatioSectionSpacer,
