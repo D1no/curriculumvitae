@@ -493,91 +493,138 @@ const Record: React.FC<{}> = () => {
  * CV Element: Table as labeled list.
  */
 const TableLabeledList = () => {
+  // Sizing Constants
   const widthFirstLabel = 5.5 * goldenRatioGridStep; // 44
   const widthSecondLabel = 6 * goldenRatioGridStep; // 48
-  const widthDetail =
+  const widthContentColumn =
     goldenRatioLongSection - widthFirstLabel - widthSecondLabel;
-  const labelTopPadding = 2;
 
-  const LabeledRow = () => {
+  /**
+   * Row for a three column table. I.e. time, type, subject with an option (detailed = true) to show
+   * an additional 0.5 line remark under the content of the last column (i.e. remark under subject). */
+  const LabeledRow: React.FC<{ detailed?: boolean }> = ({
+    detailed = false,
+  }) => {
+    /**
+     *  Label style used in first and second column. */
+    const Label: React.FC<{}> = ({ children }) => {
+      return (
+        <x.span
+          pt={pxH(2)}
+          fontSize={pxB(8)}
+          lineHeight={pxB(8)}
+          fontWeight="bolder"
+        >
+          {children}
+        </x.span>
+      );
+    };
+
+    /**
+     *  Third column Subject content */
+    const SubjectLine: React.FC<{}> = ({ children }) => {
+      return (
+        <x.span fontSize={pxB(10)} lineHeight={pxB(10)}>
+          {children}
+        </x.span>
+      );
+    };
+
+    /**
+     *  Second line in smaller font under Subject */
+    const RemarkLine: React.FC<{ show?: boolean }> = ({
+      children,
+      show = detailed,
+    }) => {
+      if (!show) return <></>;
+
+      return (
+        <>
+          <x.span
+            fontSize={pxB(8)}
+            lineHeight={pxB(8)}
+            mt={pxH(1)}
+            display="block"
+            fontStyle="italic"
+            textOverflow="ellipsis"
+            overflow="hidden"
+          >
+            {children}
+          </x.span>
+        </>
+      );
+    };
+
     return (
       <x.tr
-        h={pxH(14)}
-        maxHeight={pxH(14)}
+        h={pxH(detailed ? 21 : 14)}
+        maxHeight={pxH(detailed ? 21 : 14)}
+        display="block"
+        pt={pxH(detailed ? 1 : 2)}
+        pb={pxH(detailed ? 1 : 2)}
         whiteSpace="nowrap"
         verticalAlign="baseline"
       >
         <x.td
           w={pxW(widthFirstLabel)}
           maxWidth={pxW(widthFirstLabel)}
-          fontSize={pxB(8)}
-          lineHeight={pxB(8)}
-          pt={pxH(labelTopPadding)}
           pl={pxW(6)}
           pr={pxW(2)}
-          fontWeight="bolder"
           textOverflow="ellipsis"
           overflow="hidden"
         >
-          2018/11
+          <Label>2018/11</Label>
         </x.td>
         <x.td
           w={pxW(widthSecondLabel)}
           maxWidth={pxW(widthSecondLabel)}
-          fontSize={pxB(8)}
-          lineHeight={pxB(10)}
-          pt={pxH(labelTopPadding)}
           pr={pxW(2)}
-          fontWeight="bolder"
           textOverflow="ellipsis"
           overflow="hidden"
         >
-          Publication
+          <Label>Publication</Label>
         </x.td>
         <x.td
-          w={pxW(widthDetail)}
-          maxWidth={pxW(widthDetail)}
-          fontSize={pxB(10)}
-          lineHeight={pxB(10)}
+          w={pxW(widthContentColumn)}
+          maxWidth={pxW(widthContentColumn)}
           textOverflow="ellipsis"
           overflow="hidden"
         >
-          Was erwartet der Kunde im Omnichannel?
+          <SubjectLine>Was erwartet der Kunde im Omnichannel?</SubjectLine>
+          <RemarkLine>Published in POS Kompakt Magazine</RemarkLine>
         </x.td>
       </x.tr>
     );
   };
 
   return (
-    <x.div /* bg="green-100" */>
-      <x.table
-        tableLayout="auto"
-        fontSize={pxB(10)}
-        lineHeight={pxB(10)}
-        textAlign="left"
-        textOverflow="ellipsis"
-        overflow="hidden"
-        verticalAlign="top"
-        cellSpacing="0"
-        cellPadding="0"
-        border="none"
-      >
-        {/* TODO: Continues here. Box not modeled yet. */}
-        <thead>
-          <x.tr display="none">
-            <x.th w={pxH(44)}>Date</x.th>
-            <x.th w={pxH(40)}>Type</x.th>
-            <x.th>Topic</x.th>
-          </x.tr>
-        </thead>
-        <tbody>
-          <LabeledRow />
-          <LabeledRow />
-          <LabeledRow />
-          <LabeledRow />
-        </tbody>
-      </x.table>
-    </x.div>
+    <x.table
+      tableLayout="auto"
+      fontSize={pxB(10)}
+      lineHeight={pxB(10)}
+      textAlign="left"
+      verticalAlign="top"
+      border="none"
+      cellSpacing="0"
+      cellPadding="0"
+      textOverflow="ellipsis"
+      overflow="hidden"
+    >
+      {/* TODO: Continues here. Box not modeled yet. */}
+      <thead>
+        <x.tr display="none">
+          <x.th w={pxH(44)}>Date</x.th>
+          <x.th w={pxH(40)}>Type</x.th>
+          <x.th>Topic</x.th>
+        </x.tr>
+      </thead>
+      <tbody>
+        <LabeledRow />
+        <LabeledRow detailed />
+        <LabeledRow />
+        <LabeledRow />
+      </tbody>
+    </x.table>
   );
 };
 
