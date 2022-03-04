@@ -3,6 +3,8 @@ import React from "react";
 import styled, { x } from "@xstyled/emotion";
 
 import DesignSystem, {
+  goldenRatioContentSpacerPX,
+  goldenRatioElementSpacer,
   goldenRatioGridStep,
   goldenRatioLongSection,
   goldenRatioPageHeight,
@@ -887,11 +889,11 @@ const CV: React.FC<ICVProps> = (props) => {
             /* Trim (A4) */
             px={pxW(goldenRatioPageMargin)}
             pt={pxH(goldenRatioPageMargin)}
-            pb={pxH(goldenRatioPageMargin / 2)}
+            pb={pxH(goldenRatioElementSpacer)}
             /* Box Model */
             display="flex"
             flexDirection="column"
-            spaceY={pxH(16)}
+            spaceY={pxH(goldenRatioElementSpacer)}
           >
             {/* START: CV Sections */}
 
@@ -905,6 +907,7 @@ const CV: React.FC<ICVProps> = (props) => {
               display="flex"
               flexDirection="column"
               justifyContent="flex-end"
+              mb={goldenRatioContentSpacerPX}
             >
               {/* Footer Decor */}
               <x.div display="flex" h={pxH(14)} alignItems="center">
@@ -921,8 +924,9 @@ const CV: React.FC<ICVProps> = (props) => {
                 </x.div>
                 <x.div col bg="black" borderRadius="full" h={pxH(1)} />
               </x.div>
-
+              {/* Footer Notes */}
               <x.div
+                minH={pxH(goldenRatioPageMargin / 2 - goldenRatioElementSpacer)}
                 display="flex"
                 spaceX={goldenRatioSectionSpacerPX}
                 fontSize={pxB(10)}
@@ -930,16 +934,15 @@ const CV: React.FC<ICVProps> = (props) => {
               >
                 <x.div col={goldenRatioShortPX} /* bg="gray-200" */>
                   <x.p>
-                    <i>Online: https://cvdrive.link/0c44298fc1c149af</i>
+                    <i>Online:</i> https://cvdrive.link/0c44298fc1c149af
                   </x.p>
-                  <x.p>
+                  <x.p color="cv-decor">
                     Provided on 2018-08-11 in kind GDPR compliance to
                     “Recruiting Company Inc, London-UK”.
                   </x.p>
                 </x.div>
-
                 <x.div col /* bg="gray-200" */>
-                  Qualitative Interpretation (Harvey Ball)
+                  <x.p>Qualitative Interpretation (Harvey Ball)</x.p>
                 </x.div>
               </x.div>
             </x.div>
