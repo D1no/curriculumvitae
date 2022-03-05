@@ -152,6 +152,8 @@ export const theme = {
       "doc-overlay": "#0D0C0C",
       // Like Button
       "doc-primary": "#0574E3",
+      // Text CV content
+      "cv-black": "#000",
       // Muted CV content
       "cv-muted": "#545454",
       // CV Vertical Decor Line

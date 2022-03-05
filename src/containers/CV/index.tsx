@@ -2,7 +2,7 @@ import QRCode from "qrcode.react";
 
 import React from "react";
 
-import styled, { x } from "@xstyled/emotion";
+import styled, { th, x } from "@xstyled/emotion";
 
 import DesignSystem, {
   goldenRatioContentSpacerPX,
@@ -19,6 +19,7 @@ import DesignSystem, {
   pxH,
   pxW,
   sizeFromBase,
+  theme,
 } from "./DesignSystem";
 
 // eslint-disable-next-line
@@ -939,17 +940,20 @@ const CV: React.FC<ICVProps> = (props) => {
                   display="flex"
                   lineHeight={pxB(10)}
                   fontSize={pxB(8)}
-                  spaceX={pxW(8)}
+                  spaceX={pxW(6)}
                 >
                   <x.div
                     col={pxW(
-                      goldenRatioPageMargin / 2 - goldenRatioElementSpacer,
+                      goldenRatioPageMargin / 2 - goldenRatioElementSpacer, // 48
                     )}
                   >
                     <QRCode
                       value="https://cvdrive.link/0c44298fc1c149af"
                       renderAs="svg"
-                      size={48}
+                      size={
+                        goldenRatioPageMargin / 2 - goldenRatioElementSpacer // 48
+                      }
+                      fgColor={theme.colors["cv-black"]}
                     />
                   </x.div>
                   <x.div col>
