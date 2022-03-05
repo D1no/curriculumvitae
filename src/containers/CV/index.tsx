@@ -2,7 +2,7 @@ import QRCode from "qrcode.react";
 
 import React from "react";
 
-import styled, { th, x } from "@xstyled/emotion";
+import styled, { x } from "@xstyled/emotion";
 
 import DesignSystem, {
   goldenRatioContentSpacer,
@@ -13,7 +13,6 @@ import DesignSystem, {
   goldenRatioPageHeight,
   goldenRatioPageMargin,
   goldenRatioPageWidth,
-  goldenRatioSectionSpacer,
   goldenRatioSectionSpacerPX,
   goldenRatioShortPX,
   pxB,
@@ -951,7 +950,7 @@ const CV: React.FC<ICVProps> = (props) => {
                     col={pxB(
                       goldenRatioPageMargin / 2 - goldenRatioElementSpacer, // 48
                     )}
-                    borderRadius="6%"
+                    borderRadius="3%"
                     overflow="hidden"
                   >
                     <QRCode
@@ -964,8 +963,22 @@ const CV: React.FC<ICVProps> = (props) => {
                     />
                   </x.div>
                   <x.div col>
-                    <x.p lineHeight={pxB(14)}>
+                    <x.p
+                      lineHeight={pxB(10)}
+                      pt={pxH(2)}
+                      letterSpacing="normal"
+                    >
                       https://cvdrive.link/0c44298fc1c149af
+                    </x.p>
+                    <x.p
+                      lineHeight={pxB(10)}
+                      fontSize={pxB(6)}
+                      color="cv-muted"
+                      // FIXME: Letter spacing needs to be validated in the whole document as this shows improper CSS inheritance.
+                      letterSpacing="-0.03em"
+                    >
+                      <i>Available:</i> PDF, Screen Reader, Plain Text, Word,
+                      Excel
                     </x.p>
                     <x.p color="cv-decor">
                       <i>
