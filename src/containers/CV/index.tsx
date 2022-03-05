@@ -1,3 +1,5 @@
+import QRCode from "qrcode.react";
+
 import React from "react";
 
 import styled, { x } from "@xstyled/emotion";
@@ -943,9 +945,12 @@ const CV: React.FC<ICVProps> = (props) => {
                     col={pxW(
                       goldenRatioPageMargin / 2 - goldenRatioElementSpacer,
                     )}
-                    bg="green-400"
                   >
-                    QR
+                    <QRCode
+                      value="https://cvdrive.link/0c44298fc1c149af"
+                      renderAs="svg"
+                      size={48}
+                    />
                   </x.div>
                   <x.div col>
                     <x.p lineHeight={pxB(14)}>

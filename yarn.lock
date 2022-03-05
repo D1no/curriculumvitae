@@ -4850,6 +4850,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/qrcode.react@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@types/qrcode.react@npm:1.0.2"
+  dependencies:
+    "@types/react": "*"
+  checksum: be256f0192366b4c0822da43c732bf3e29beb954c89d739aa770f09e5160842a3ca4d6814cb57bbcbbf8997cf7af0b998de318dab957f0820f267bb746c9a329
+  languageName: node
+  linkType: hard
+
 "@types/qs@npm:*, @types/qs@npm:^6.9.5":
   version: 6.9.7
   resolution: "@types/qs@npm:6.9.7"
@@ -8332,6 +8341,7 @@ __metadata:
     "@types/jest": ^27.4.1
     "@types/lodash-es": ^4.17.6
     "@types/node": ^16.11.26
+    "@types/qrcode.react": ^1.0.2
     "@types/react": ^17.0.39
     "@types/react-dom": ^17.0.13
     "@xstyled/emotion": ^3.5.1
@@ -8340,6 +8350,7 @@ __metadata:
     lucide-react: ^0.16.29
     prettier: ^2.5.1
     pretty-quick: ^3.1.3
+    qrcode.react: ^1.0.1
     react: ^17.0.2
     react-dom: ^17.0.2
     react-router-dom: ^6.2.2
@@ -16212,6 +16223,26 @@ __metadata:
   version: 1.5.1
   resolution: "q@npm:1.5.1"
   checksum: 147baa93c805bc1200ed698bdf9c72e9e42c05f96d007e33a558b5fdfd63e5ea130e99313f28efc1783e90e6bdb4e48b67a36fcc026b7b09202437ae88a1fb12
+  languageName: node
+  linkType: hard
+
+"qr.js@npm:0.0.0":
+  version: 0.0.0
+  resolution: "qr.js@npm:0.0.0"
+  checksum: 5ac6c393967bdeaa660e7fd3a501a25eb538c1f6008a4d30ab2b97bbe520e5c236530090773f1578aa0a523cdaa6923c866615e21143f9e7cd22abd41c789b69
+  languageName: node
+  linkType: hard
+
+"qrcode.react@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "qrcode.react@npm:1.0.1"
+  dependencies:
+    loose-envify: ^1.4.0
+    prop-types: ^15.6.0
+    qr.js: 0.0.0
+  peerDependencies:
+    react: ^15.5.3 || ^16.0.0 || ^17.0.0
+  checksum: 154a9557d103fa776cd99bc0d2600b862be74872ff965052533bc38ea0606c4d0965b4dd6df93e53f1db86699517a25db2718bbbc08c5d535a90c0d335552e9a
   languageName: node
   linkType: hard
 
