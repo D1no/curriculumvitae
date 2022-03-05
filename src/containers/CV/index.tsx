@@ -945,9 +945,14 @@ const CV: React.FC<ICVProps> = (props) => {
                   spaceX={pxW(6)}
                 >
                   <x.div
-                    col={pxW(
+                    h={pxB(
                       goldenRatioPageMargin / 2 - goldenRatioElementSpacer, // 48
                     )}
+                    col={pxB(
+                      goldenRatioPageMargin / 2 - goldenRatioElementSpacer, // 48
+                    )}
+                    borderRadius="6%"
+                    overflow="hidden"
                   >
                     <QRCode
                       value="https://cvdrive.link/0c44298fc1c149af"
