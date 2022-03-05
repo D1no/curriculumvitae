@@ -16,7 +16,7 @@ const About: React.FC<ILayoutProps> = ({ debug = false, ...props }) => {
     setInnerHeight(window.innerHeight);
   };
 
-  if (innerHeight == 0) {
+  if (innerHeight === 0) {
     setInnerHeight(window.innerHeight);
   }
 

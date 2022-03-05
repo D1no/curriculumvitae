@@ -19,6 +19,7 @@ import DesignSystem, {
   sizeFromBase,
 } from "./DesignSystem";
 
+// eslint-disable-next-line
 const FontTest = () => (
   <x.div>
     <x.p fontWeight="bolder">Default, bolder</x.p>

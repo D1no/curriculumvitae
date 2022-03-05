@@ -8,8 +8,6 @@ import styled, { system, x } from "@xstyled/emotion";
 
 import { ILayoutProps, L } from "containers/Layout/util";
 
-import Navigation from "components/Navigation";
-
 import { ReactComponent as PDFIcon } from "assets/icon/pdf.svg";
 
 /**
