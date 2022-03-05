@@ -929,20 +929,45 @@ const CV: React.FC<ICVProps> = (props) => {
                 minH={pxH(goldenRatioPageMargin / 2 - goldenRatioElementSpacer)}
                 display="flex"
                 spaceX={goldenRatioSectionSpacerPX}
-                fontSize={pxB(10)}
-                lineHeight={pxB(14)}
               >
-                <x.div col={goldenRatioShortPX} /* bg="gray-200" */>
-                  <x.p>
-                    <i>Online:</i> https://cvdrive.link/0c44298fc1c149af
-                  </x.p>
-                  <x.p color="cv-decor">
-                    Provided on 2018-08-11 in kind GDPR compliance to
-                    “Recruiting Company Inc, London-UK”.
-                  </x.p>
+                {/* Left side */}
+                <x.div
+                  col={goldenRatioShortPX}
+                  display="flex"
+                  lineHeight={pxB(10)}
+                  fontSize={pxB(8)}
+                  spaceX={pxW(8)}
+                >
+                  <x.div
+                    col={pxW(
+                      goldenRatioPageMargin / 2 - goldenRatioElementSpacer,
+                    )}
+                    bg="green-400"
+                  >
+                    QR
+                  </x.div>
+                  <x.div col>
+                    <x.p lineHeight={pxB(14)}>
+                      https://cvdrive.link/0c44298fc1c149af
+                    </x.p>
+                    <x.p color="cv-decor">
+                      <i>
+                        Provided on 2018-08-11 in kind GDPR compliance to
+                        “Recruiting Company Inc, London-UK”.
+                      </i>
+                    </x.p>
+                  </x.div>
                 </x.div>
-                <x.div col /* bg="gray-200" */>
-                  <x.p>Qualitative Interpretation (Harvey Ball)</x.p>
+
+                {/* Right Side */}
+                <x.div
+                  col /* bg="gray-200" */
+                  lineHeight={pxB(10)}
+                  fontSize={pxB(8)}
+                >
+                  <x.p lineHeight={pxB(14)}>
+                    Qualitative Interpretation (Harvey Ball)
+                  </x.p>
                 </x.div>
               </x.div>
             </x.div>
