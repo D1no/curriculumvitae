@@ -5,6 +5,7 @@ import React from "react";
 import styled, { th, x } from "@xstyled/emotion";
 
 import DesignSystem, {
+  goldenRatioContentSpacer,
   goldenRatioContentSpacerPX,
   goldenRatioElementSpacer,
   goldenRatioGridStep,
@@ -12,6 +13,7 @@ import DesignSystem, {
   goldenRatioPageHeight,
   goldenRatioPageMargin,
   goldenRatioPageWidth,
+  goldenRatioSectionSpacer,
   goldenRatioSectionSpacerPX,
   goldenRatioShortPX,
   pxB,
@@ -893,7 +895,7 @@ const CV: React.FC<ICVProps> = (props) => {
             /* Trim (A4) */
             px={pxW(goldenRatioPageMargin)}
             pt={pxH(goldenRatioPageMargin)}
-            pb={pxH(goldenRatioElementSpacer)}
+            pb={pxH(goldenRatioContentSpacer)}
             /* Box Model */
             display="flex"
             flexDirection="column"
