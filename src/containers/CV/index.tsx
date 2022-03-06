@@ -5,6 +5,14 @@ import React from "react";
 import styled, { css, useColor, x } from "@xstyled/emotion";
 
 import profileImage from "assets/design/profileImage/01.png";
+import accentureLogo from "assets/orgLogo/accenture.png";
+import dexisLogo from "assets/orgLogo/dexis.png";
+import everphoneLogo from "assets/orgLogo/everphone.png";
+import flLogo from "assets/orgLogo/fl.png";
+import googleLogo from "assets/orgLogo/google.png";
+import shopkickLogo from "assets/orgLogo/shopkick.png";
+import siemensLogo from "assets/orgLogo/siemens.png";
+import solyticLogo from "assets/orgLogo/solytic.png";
 
 import DesignSystem, {
   goldenRatioContentSpacer,
@@ -160,58 +168,30 @@ const Header = () => {
 /**
  * CV Meta Section: Contains quick infos and contact.
  */
-const MetaSection = () => (
-  <x.section
-    aria-label="Information"
-    display="flex"
-    flexDirection="row"
-    alignSelf="stretch"
-    spaceX={pxW(36)}
-    /* bg="yellow-100" */
-    alignItems="center"
-    justifyContent="center"
-  >
-    <x.div w={goldenRatioShortPX} flex="none" /* bg="green-100" */>
-      {/* Left Side */}
-      <x.p
-        fontSize={pxB(10)}
-        lineHeight={pxH(16)}
-        fontStyle="italic"
-        textAlign="justify"
-        alignItems="center"
-      >
-        {/* Keywords */}
-        {/* TODO: Accessibility this should be a header but outside of the p tag. */}
-        <x.span fontSize={pxB(12)} fontWeight="bolder" display="inline-block">
-          Keywords
-        </x.span>{" "}
-        Front-End, Back-End, ReactJS, React-Native, Artificial Intelligence,
-        Node.js, Python, CQRS, Microsoft, Google, Azure, Dask, Ray, Digital
-        Twins
-      </x.p>
-    </x.div>
-    {/* Right Side */}
-    <x.div
-      /* bg="blue-100" */
-      alignSelf="stretch"
-      flexGrow="1"
-      display="flex"
-      alignItems="center"
-    >
-      {/* Icons Container */}
-      <x.div /* bg="orange-100" */ flexGrow={1}>
-        <x.div
-          display="flex"
-          flexDirection="column"
-          flexWrap="wrap"
-          alignContent="flex-start"
-          /* TODO: Items can overflow container, this just visually limits them to 8 */
-          h={pxH(44)}
-          w={pxW(88)}
-          overflow="hidden"
-          /* bg="green-200" */
-        >
-          {/* Single Icon */}
+const MetaSection = () => {
+  /**
+   * Renders small logo icons used in the meta section.
+   */
+  const OrgLogoGallery: React.FC<{
+    orgLogos?: [{ imageSrc: string; orgName: string }];
+    showPlaceholders?: boolean;
+  }> = ({
+    orgLogos: orgIcons = [
+      { imageSrc: googleLogo, orgName: "Google" },
+      { imageSrc: accentureLogo, orgName: "Accenture" },
+      { imageSrc: dexisLogo, orgName: "Dexis" },
+      { imageSrc: siemensLogo, orgName: "Siemens" },
+      { imageSrc: flLogo, orgName: "FoundersLane" },
+      { imageSrc: everphoneLogo, orgName: "Everphone" },
+      { imageSrc: solyticLogo, orgName: "Solytic" },
+      { imageSrc: shopkickLogo, orgName: "Shopkick" },
+    ],
+    showPlaceholders = false,
+  }) => {
+    // TODO Remove or destructure placeholder org logos
+    if (showPlaceholders) {
+      return (
+        <>
           {[...Array(7)].map((e, i) => (
             <x.div
               key={i}
@@ -242,37 +222,119 @@ const MetaSection = () => (
               </x.p>
             </x.div>
           ))}
-        </x.div>
+        </>
+      );
+    }
+
+    return (
+      <>
+        {orgIcons.map(({ imageSrc, orgName }, i) => (
+          <x.div
+            key={i}
+            h={pxH(18)}
+            w={pxW(18)}
+            my={pxH(2)}
+            mr={pxW(4)}
+            /* TODO: Decide if the icons should have highlighting. If so, box shadow is probably better. */
+            borderRadius={pxB(3)}
+            overflow="hidden"
+            /* Center Number*/
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <x.img src={imageSrc} alt={orgName} h={pxH(18)} w={pxW(18)} />
+          </x.div>
+        ))}
+      </>
+    );
+  };
+
+  return (
+    <x.section
+      aria-label="Information"
+      display="flex"
+      flexDirection="row"
+      alignSelf="stretch"
+      spaceX={pxW(36)}
+      /* bg="yellow-100" */
+      alignItems="center"
+      justifyContent="center"
+    >
+      <x.div w={goldenRatioShortPX} flex="none" /* bg="green-100" */>
+        {/* Left Side */}
+        <x.p
+          fontSize={pxB(10)}
+          lineHeight={pxH(16)}
+          fontStyle="italic"
+          textAlign="justify"
+          alignItems="center"
+        >
+          {/* Keywords */}
+          {/* TODO: Accessibility this should be a header but outside of the p tag. */}
+          <x.span fontSize={pxB(12)} fontWeight="bolder" display="inline-block">
+            Keywords
+          </x.span>{" "}
+          Front-End, Back-End, ReactJS, React-Native, Artificial Intelligence,
+          Node.js, Python, CQRS, Microsoft, Google, Azure, Dask, Ray, Digital
+          Twins
+        </x.p>
       </x.div>
+      {/* Right Side */}
       <x.div
-        w={goldenRatioShortPX}
-        /* bg="purple-100" */
-        flex="none"
-        fontSize={pxB(10)}
-        fontStyle="italic"
-        lineHeight={pxH(16)}
+        /* bg="blue-100" */
+        alignSelf="stretch"
+        flexGrow="1"
         display="flex"
-        spaceX={pxW(16)}
-        pr={pxW(12)}
+        alignItems="center"
       >
-        {/* Contact */}
-        <x.div flexGrow={1} textAlign="right">
-          <x.p fontSize={pxB(12)} fontWeight="bolder">
-            +4915123456789
-          </x.p>
-          <x.p>verylonglongna@gmail.com</x.p>
-          <x.p>Berlin, Germany (GMT+1)</x.p>
+        {/* Icons Container */}
+        <x.div /* bg="orange-100" */ flexGrow={1}>
+          <x.div
+            display="flex"
+            flexDirection="column"
+            flexWrap="wrap"
+            alignContent="flex-start"
+            /* TODO: Items can overflow container, this just visually limits them to 8 */
+            h={pxH(44)}
+            w={pxW(88)}
+            overflow="hidden"
+            /* bg="green-200" */
+          >
+            {/* Single Icon */}
+            <OrgLogoGallery />
+          </x.div>
         </x.div>
-        {/* Social */}
-        <x.div /* bg="blue-100" */>
-          <x.p>LinkedIn (link)</x.p>
-          <x.p>GitHub (link)</x.p>
-          <x.p>Website (link)</x.p>
+        <x.div
+          w={goldenRatioShortPX}
+          /* bg="purple-100" */
+          flex="none"
+          fontSize={pxB(10)}
+          fontStyle="italic"
+          lineHeight={pxH(16)}
+          display="flex"
+          spaceX={pxW(16)}
+          pr={pxW(12)}
+        >
+          {/* Contact */}
+          <x.div flexGrow={1} textAlign="right">
+            <x.p fontSize={pxB(12)} fontWeight="bolder">
+              +4915123456789
+            </x.p>
+            <x.p>verylonglongna@gmail.com</x.p>
+            <x.p>Berlin, Germany (GMT+1)</x.p>
+          </x.div>
+          {/* Social */}
+          <x.div /* bg="blue-100" */>
+            <x.p>LinkedIn (link)</x.p>
+            <x.p>GitHub (link)</x.p>
+            <x.p>Website (link)</x.p>
+          </x.div>
         </x.div>
       </x.div>
-    </x.div>
-  </x.section>
-);
+    </x.section>
+  );
+};
 
 /**
  * CV Component: Section Header
