@@ -199,13 +199,13 @@ const MetaSection = () => (
             +4915123456789
           </x.p>
           <x.p>verylonglongna@gmail.com</x.p>
-          <x.p>http://mywebsite.com</x.p>
+          <x.p>Berlin, Germany (GMT+1)</x.p>
         </x.div>
         {/* Social */}
         <x.div /* bg="blue-100" */>
           <x.p>LinkedIn (link)</x.p>
-          <x.p>Company (link)</x.p>
           <x.p>GitHub (link)</x.p>
+          <x.p>Website (link)</x.p>
         </x.div>
       </x.div>
     </x.div>
