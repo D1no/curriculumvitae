@@ -2,7 +2,7 @@ import QRCode from "qrcode.react";
 
 import React from "react";
 
-import styled, { css, useColor, useTheme, x } from "@xstyled/emotion";
+import styled, { css, useColor, x } from "@xstyled/emotion";
 
 import profileImage from "assets/design/profileImage/01.png";
 
@@ -941,19 +941,35 @@ const FooterSection: React.FC<{}> = () => {
     );
   };
 
-  const InlinePin: React.FC<{}> = ({}) => {
+  /**
+   * Takes a 6 digit string and returns an inline text format.
+   */
+  const InlinePin: React.FC<{ sixDigitPinString?: string }> = ({
+    sixDigitPinString = "748262",
+  }) => {
+    if (sixDigitPinString.length !== 6) {
+      console.warn(
+        "Prop 'sixDigitPinString': Invalid number of digits. Received:",
+        sixDigitPinString,
+      );
+
+      sixDigitPinString = "------";
+    }
+
+    const digitArray = [...sixDigitPinString];
+
     return (
       <>
         <x.span>Pin </x.span>
         <x.span mx={pxW(1)}>
-          <PinDigit>7</PinDigit>
-          <PinDigit>4</PinDigit>
-          <PinDigit>9</PinDigit>
+          <PinDigit>{digitArray[0]}</PinDigit>
+          <PinDigit>{digitArray[1]}</PinDigit>
+          <PinDigit>{digitArray[2]}</PinDigit>
         </x.span>
         <x.span mx={pxW(1)}>
-          <PinDigit>8</PinDigit>
-          <PinDigit>2</PinDigit>
-          <PinDigit>9</PinDigit>
+          <PinDigit>{digitArray[3]}</PinDigit>
+          <PinDigit>{digitArray[4]}</PinDigit>
+          <PinDigit>{digitArray[5]}</PinDigit>
         </x.span>
         <x.span mr={pxW(2)}>.</x.span>
       </>
