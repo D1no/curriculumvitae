@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 import { x } from "@xstyled/emotion";
 
-import { FixedBottom } from "containers/Layout/FixedBottom";
-import { ILayoutProps, L } from "containers/Layout/util";
+import { FixedBottom } from "@ui/views/Layout/FixedBottom";
+import { ILayoutProps, L } from "@ui/views/Layout/util";
 
 import NavigationItem from "./Item";
 import NavigationTrackLine from "./TrackLine";

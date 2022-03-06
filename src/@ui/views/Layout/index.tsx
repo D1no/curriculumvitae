@@ -6,9 +6,8 @@ import { Outlet } from "react-router-dom";
 
 import styled, { system, x } from "@xstyled/emotion";
 
-import { ILayoutProps, L } from "containers/Layout/util";
-
-import { ReactComponent as PDFIcon } from "assets/icon/pdf.svg";
+import { ReactComponent as PDFIcon } from "@ui/assets/icon/pdf.svg";
+import { ILayoutProps, L } from "@ui/views/Layout/util";
 
 /**
  * Full screen layout container with a header, main and navigation section.

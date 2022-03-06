@@ -7,19 +7,21 @@
     "^react",
     "^react(.*)$",
 
+    "^@((?!(cv)|(ui)).*)$",
+
     "^@(.*)$",
 
     "views",
-    "^views/(.*)$",
+    "(@.*|^)views/(.*)$",
 
     "containers",
-    "^containers/(.*)$",
+    "(@.*|^)containers/(.*)$",
 
     "components",
-    "^components/(.*)$",
+    "(@.*|^)components/(.*)$",
 
     "assets",
-    "^assets/(.*)$",
+    "(@.*|^)assets/(.*)$",
 
     "^[./]"
   ],

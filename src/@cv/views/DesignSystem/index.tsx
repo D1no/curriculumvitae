@@ -9,7 +9,7 @@ import {
 } from "@xstyled/emotion";
 
 import defaultThemeBoxModel from "./defaultThemeBoxModel";
-import "./latofonts.css";
+import "./fonts/lato.css";
 
 /**
  * =================================================================

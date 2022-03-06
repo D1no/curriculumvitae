@@ -1,6 +1,6 @@
 import styled from "@xstyled/emotion";
 
-import { L } from "containers/Layout/util";
+import { L } from "@ui/views/Layout/util";
 
 const NavigationTrackLine = () => {
   const NavBarLine = styled.svg`

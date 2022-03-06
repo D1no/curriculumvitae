@@ -4,16 +4,6 @@ import React from "react";
 
 import styled, { css, useColor, x } from "@xstyled/emotion";
 
-import profileImage from "assets/design/profileImage/01.png";
-import accentureLogo from "assets/orgLogo/accenture.png";
-import dexisLogo from "assets/orgLogo/dexis.png";
-import everphoneLogo from "assets/orgLogo/everphone.png";
-import flLogo from "assets/orgLogo/fl.png";
-import googleLogo from "assets/orgLogo/google.png";
-import shopkickLogo from "assets/orgLogo/shopkick.png";
-import siemensLogo from "assets/orgLogo/siemens.png";
-import solyticLogo from "assets/orgLogo/solytic.png";
-
 import DesignSystem, {
   goldenRatioContentSpacer,
   goldenRatioContentSpacerPX,
@@ -31,12 +21,22 @@ import DesignSystem, {
   pxW,
   sizeFromBase,
   theme,
-} from "./DesignSystem";
+} from "./views/DesignSystem";
+
+import accentureLogo from "./assets/orgLogo/accenture.png";
+import dexisLogo from "./assets/orgLogo/dexis.png";
+import everphoneLogo from "./assets/orgLogo/everphone.png";
+import flLogo from "./assets/orgLogo/fl.png";
+import googleLogo from "./assets/orgLogo/google.png";
+import shopkickLogo from "./assets/orgLogo/shopkick.png";
+import siemensLogo from "./assets/orgLogo/siemens.png";
+import solyticLogo from "./assets/orgLogo/solytic.png";
+import profileImage from "./assets/profileImage/01.png";
 
 // eslint-disable-next-line
 const FontTest = () => (
   <x.div>
-    <x.p fontWeight="bolder">Default, bolder</x.p>
+    <x.p>Test: Default Font</x.p>
     <x.p>----</x.p>
     <x.p fontWeight="hairline">Test: hairline</x.p>
     <x.p fontWeight="thin">Test: thin</x.p>

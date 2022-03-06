@@ -2,7 +2,7 @@ import React from "react";
 
 import { x } from "@xstyled/emotion";
 
-import { ILayoutProps, L } from "containers/Layout/util";
+import { ILayoutProps, L } from "@ui/views/Layout/util";
 
 const Introduction: React.FC<ILayoutProps> = ({ debug = false, ...props }) => {
   return (

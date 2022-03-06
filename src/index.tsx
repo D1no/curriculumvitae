@@ -1,7 +1,7 @@
+import Routing from "routing";
+
 import React from "react";
 import ReactDOM from "react-dom";
-
-import Views from "views";
 
 // import reportWebVitals from "./reportWebVitals";
 
@@ -10,7 +10,7 @@ import Views from "views";
  */
 ReactDOM.render(
   <React.StrictMode>
-    <Views />
+    <Routing />
   </React.StrictMode>,
   document.getElementById("root"),
 );
