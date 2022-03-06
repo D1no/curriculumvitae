@@ -66,25 +66,29 @@ const Header = () => {
     anonymText = "anonymized version",
     imageSrc = profileImage,
   }) => {
+    // TODO This needs to be extracted into a higher order component.
     const lightStripe = useColor("white-a100");
     const darkStripe = useColor("cv-decor-a50");
-    const messageBg = useColor("white-a100");
+    const messageBg = useColor("white");
     const messageText = darkStripe;
+
+    // Striped Background
+    const anonymBgStripeCss = css`
+      background: repeating-linear-gradient(
+        45deg,
+        ${lightStripe},
+        ${lightStripe} 2px,
+        ${darkStripe} 2px,
+        ${darkStripe} 4px
+      );
+    `;
     /**
      * Shows either an anonymous stripe background or the profile image
      */
     const CoverContainer = styled(x.div)`
       ${(p) => {
         if (anonym) {
-          return css`
-            background: repeating-linear-gradient(
-              45deg,
-              ${lightStripe},
-              ${lightStripe} 2px,
-              ${darkStripe} 2px,
-              ${darkStripe} 4px
-            );
-          `;
+          return anonymBgStripeCss;
         } else {
           return css`
             background-image: url(${imageSrc});
@@ -186,41 +190,52 @@ const MetaSection = () => {
       { imageSrc: solyticLogo, orgName: "Solytic" },
       { imageSrc: shopkickLogo, orgName: "Shopkick" },
     ],
-    showPlaceholders = false,
+    showPlaceholders = true,
   }) => {
+    // FIXME StripedBackGround: Code duplicate of CoverImage (!)
+    const lightStripe = useColor("white-a100");
+    const darkStripe = useColor("cv-decor-a50");
+    const messageBg = useColor("white");
+    const messageText = darkStripe;
     // TODO Remove or destructure placeholder org logos
     if (showPlaceholders) {
+      // Striped Background
+      const AnonymOrgLogos = styled(x.div)`
+        background: repeating-linear-gradient(
+          45deg,
+          ${lightStripe},
+          ${lightStripe} 2px,
+          ${darkStripe} 2px,
+          ${darkStripe} 4px
+        );
+      `;
+
       return (
         <>
-          {[...Array(7)].map((e, i) => (
-            <x.div
+          {[...Array(8)].map((e, i) => (
+            <AnonymOrgLogos
               key={i}
               h={pxH(18)}
               w={pxW(18)}
               my={pxH(2)}
               mr={pxW(4)}
-              /* Debug */
-              bg="blue-500"
               /* TODO: Decide if the icons should have highlighting. If so, box shadow is probably better. */
               borderRadius
-              border={pxW(1)}
-              borderStyle="solid"
-              borderColor="blue-600"
               /* Text Style Inside Icon*/
               fontSize={pxB(12)}
               lineHeight={pxH(12)}
               textAlign="center"
               fontWeight="light"
-              color="white"
+              color={messageText}
               /* Center Number*/
               display="flex"
               justifyContent="center"
               alignItems="center"
             >
-              <x.p display="inline-block" verticalAlign="middle">
+              {/* <x.p display="inline-block" verticalAlign="middle">
                 {i + 1}
-              </x.p>
-            </x.div>
+              </x.p> */}
+            </AnonymOrgLogos>
           ))}
         </>
       );
