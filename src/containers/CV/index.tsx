@@ -1157,7 +1157,7 @@ const FooterSection: React.FC<{}> = () => {
             lineHeight={pxB(10)}
             // pt={pxH(2)}
           >
-            Qualitative Interpretation (Harvey Ball)
+            Section for Notes...
           </x.p>
         </x.div>
       </x.div>
