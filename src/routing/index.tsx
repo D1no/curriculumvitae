@@ -1,5 +1,3 @@
-import SpikeCV from "@cv/spike_index";
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import CV from "@cv/views";
@@ -21,7 +19,6 @@ const Routing = () => {
           <Route element={<Layout />} path="/">
             <Route element={<CV />} path="" />
           </Route>
-          <Route path="/spike-cv" element={<SpikeCV />} />
           <Route element={<Layout />} path="/maintenance">
             <Route element={<Maintenance />} path="" />
           </Route>
