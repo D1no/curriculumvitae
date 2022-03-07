@@ -1,4 +1,4 @@
-import { DesignSystem } from "views";
+import DesignSystem from "@cv/views/DesignSystem";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

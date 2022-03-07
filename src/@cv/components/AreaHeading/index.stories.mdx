@@ -1,0 +1,17 @@
+import Component from "./index";
+
+import { Meta, Story } from "@storybook/addon-docs";
+
+<!--👇 The title prop determines where your story goes in the story list -->
+
+<Meta title="Text Elements" component={Component} />
+
+<!--👇 We create a “template” of how args map to rendering -->
+
+export const Template = (args) => <Component {...args} />;
+
+<!-- 👇 The args you need here will depend on your component -->
+
+<Story name="Heading" args={{ children: "Experience" }}>
+  {Template.bind({})}
+</Story>
