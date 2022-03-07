@@ -14,4 +14,14 @@ module.exports = {
   features: {
     emotionAlias: false,
   },
+  webpackFinal: async (config, { configType }) => {
+    const oneOfRule = config.module.rules.find((rule) => rule.oneOf);
+    const babelRule = oneOfRule.oneOf.find((rule) =>
+      rule.loader?.includes("babel-loader"),
+    );
+
+    babelRule.options.presets.push("@emotion/babel-preset-css-prop");
+
+    return config;
+  },
 };
