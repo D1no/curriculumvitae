@@ -4,12 +4,12 @@
   "singleQuote": false,
   "printWidth": 80,
   "importOrder": [
-    "^react",
-    "^react(.*)$",
+    "^react$",
+    "^(.*)react(.*)$",
+
+    "^((?!(@)|(cv)|(ui)|(react)).*)$",
 
     "^@((?!(cv)|(ui)).*)$",
-
-    "^@(.*)$",
 
     "views",
     "(@.*|^)views/(.*)$",
