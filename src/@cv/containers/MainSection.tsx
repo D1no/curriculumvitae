@@ -1,5 +1,9 @@
 import React from "react";
 
+import Record from "./Record";
+import TableLabeledList from "./TableLabeledList";
+import Topic from "./Topic";
+
 import { x } from "@xstyled/emotion";
 
 import {
@@ -7,6 +11,12 @@ import {
   goldenRatioShortPX,
   pxH,
 } from "@cv/views/DesignSystem";
+
+import Caption from "@cv/components/Caption";
+import ElementTitle from "@cv/components/ElementTitle";
+import { TopicLabeledListItem } from "@cv/components/LabeledListItem";
+import Remark from "@cv/components/Remark";
+import SectionHeader from "@cv/components/SectionHeader";
 
 /**
  * CV Main Section: Contains Aside Section and Main Container

@@ -12,6 +12,12 @@ import DesignSystem, {
   pxW,
 } from "@cv/views/DesignSystem";
 
+import FooterSection from "@cv/containers/FooterSection";
+import MainSection from "@cv/containers/MainSection";
+import MetaSection from "@cv/containers/MetaSection";
+
+import Header from "@cv/components/Header";
+
 /**
  * Animation for responsiveness.
  */

@@ -1,5 +1,9 @@
 import React from "react";
 
+import ElementTitle from "@cv/components/ElementTitle";
+import { TopicLabeledListItem } from "@cv/components/LabeledListItem";
+import TopicBody from "@cv/components/TopicBody";
+
 /**
  * CV Container: Topic
  */

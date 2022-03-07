@@ -1,5 +1,10 @@
 import React from "react";
 
+import Caption from "@cv/components/Caption";
+import ElementTitle from "@cv/components/ElementTitle";
+import { RemarkLabeledListItem } from "@cv/components/LabeledListItem";
+import Remark from "@cv/components/Remark";
+
 const Record: React.FC<{}> = () => {
   return (
     <>
