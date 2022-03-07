@@ -5,9 +5,9 @@ import { x } from "@xstyled/emotion";
 import { pxB, pxH } from "@cv/views/DesignSystem";
 
 /**
- * CV Component: Section Header
+ * CV Component: Area Heading (at the top of sections)
  */
-const SectionHeader: React.FC<{}> = ({ children }) => {
+const AreaHeading: React.FC<{}> = ({ children }) => {
   return (
     <x.h2
       fontSize={pxB(18)}
@@ -20,4 +20,4 @@ const SectionHeader: React.FC<{}> = ({ children }) => {
   );
 };
 
-export default SectionHeader;
+export default AreaHeading;

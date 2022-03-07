@@ -11,12 +11,10 @@ import DesignSystem, {
   pxH,
   pxW,
 } from "@cv/views/DesignSystem";
-
-import FooterSection from "@cv/containers/FooterSection";
-import MainSection from "@cv/containers/MainSection";
-import MetaSection from "@cv/containers/MetaSection";
-
-import Header from "@cv/components/Header";
+import FooterSection from "@cv/views/Page/Footer";
+import Header from "@cv/views/Page/Header";
+import MainSection from "@cv/views/Page/Main";
+import MetaSection from "@cv/views/Page/Meta";
 
 /**
  * Animation for responsiveness.

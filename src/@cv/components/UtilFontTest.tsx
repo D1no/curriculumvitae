@@ -3,7 +3,7 @@ import React from "react";
 import { x } from "@xstyled/emotion";
 
 // eslint-disable-next-line
-const FontTest = () => (
+const UtilFontTest = () => (
   <x.div>
     <x.p>Test: Default Font</x.p>
     <x.p>----</x.p>
@@ -19,4 +19,4 @@ const FontTest = () => (
   </x.div>
 );
 
-export default FontTest();
+export default UtilFontTest();

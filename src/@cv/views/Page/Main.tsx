@@ -1,8 +1,8 @@
 import React from "react";
 
-import Record from "./Record";
-import TableLabeledList from "./TableLabeledList";
-import Topic from "./Topic";
+import Record from "../../containers/Record";
+import TableLabeledList from "../../containers/TableLabeledList";
+import Topic from "../../containers/Topic";
 
 import { x } from "@xstyled/emotion";
 
@@ -12,11 +12,11 @@ import {
   pxH,
 } from "@cv/views/DesignSystem";
 
-import Caption from "@cv/components/Caption";
+import AreaHeading from "@cv/components/AreaHeading";
+import ElementCaption from "@cv/components/ElementCaption";
+import ElementRemark from "@cv/components/ElementRemark";
 import ElementTitle from "@cv/components/ElementTitle";
 import { TopicLabeledListItem } from "@cv/components/LabeledListItem";
-import Remark from "@cv/components/Remark";
-import SectionHeader from "@cv/components/SectionHeader";
 
 /**
  * CV Main Section: Contains Aside Section and Main Container
@@ -42,19 +42,19 @@ const MainSection = () => (
 
       {/* Qualification */}
       <x.section>
-        <SectionHeader>Qualification</SectionHeader>
+        <AreaHeading>Qualification</AreaHeading>
         <Topic title="Software Engineering" />
         <Topic title="Product Architecture" />
       </x.section>
 
       {/* Education */}
       <x.section>
-        <SectionHeader>Education</SectionHeader>
+        <AreaHeading>Education</AreaHeading>
         <ElementTitle subtitle="St. Petersburg Russia">GSOM</ElementTitle>
-        <Caption double>
+        <ElementCaption double>
           2015 · Ranked #1 in Russia. Term of courses in finance & teaching
           programmatic marketing.
-        </Caption>
+        </ElementCaption>
         <TopicLabeledListItem label="Major">
           Information Systems
         </TopicLabeledListItem>
@@ -65,21 +65,21 @@ const MainSection = () => (
         <TopicLabeledListItem label="GPA">
           1.6 (scale 1 to 5; 1.0 best); top 11%
         </TopicLabeledListItem>
-        <Remark
+        <ElementRemark
           small
           body="Patroned to a scholarship by the board in the field of Digital Transformation."
         />
-        <Caption>Since 2123 · Berlin, Germany</Caption>
+        <ElementCaption>Since 2123 · Berlin, Germany</ElementCaption>
         <TopicLabeledListItem label="AI / ML Field" double>
           This is a test to see if the line fits and correctly wraps to the next
           line.
         </TopicLabeledListItem>
-        <Remark
+        <ElementRemark
           small
           body="Patroned to a scholarship by the board in the field of Digital Transformation."
         />
-        <Caption>Since 2123 · Berlin, Germany</Caption>
-        <Remark
+        <ElementCaption>Since 2123 · Berlin, Germany</ElementCaption>
+        <ElementRemark
           small
           body="Patroned to a scholarship by the board in the field of Digital Transformation."
         />
@@ -97,10 +97,10 @@ const MainSection = () => (
       /* Debug */
       /* bg="blue-100" */
       >
-        <SectionHeader>Experience</SectionHeader>
+        <AreaHeading>Experience</AreaHeading>
         <Record />
         <ElementTitle subtitle="Software Engineer" />
-        <Caption>Since 2123 · Berlin, Germany</Caption>
+        <ElementCaption>Since 2123 · Berlin, Germany</ElementCaption>
         <Record />
         <Record />
       </x.main>
@@ -112,7 +112,7 @@ const MainSection = () => (
       /* Debug */
       /* bg="blue-100" */
       >
-        <SectionHeader>Honours & Media</SectionHeader>
+        <AreaHeading>Honours & Media</AreaHeading>
         {/* START: Labeled List Table */}
         <TableLabeledList
           columnNames={["Data", "Format", "Topic / Remark"]}
