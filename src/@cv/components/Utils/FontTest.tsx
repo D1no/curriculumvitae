@@ -2,9 +2,11 @@ import React from "react";
 
 import { x } from "@xstyled/emotion";
 
+import { pxB } from "@cv/views/DesignSystem";
+
 // eslint-disable-next-line
-const UtilFontTest = () => (
-  <x.div>
+const FontTest = () => (
+  <x.div lineHeight={pxB(14)} fontSize={pxB(12)}>
     <x.p>Test: Default Font</x.p>
     <x.p>----</x.p>
     <x.p fontWeight="hairline">Test: hairline</x.p>
@@ -19,4 +21,4 @@ const UtilFontTest = () => (
   </x.div>
 );
 
-export default UtilFontTest();
+export default FontTest;
