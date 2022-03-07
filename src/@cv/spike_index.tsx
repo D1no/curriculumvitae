@@ -1,3 +1,7 @@
+/**
+ * 2022-03-07
+ * Original CV Spike File. To Be Purged.
+ */
 import React from "react";
 
 import QRCode from "qrcode.react";
