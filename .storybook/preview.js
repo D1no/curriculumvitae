@@ -10,6 +10,15 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  backgrounds: {
+    grid: {
+      cellSize: 14,
+      opacity: 0.5,
+      cellAmount: 4,
+      offsetX: 16,
+      offsetY: 16,
+    },
+  },
 };
 
 export const decorators = [
