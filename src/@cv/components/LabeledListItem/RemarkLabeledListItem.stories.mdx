@@ -1,0 +1,31 @@
+import { RemarkLabeledListItem } from "./index";
+
+import { Meta, Story } from "@storybook/addon-docs";
+
+import ElementRemark from "@cv/components/ElementRemark";
+
+<!--👇 The title prop determines where your story goes in the story list -->
+
+<Meta title="Text Elements" component={RemarkLabeledListItem} />
+
+<!--👇 We create a “template” of how args map to rendering -->
+
+export const Template = (args) => (
+  <ElementRemark body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dictum vehicula lectus, id vehicula est pharetra ac. Sed fermentum mauris non lorem vulputate.">
+    <RemarkLabeledListItem {...args} />{" "}
+  </ElementRemark>
+);
+
+<!-- 👇 The args you need here will depend on your component -->
+
+<Story
+  name="(Remark) LabeledListItem"
+  args={{
+    label: "Empty Label",
+    double: false,
+    children:
+      "This is a test to see if the line fits and does wrap to the next line for alignment.",
+  }}
+>
+  {Template.bind({})}
+</Story>
