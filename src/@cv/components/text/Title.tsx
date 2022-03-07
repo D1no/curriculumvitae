@@ -7,10 +7,7 @@ import { pxB, pxBraw, pxH, pxW } from "@cv/views/DesignSystem";
 /**
  * CV Component: Element Header. Use
  */
-const ElementTitle: React.FC<{ subtitle?: string }> = ({
-  children,
-  subtitle,
-}) => {
+const Title: React.FC<{ subtitle?: string }> = ({ children, subtitle }) => {
   /**
    * Renders small text next to title.
    */
@@ -56,4 +53,4 @@ const ElementTitle: React.FC<{ subtitle?: string }> = ({
   );
 };
 
-export default ElementTitle;
+export default Title;

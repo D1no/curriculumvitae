@@ -7,7 +7,7 @@ import { pxB, pxH } from "@cv/views/DesignSystem";
 /**
  * CV Component: Area Heading (at the top of sections)
  */
-const AreaHeading: React.FC<{}> = ({ children }) => {
+const Heading: React.FC<{}> = ({ children }) => {
   return (
     <x.h2
       fontSize={pxB(18)}
@@ -20,4 +20,4 @@ const AreaHeading: React.FC<{}> = ({ children }) => {
   );
 };
 
-export default AreaHeading;
+export default Heading;

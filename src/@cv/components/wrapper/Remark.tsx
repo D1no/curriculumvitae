@@ -4,7 +4,7 @@ import { x } from "@xstyled/emotion";
 
 import { pxB, pxH, pxW } from "@cv/views/DesignSystem";
 
-const ElementRemark: React.FC<{ body?: string; small?: boolean }> = ({
+const Remark: React.FC<{ body?: string; small?: boolean }> = ({
   body,
   small = false,
   children,
@@ -41,4 +41,4 @@ const ElementRemark: React.FC<{ body?: string; small?: boolean }> = ({
   );
 };
 
-export default ElementRemark;
+export default Remark;

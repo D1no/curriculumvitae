@@ -1,19 +1,19 @@
-import { TopicLabeledListItem } from "./index";
+import { LabeledListItemTopLevel } from "./LabeledListItem";
 
 import { Meta, Story } from "@storybook/addon-docs";
 
 <!--👇 The title prop determines where your story goes in the story list -->
 
-<Meta title="Text Elements" component={TopicLabeledListItem} />
+<Meta title="@cv/List" component={LabeledListItemTopLevel} />
 
 <!--👇 We create a “template” of how args map to rendering -->
 
-export const Template = (args) => <TopicLabeledListItem {...args} />;
+export const Template = (args) => <LabeledListItemTopLevel {...args} />;
 
 <!-- 👇 The args you need here will depend on your component -->
 
 <Story
-  name="(Topic) LabeledListItem"
+  name="LabeledListItem (toplevel)"
   args={{
     label: "Empty Label",
     double: false,

@@ -7,7 +7,7 @@ import { pxH, sizeFromBase } from "@cv/views/DesignSystem";
 /**
  * CV Component: Caption. The small text usually under titles.
  */
-const ElementCaption: React.FC<{
+const Caption: React.FC<{
   double?: boolean;
 }> = ({ double = false, children }) => {
   return (
@@ -36,4 +36,4 @@ const ElementCaption: React.FC<{
   );
 };
 
-export default ElementCaption;
+export default Caption;

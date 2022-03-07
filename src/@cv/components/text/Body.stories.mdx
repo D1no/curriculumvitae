@@ -1,10 +1,10 @@
-import Component from "./index";
+import Component from "./Body";
 
 import { Meta, Story } from "@storybook/addon-docs";
 
 <!--👇 The title prop determines where your story goes in the story list -->
 
-<Meta title="Text Elements" component={Component} />
+<Meta title="@cv/Text" component={Component} />
 
 <!--👇 We create a “template” of how args map to rendering -->
 
@@ -13,10 +13,10 @@ export const Template = (args) => <Component {...args} />;
 <!-- 👇 The args you need here will depend on your component -->
 
 <Story
-  name="Title"
+  name="Body"
   args={{
-    children: "Company Inc.",
-    subtitle: "Software Engineer",
+    children:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dictum vehicula lectus, id vehicula est pharetra ac. Sed fermentum mauris non lorem vulputate, ac dictum dui commodo. Nullam ultrices suscipit justo, eu auris",
   }}
 >
   {Template.bind({})}

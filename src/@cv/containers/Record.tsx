@@ -1,26 +1,26 @@
 import React from "react";
 
-import ElementCaption from "@cv/components/ElementCaption";
-import ElementRemark from "@cv/components/ElementRemark";
-import ElementTitle from "@cv/components/ElementTitle";
-import { RemarkLabeledListItem } from "@cv/components/LabeledListItem";
+import { LabeledListItemInline } from "@cv/components/list/LabeledListItem";
+import Caption from "@cv/components/text/Caption";
+import Title from "@cv/components/text/Title";
+import Remark from "@cv/components/wrapper/Remark";
 
 const Record: React.FC<{}> = () => {
   return (
     <>
-      <ElementTitle subtitle="Software Engineer">Example Inc.</ElementTitle>
-      <ElementCaption>Since 2123 · Berlin, Germany</ElementCaption>
-      <ElementRemark
+      <Title subtitle="Software Engineer">Example Inc.</Title>
+      <Caption>Since 2123 · Berlin, Germany</Caption>
+      <Remark
         body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
             dictum vehicula lectus, id vehicula est pharetra ac. Sed fermentum
             mauris non lorem vulputate, ac dictum dui commodo. Nullam ultrices
             suscipit justo, eu auris"
       >
-        <RemarkLabeledListItem label="Solution & Technology" double>
+        <LabeledListItemInline label="Solution & Technology" double>
           This is a test to see if the line fits and correctly wraps to the next
           line.
-        </RemarkLabeledListItem>
-      </ElementRemark>
+        </LabeledListItemInline>
+      </Remark>
     </>
   );
 };
