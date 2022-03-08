@@ -2,14 +2,20 @@ import Component from "./FontTest";
 
 import { Meta, Story } from "@storybook/addon-docs";
 
+import PaperPreview from "@cv/components/util/PaperPreview.tsx";
+
 <!--👇 The title prop determines where your story goes in the story list -->
 
-<Meta title="@cv/Util" component={Component} />
+<Meta title="@cv/components/util" component={Component} />
 
 <!--👇 We create a “template” of how args map to rendering -->
 
-export const Template = (args) => <Component {...args} />;
+export const Template = ({ wide, ...args }) => (
+  <PaperPreview wide={wide}>
+    <Component {...args} />
+  </PaperPreview>
+);
 
 <!-- 👇 The args you need here will depend on your component -->
 
-<Story name="Font Test">{Template.bind({})}</Story>
+<Story name="FontTest">{Template.bind({})}</Story>
