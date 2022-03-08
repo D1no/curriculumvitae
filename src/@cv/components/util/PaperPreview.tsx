@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import addons from "@storybook/addons";
 import { GLOBALS_UPDATED } from "@storybook/core-events";
-// /my-addon/register.js
 import { x } from "@xstyled/emotion";
 
 import {

@@ -1,33 +1,11 @@
-import { MINIMAL_VIEWPORTS } from "@storybook/addon-viewport";
 import { themes } from "@storybook/theming";
 
-import {
-  goldenRatioLongContent,
-  goldenRatioShort,
-} from "@cv/views/DesignSystem";
 import DesignSystem from "@cv/views/DesignSystem";
 
 import PaperPreview from "@cv/components/util/PaperPreview.tsx";
 
-// TODO: Add ViewPort as Page Segments
-//       https://storybook.js.org/docs/react/essentials/viewport#add-new-devices
-
-const pageSegmentView = {
-  pageNarrow: {
-    name: "CV Section",
-    styles: {
-      width: `${goldenRatioShort}px`,
-      height: `${goldenRatioShort * 1.5}px`,
-    },
-  },
-  pageWide: {
-    name: "CV Content",
-    styles: {
-      width: `${goldenRatioLongContent}px`,
-      height: `${goldenRatioShort * 1.5}px`,
-    },
-  },
-};
+// TODO: Implement some form of automatic title and meta generation. Potentially with CSF 3.0 support
+//       https://github.com/storybookjs/storybook/issues/8222#issuecomment-984948162
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -38,9 +16,6 @@ export const parameters = {
     },
   },
   layout: "fullscreen",
-  viewport: {
-    viewports: { ...pageSegmentView, ...MINIMAL_VIEWPORTS },
-  },
   backgrounds: {
     grid: {
       cellSize: 2,
