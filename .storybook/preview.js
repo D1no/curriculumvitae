@@ -7,6 +7,8 @@ import {
 } from "@cv/views/DesignSystem";
 import DesignSystem from "@cv/views/DesignSystem";
 
+import PaperPreview from "@cv/components/util/PaperPreview.tsx";
+
 // TODO: Add ViewPort as Page Segments
 //       https://storybook.js.org/docs/react/essentials/viewport#add-new-devices
 
@@ -38,14 +40,14 @@ export const parameters = {
   layout: "fullscreen",
   viewport: {
     viewports: { ...pageSegmentView, ...MINIMAL_VIEWPORTS },
-    defaultViewport: "pageNarrow",
   },
   backgrounds: {
-    default: "light",
     grid: {
-      cellSize: 14,
-      opacity: 0.2,
-      cellAmount: 2,
+      cellSize: 2,
+      opacity: 0.3,
+      cellAmount: 7,
+      offsetX: 14,
+      offsetY: 14,
     },
   },
   darkMode: {
@@ -60,7 +62,9 @@ export const parameters = {
 export const decorators = [
   (Story) => (
     <DesignSystem>
-      <Story />
+      <PaperPreview>
+        <Story />
+      </PaperPreview>
     </DesignSystem>
   ),
 ];
