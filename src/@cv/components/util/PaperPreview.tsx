@@ -5,22 +5,44 @@ import { GLOBALS_UPDATED } from "@storybook/core-events";
 import { x } from "@xstyled/emotion";
 
 import {
+  globalLineHeight,
   goldenRatioContentSpacer,
-  goldenRatioLongContentPX,
-  goldenRatioLongSectionPX,
+  goldenRatioLongContent,
   goldenRatioShort,
-  goldenRatioShortPX,
   pxB,
 } from "@cv/views/DesignSystem";
 
+interface IPaperPreview {
+  /**
+   * Preview in Content Width instead of Section Width
+   */
+  wide: boolean;
+}
 // get channel from storybook
 const channel = addons.getChannel();
 
-const PaperPreview: React.FC<{}> = ({ children }) => {
-  const [isGrid, setGrid] = useState(false);
+/**
+ * Storybook Component Decorator
+ * Changes background transparency depending on if the background grid
+ * is enabled or not.
+ */
+const PaperPreview: React.FC<IPaperPreview> = ({ children, wide }) => {
+  const padding = globalLineHeight;
+  const sectionWidth = {
+    inner: goldenRatioShort,
+    outer: goldenRatioShort + 2 * padding,
+  };
+  const mainWidth = {
+    inner: goldenRatioLongContent,
+    outer: goldenRatioLongContent + 2 * padding,
+  };
+  const width = wide ? mainWidth : sectionWidth;
 
   // Listen to Storybooks Globals Updated event to set component
   // background transparency lower to see the grid background.
+
+  const [isGrid, setGrid] = useState(false);
+
   useEffect(() => {
     channel.on(GLOBALS_UPDATED, (event) => {
       // Set Component State
@@ -37,13 +59,13 @@ const PaperPreview: React.FC<{}> = ({ children }) => {
   return (
     <x.div
       bg={isGrid ? "white-a10" : "white"}
-      w={pxB(goldenRatioShort + 2 * 14)}
-      p={pxB(14)}
+      w={pxB(width.outer)}
+      p={pxB(padding)}
       ml={pxB(goldenRatioContentSpacer)}
       mt={pxB(goldenRatioContentSpacer)}
       boxShadow="page"
     >
-      <x.div w={goldenRatioShortPX} bg={isGrid ? "white-a30" : "white"}>
+      <x.div w={pxB(width.inner)} bg={isGrid ? "white-a30" : "white"}>
         {children}
       </x.div>
     </x.div>

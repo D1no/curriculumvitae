@@ -1,5 +1,8 @@
 import React from "react";
 
+import defaultThemeBoxModel from "./defaultThemeBoxModel";
+import "./fonts/lato.css";
+
 import {
   Preflight,
   ThemeProvider,
@@ -7,9 +10,6 @@ import {
   generateHexAlphaVariants,
   x,
 } from "@xstyled/emotion";
-
-import defaultThemeBoxModel from "./defaultThemeBoxModel";
-import "./fonts/lato.css";
 
 /**
  * =================================================================
@@ -20,13 +20,14 @@ import "./fonts/lato.css";
 // TODO: After design phase, a histogram needs to be made of all called in pxX sizes for consistency validation and search / replace.
 
 export const globalSizeMultiplier = 1;
+export const globalLineHeight = 14;
 
 /**
  * Utility: Get a height string as a multiple of the grid base height.
  * Defaults to base = 14px.
  */
 export const sizeFromBase = ({
-  baseLineHeight = 14,
+  baseLineHeight = globalLineHeight,
   unit = "px",
   double = false,
   times = 1,

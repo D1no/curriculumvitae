@@ -2,8 +2,6 @@ import { themes } from "@storybook/theming";
 
 import DesignSystem from "@cv/views/DesignSystem";
 
-import PaperPreview from "@cv/components/util/PaperPreview.tsx";
-
 // TODO: Implement some form of automatic title and meta generation. Potentially with CSF 3.0 support
 //       https://github.com/storybookjs/storybook/issues/8222#issuecomment-984948162
 
@@ -37,9 +35,7 @@ export const parameters = {
 export const decorators = [
   (Story) => (
     <DesignSystem>
-      <PaperPreview>
-        <Story />
-      </PaperPreview>
+      <Story />
     </DesignSystem>
   ),
 ];
