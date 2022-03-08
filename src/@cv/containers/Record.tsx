@@ -1,9 +1,9 @@
 import React from "react";
 
+import Remark from "@cv/components/decorator/Remark";
 import { LabeledListItemInline } from "@cv/components/list/LabeledListItem";
 import Caption from "@cv/components/text/Caption";
 import Title from "@cv/components/text/Title";
-import Remark from "@cv/components/wrapper/Remark";
 
 const Record: React.FC<{}> = () => {
   return (

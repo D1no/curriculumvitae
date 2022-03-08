@@ -12,11 +12,11 @@ import {
   pxH,
 } from "@cv/views/DesignSystem";
 
+import Remark from "@cv/components/decorator/Remark";
 import { LabeledListItemTopLevel } from "@cv/components/list/LabeledListItem";
 import Caption from "@cv/components/text/Caption";
 import Heading from "@cv/components/text/Heading";
 import Title from "@cv/components/text/Title";
-import Remark from "@cv/components/wrapper/Remark";
 
 /**
  * CV Main Section: Contains Aside Section and Main Container
