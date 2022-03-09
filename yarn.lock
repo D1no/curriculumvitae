@@ -3558,7 +3558,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/core-common@npm:6.4.19":
+"@storybook/core-common@npm:6.4.19, @storybook/core-common@npm:^6.4.19":
   version: 6.4.19
   resolution: "@storybook/core-common@npm:6.4.19"
   dependencies:
@@ -8355,6 +8355,7 @@ __metadata:
     "@storybook/addon-interactions": ^6.4.19
     "@storybook/addon-links": ^6.4.19
     "@storybook/builder-webpack5": ^6.4.19
+    "@storybook/core-common": ^6.4.19
     "@storybook/manager-webpack5": ^6.4.19
     "@storybook/node-logger": ^6.4.19
     "@storybook/preset-create-react-app": ^4.0.1

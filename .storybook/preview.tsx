@@ -1,6 +1,6 @@
-import { themes } from "@storybook/theming";
+import DesignSystem from "../src/@cv/views/DesignSystem";
 
-import DesignSystem from "@cv/views/DesignSystem";
+import { themes } from "@storybook/theming";
 
 // TODO: Implement some form of automatic title and meta generation. Potentially with CSF 3.0 support
 //       https://github.com/storybookjs/storybook/issues/8222#issuecomment-984948162
