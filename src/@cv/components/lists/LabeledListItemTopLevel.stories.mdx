@@ -4,10 +4,6 @@ import { Meta, Story } from "@storybook/addon-docs";
 
 import PaperPreview from "@cv/components/utils/PaperPreview.tsx";
 
-<!--👇 The title prop determines where your story goes in the story list -->
-
-<Meta title="@cv/components/lists" component={LabeledListItemTopLevel} />
-
 <!--👇 We create a “template” of how args map to rendering -->
 
 export const Template = ({ wide, ...args }) => (
@@ -19,7 +15,7 @@ export const Template = ({ wide, ...args }) => (
 <!-- 👇 The args you need here will depend on your component -->
 
 <Story
-  name="LabeledListItem (toplevel)"
+  name="default"
   args={{
     wide: false,
     label: "Empty Label",

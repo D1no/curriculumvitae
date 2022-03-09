@@ -1,8 +1,10 @@
-import Component from "./Caption";
+import Component from "./index";
 
 import { Meta, Story } from "@storybook/addon-docs";
 
 import PaperPreview from "@cv/components/utils/PaperPreview.tsx";
+
+<Meta title="@cv/Containers/Record" component={Component} />
 
 <!--👇 We create a “template” of how args map to rendering -->
 
@@ -14,12 +16,12 @@ export const Template = ({ wide, ...args }) => (
 
 <!-- 👇 The args you need here will depend on your component -->
 
+<!-- TODO: Turn into Compositions https://storybook.js.org/docs/react/writing-stories/build-pages-with-storybook -->
+
 <Story
-  name="Caption"
+  name="Record"
   args={{
     wide: false,
-    children:
-      "2015 · Ranked #1 in Russia. Term of courses in finance & teaching programmatic marketing.",
   }}
 >
   {Template.bind({})}

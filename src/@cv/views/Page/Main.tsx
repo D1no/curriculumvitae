@@ -1,9 +1,5 @@
 import React from "react";
 
-import Record from "../../containers/Record";
-import TableLabeledList from "../../containers/TableLabeledList";
-import Topic from "../../containers/Topic";
-
 import { x } from "@xstyled/emotion";
 
 import {
@@ -11,6 +7,10 @@ import {
   goldenRatioShortPX,
   pxH,
 } from "@cv/views/DesignSystem";
+
+import Record from "@cv/containers/Record";
+import TableLabeledList from "@cv/containers/TableLabeledList";
+import Topic from "@cv/containers/Topic";
 
 import Remark from "@cv/components/decorators/Remark";
 import { LabeledListItemTopLevel } from "@cv/components/lists/LabeledListItem";
