@@ -5,10 +5,17 @@ import { LabeledListItemInline } from "@cv/components/lists/LabeledListItem";
 import Caption from "@cv/components/texts/Caption";
 import Title from "@cv/components/texts/Title";
 
-const Record: React.FC<{}> = () => {
+interface IRecord {
+  /**
+   * Title of the record. Shows a dot if not specified.
+   */
+  title?: string;
+}
+
+const Record: React.FC<IRecord> = ({ title }) => {
   return (
     <>
-      <Title subtitle="Software Engineer">Example Inc.</Title>
+      <Title subtitle="Software Engineer">{title}</Title>
       <Caption>Since 2123 · Berlin, Germany</Caption>
       <Remark
         body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque

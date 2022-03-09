@@ -12,7 +12,7 @@ import {
   pxB,
 } from "@cv/views/DesignSystem";
 
-interface IPaperPreview {
+export interface IPaperPreview {
   /**
    * Preview in Content Width instead of Section Width
    */
