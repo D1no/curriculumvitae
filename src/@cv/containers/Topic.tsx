@@ -1,8 +1,8 @@
 import React from "react";
 
-import { LabeledListItemTopLevel } from "@cv/components/list/LabeledListItem";
-import Body from "@cv/components/text/Body";
-import Title from "@cv/components/text/Title";
+import { LabeledListItemTopLevel } from "@cv/components/lists/LabeledListItem";
+import Body from "@cv/components/texts/Body";
+import Title from "@cv/components/texts/Title";
 
 /**
  * CV Container: Topic

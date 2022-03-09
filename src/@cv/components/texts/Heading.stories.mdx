@@ -1,31 +1,28 @@
-import { LabeledListItemTopLevel } from "./LabeledListItem";
+import Component from "./Heading";
 
 import { Meta, Story } from "@storybook/addon-docs";
 
-import PaperPreview from "@cv/components/util/PaperPreview.tsx";
+import PaperPreview from "@cv/components/utils/PaperPreview.tsx";
 
 <!--👇 The title prop determines where your story goes in the story list -->
 
-<Meta title="@cv/components/List" component={LabeledListItemTopLevel} />
+<Meta title="@cv/components/texts" component={Component} />
 
 <!--👇 We create a “template” of how args map to rendering -->
 
 export const Template = ({ wide, ...args }) => (
   <PaperPreview wide={wide}>
-    <LabeledListItemTopLevel {...args} />
+    <Component {...args} />
   </PaperPreview>
 );
 
 <!-- 👇 The args you need here will depend on your component -->
 
 <Story
-  name="LabeledListItem (toplevel)"
+  name="Heading"
   args={{
     wide: false,
-    label: "Empty Label",
-    double: false,
-    children:
-      "This is a test to see if the line fits and does wrap to the next line for alignment.",
+    children: "Experience",
   }}
 >
   {Template.bind({})}
