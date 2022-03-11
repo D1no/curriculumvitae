@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import Component from "./index";
+import Component from "./Title";
 
 export default {
   component: Component,
@@ -10,5 +10,8 @@ const Template: ComponentStory<typeof Component> = (args) => (
   <Component {...args} />
 );
 
-export const Index = Template.bind({});
-Index.args = { title: "Example Inc." };
+export const Title = Template.bind({});
+Title.args = {
+  children: "Company Inc.",
+  subtitle: "Software Engineer",
+};

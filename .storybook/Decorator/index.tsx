@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import DesignSystem from "../../src/@cv/views/DesignSystem";
 import Paper from "./Paper";

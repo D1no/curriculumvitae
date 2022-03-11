@@ -1,4 +1,4 @@
-import DesignSystem from "../src/@cv/views/DesignSystem";
+import { globalLineHeight } from "../src/@cv/views/DesignSystem";
 import Decorator, { DecoratorArgTypes } from "./Decorator";
 
 import { themes } from "@storybook/theming";
@@ -21,9 +21,9 @@ export const parameters = {
     grid: {
       cellSize: 2,
       opacity: 0.3,
-      cellAmount: 7,
-      offsetX: 14,
-      offsetY: 14,
+      cellAmount: globalLineHeight / 2,
+      offsetX: globalLineHeight,
+      offsetY: globalLineHeight,
     },
   },
   darkMode: {
