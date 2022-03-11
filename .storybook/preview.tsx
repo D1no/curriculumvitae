@@ -1,4 +1,5 @@
 import DesignSystem from "../src/@cv/views/DesignSystem";
+import Decorator, { DecoratorArgTypes } from "./Decorator";
 
 import { themes } from "@storybook/theming";
 
@@ -34,10 +35,8 @@ export const parameters = {
   },
 };
 
-export const decorators = [
-  (Story) => (
-    <DesignSystem>
-      <Story />
-    </DesignSystem>
-  ),
-];
+export const decorators = [Decorator];
+
+export const globalTypes = {
+  ...DecoratorArgTypes,
+};
