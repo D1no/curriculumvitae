@@ -1,7 +1,6 @@
 import { globalLineHeight } from "../src/@cv/views/DesignSystem";
 import Decorator, { DecoratorArgTypes } from "./Decorator";
-
-import { themes } from "@storybook/theming";
+import theme from "./theme";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -25,9 +24,9 @@ export const parameters = {
   },
   darkMode: {
     // Override the default dark theme
-    dark: { ...themes.dark },
+    dark: { ...theme.dark },
     // Override the default light theme
-    light: { ...themes.normal },
+    light: { ...theme.normal },
     current: "dark",
   },
 };
