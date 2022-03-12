@@ -13,7 +13,7 @@
         },
         {
           "source": "/components/**",
-          "destination": "/storybook/**"
+          "destination": "/storybook/index.html"
         },
         {
           "source": "**",
@@ -34,7 +34,7 @@
         },
         {
           "source": "/components/**",
-          "destination": "/storybook/**"
+          "destination": "/storybook/index.html"
         },
         {
           "source": "**",
