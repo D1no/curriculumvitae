@@ -91,7 +91,7 @@ export const goldenRatioGridStep = 8;
 
 export const goldenRatioWhole = 68 * goldenRatioGridStep; // 544px
 export const goldenRatioShort = 26 * goldenRatioGridStep; // 208px
-export const goldenRatioLong = goldenRatioWhole - goldenRatioShort;
+export const goldenRatioLong = goldenRatioWhole - goldenRatioShort; // 336px (42 * 8)
 
 export const goldenRatioPageWidth = 100 * goldenRatioGridStep; // 800px
 export const goldenRatioPageHeight = 141.5 * goldenRatioGridStep; // 1132px

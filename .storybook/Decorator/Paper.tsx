@@ -4,8 +4,8 @@ import {
   globalLineHeight,
   goldenRatioContentSpacer,
   goldenRatioLongContent,
-  goldenRatioPageWidth,
   goldenRatioShort,
+  goldenRatioWhole,
   pxB,
 } from "../../src/@cv/views/DesignSystem";
 
@@ -63,8 +63,8 @@ const Paper: React.FC<IPaper> = ({
     }
     case "full": {
       // Full Vertical Slice
-      paperWidth.inner = goldenRatioPageWidth;
-      paperWidth.outer = goldenRatioPageWidth + 2 * outerPadding;
+      paperWidth.inner = goldenRatioWhole;
+      paperWidth.outer = goldenRatioWhole + 2 * outerPadding;
       break;
     }
     default: {
