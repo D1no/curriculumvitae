@@ -4,20 +4,18 @@
       "target": "production",
       "public": "build",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-      "cleanUrls": true,
-      "trailingSlash": false,
       "rewrites": [
         {
-          "source": "**/robots.txt",
-          "destination": "**/robots.production.txt"
+          "source": "/robots.txt",
+          "destination": "/robots.staging.txt"
         },
         {
-          "source": "/components/",
-          "destination": "/storybook/"
+          "source": "/components/**",
+          "destination": "/components/index.html"
         },
         {
           "source": "**",
-          "destination": "application/index.html"
+          "destination": "/index.html"
         }
       ]
     },
@@ -25,20 +23,18 @@
       "target": "staging",
       "public": "build",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-      "cleanUrls": true,
-      "trailingSlash": false,
       "rewrites": [
         {
-          "source": "**/robots.txt",
-          "destination": "**/robots.staging.txt"
+          "source": "/robots.txt",
+          "destination": "/robots.staging.txt"
         },
         {
-          "source": "/components/",
-          "destination": "/storybook/"
+          "source": "/components/**",
+          "destination": "/components/index.html"
         },
         {
           "source": "**",
-          "destination": "application/index.html"
+          "destination": "/index.html"
         }
       ]
     }
