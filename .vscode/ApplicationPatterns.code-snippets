@@ -1,0 +1,48 @@
+{
+  "(📝 application) React FC": {
+    "description": "Default React Functional Component Template. Takes the filename as a starting point.",
+    "scope": "typescriptreact",
+    "prefix": ["fc", "react fc", "import React"],
+    "body": [
+      "import React from \"react\";",
+      "",
+      "interface I${1:${TM_FILENAME/(.*?)\\..+$/${1:/pascalcase}/}} {",
+      "    ",
+      "}",
+      "",
+      "const $1: React.FC<{}> = ({children, ...props}) => {",
+      "    return (",
+      "    <>",
+      "    ${0:${CLIPBOARD}}",
+      "    </>",
+      "    )",
+      "}",
+      "",
+      "export default $1;"
+    ]
+  },
+  "(📝 application) React Story": {
+    "description": "Default Storybook File Template. Takes the filename as a starting point.",
+    "scope": "typescriptreact",
+    "prefix": ["story", "react story", "stories"],
+    "body": [
+      "import { ComponentMeta, ComponentStory } from \"@storybook/react\";",
+      "",
+      "import { ${1:default} as Component } from \"./${2:${TM_FILENAME/(.*?)\\..+$/$1/}}\";",
+      "",
+      "export default {",
+      "  component: Component,",
+      "} as ComponentMeta<typeof Component>;",
+      "",
+      "const Template: ComponentStory<typeof Component> = (args) => (",
+      "  <Component ${3|{...args} , |}/>",
+      ");",
+      "",
+      "export const ${4:${TM_FILENAME/(.*?)\\..+$/${1:/pascalcase}/}} = Template.bind({});",
+      "${4}.args = {",
+      "  ${0}",
+      "};",
+      ""
+    ]
+  }
+}
