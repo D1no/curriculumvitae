@@ -8,16 +8,16 @@
       "trailingSlash": false,
       "rewrites": [
         {
-          "source": "/robots.txt",
-          "destination": "/robots.production.txt"
+          "source": "**/robots.txt",
+          "destination": "**/robots.production.txt"
         },
         {
-          "source": "/components/**",
-          "destination": "/storybook/index.html"
+          "source": "/components/",
+          "destination": "/storybook/"
         },
         {
           "source": "**",
-          "destination": "/index.html"
+          "destination": "application/index.html"
         }
       ]
     },
@@ -29,16 +29,16 @@
       "trailingSlash": false,
       "rewrites": [
         {
-          "source": "/robots.txt",
-          "destination": "/robots.staging.txt"
+          "source": "**/robots.txt",
+          "destination": "**/robots.staging.txt"
         },
         {
-          "source": "/components/**",
-          "destination": "/storybook/index.html"
+          "source": "/components/",
+          "destination": "/storybook/"
         },
         {
           "source": "**",
-          "destination": "/index.html"
+          "destination": "application/index.html"
         }
       ]
     }
