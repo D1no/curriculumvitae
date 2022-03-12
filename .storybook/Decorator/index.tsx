@@ -1,15 +1,21 @@
 import React from "react";
 
-import DesignSystem from "../../src/@cv/views/DesignSystem";
+import { default as CVDesignSystem } from "../../src/@cv/views/DesignSystem";
+import { default as UIDesignSystem } from "../../src/@ui/views/DesignSystem";
 import Paper from "./Paper";
 
 /**
  * Storybook Toolbar
  */
 export const DecoratorArgTypes = {
+  /**
+   * Paper Preview
+   * Render Story in a paper like wrapper.
+   */
   paper: {
     name: "Paper",
-    description: "Displays components in a paper like wrapper.",
+    description:
+      "Displays components in a paper like wrapper. Some components are not effected.",
     defaultValue: "narrow",
     toolbar: {
       // Available Icons: https://github.com/storybookjs/storybook/blob/7064642e1aee7786c77fe735c064c0c29dbcee01/lib/components/src/icon/icons.tsx
@@ -29,34 +35,81 @@ export const DecoratorArgTypes = {
 };
 
 /**
- * Storybook HOC for assigning args and selecting render mode.
+ * Storybook HOC for assigning args and selecting render modes.
  */
 const Decorator = (Story, context) => {
-  // Getting relevant global props.
-  const { paper, backgrounds } = context.globals;
+  // Storybook context.
+  const { fileName } = context.parameters;
 
   /**
-   * Renders the story with the correct Decorator.
+   * Maps stories locations and globals to the correct Decorator Style.
    */
   const RenderStory = () => {
-    // Paper Style Story
-    if (paper && paper !== "off") {
+    if (fileName.includes("@cv")) {
+      /**
+       * =================================================================
+       * "@CV" Stories
+       * =================================================================
+       */
+      const { paper, backgrounds } = context.globals;
+
+      if (paper && paper !== "off") {
+        /**
+         * Paper Preview
+         * Render Story in a paper like wrapper.
+         */
+        let mode = paper;
+
+        // Disable some width formats for components that are not meant to be
+        // multi-purpose.
+        if (fileName.includes("views/")) {
+          mode = mode === "narrow" ? "full" : mode;
+          mode = mode === "wide" ? "full" : mode;
+        }
+
+        return (
+          <CVDesignSystem>
+            <Paper widthMode={mode} transparent={backgrounds?.grid}>
+              <Story />
+            </Paper>
+          </CVDesignSystem>
+        );
+      } else {
+        /**
+         * No Decorator. Provide folders design system.
+         */
+        return (
+          <CVDesignSystem>
+            <Story />
+          </CVDesignSystem>
+        );
+      }
+    } else if (fileName.includes("@ui")) {
+      /**
+       * =================================================================
+       * "@UI" Stories
+       * =================================================================
+       */
+
+      /**
+       * No Decorator. Provide folders design system.
+       */
       return (
-        <Paper widthMode={paper} transparent={backgrounds?.grid}>
+        <UIDesignSystem>
           <Story />
-        </Paper>
+        </UIDesignSystem>
       );
     } else {
-      // Just Story
+      /**
+       * =================================================================
+       * Other Stories
+       * =================================================================
+       */
       return <Story />;
     }
   };
 
-  return (
-    <DesignSystem>
-      <RenderStory />
-    </DesignSystem>
-  );
+  return <RenderStory />;
 };
 
 export default Decorator;
