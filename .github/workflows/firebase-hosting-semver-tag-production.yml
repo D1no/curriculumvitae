@@ -30,8 +30,11 @@ jobs:
       # - name: Run Tests
       #   run: yarn run test
 
-      - name: Build
+      - name: Build CRA
         run: yarn run build
+
+      - name: Build Storybook
+        run: yarn run build-storybook
 
       - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0

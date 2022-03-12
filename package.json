@@ -40,7 +40,7 @@
     "updates": "yarn upgrade-interactive",
     "storybook": "start-storybook -p 6006 -s public",
     "build": "react-scripts build",
-    "build-storybook": "build-storybook -s public",
+    "build-storybook": "build-storybook -s public -o build/storybook",
     "test": "react-scripts test",
     "emulate": "yarn run build && firebase emulators:start",
     "deploy": "yarn run build && firebase deploy --only hosting:staging",
