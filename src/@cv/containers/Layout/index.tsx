@@ -17,39 +17,37 @@ import {
   pxW,
 } from "@cv/views/DesignSystem";
 
-interface IPage {}
+interface Layout {}
 
-const Page: React.FC<{}> = ({ children, ...props }) => {
+const Layout: React.FC<Layout> = ({ children, ...props }) => {
   return (
-    <>
-      <x.div
-        bg="white"
-        color="black"
-        /* Page Dimensions (A4) */
-        w={pxW(goldenRatioPageWidth)}
-        h={pxH(goldenRatioPageHeight)}
-        /* Trim (A4) */
-        px={pxW(goldenRatioPageMargin)}
-        pt={pxH(goldenRatioPageMargin)}
-        pb={pxH(goldenRatioContentSpacer)}
-        /* Box Model */
-        display="flex"
-        flexDirection="column"
-        spaceY={pxH(goldenRatioElementSpacer)}
-      >
-        {/* START: CV Sections */}
+    <x.div
+      bg="white"
+      color="black"
+      /* Page Dimensions (A4) */
+      w={pxW(goldenRatioPageWidth)}
+      h={pxH(goldenRatioPageHeight)}
+      /* Trim (A4) */
+      px={pxW(goldenRatioPageMargin)}
+      pt={pxH(goldenRatioPageMargin)}
+      pb={pxH(goldenRatioContentSpacer)}
+      /* Box Model */
+      display="flex"
+      flexDirection="column"
+      spaceY={pxH(goldenRatioElementSpacer)}
+    >
+      {/* START: CV Sections */}
 
-        <Header />
-        <MetaSection />
-        <MainSection />
+      <Header />
+      <MetaSection />
+      <MainSection />
 
-        {/* Footer */}
-        <FooterSection />
-        {/* END: Footer */}
-        {/* END: CV Sections */}
-      </x.div>
-    </>
+      {/* Footer */}
+      <FooterSection />
+      {/* END: Footer */}
+      {/* END: CV Sections */}
+    </x.div>
   );
 };
 
-export default Page;
+export default Layout;

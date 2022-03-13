@@ -1,6 +1,6 @@
 import React from "react";
 
-export interface ILayoutProps {
+export interface LayoutProps {
   /**
    * If true, shows a background color for <L> wrapped layout areas.
    */

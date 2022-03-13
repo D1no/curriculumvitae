@@ -11,7 +11,7 @@ import {
 
 import { x } from "@xstyled/emotion";
 
-export interface IPaper {
+interface Paper {
   /**
    * Modes for paper display.
    */
@@ -39,7 +39,7 @@ export type paperWidth = {
  * Changes background transparency depending on if the background grid
  * is enabled or not.
  */
-const Paper: React.FC<IPaper> = ({
+const Paper: React.FC<Paper> = ({
   children,
   widthMode,
   transparent,

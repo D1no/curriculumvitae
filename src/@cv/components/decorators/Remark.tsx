@@ -4,7 +4,7 @@ import { x } from "@xstyled/emotion";
 
 import { pxB, pxH, pxW } from "@cv/views/DesignSystem";
 
-interface IRemark {
+interface Remark {
   /**
    * Text content leading the remark. Above child components.
    */
@@ -12,7 +12,7 @@ interface IRemark {
   small?: boolean;
 }
 
-const Remark: React.FC<IRemark> = ({ body, small = false, children }) => {
+const Remark: React.FC<Remark> = ({ body, small = false, children }) => {
   return (
     <x.div display="flex">
       {/* Left Decor Section */}

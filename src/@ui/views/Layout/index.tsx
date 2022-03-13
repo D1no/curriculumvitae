@@ -1,20 +1,21 @@
 // Lucide-Icons: https://lucide.dev/
-import { Download } from "lucide-react";
-
 import React from "react";
+
+import { Download } from "lucide-react";
 import { Outlet } from "react-router-dom";
 
 import styled, { system, x } from "@xstyled/emotion";
 
+import { L, LayoutProps } from "@ui/views/Layout/util";
+
 import { ReactComponent as PDFIcon } from "@ui/assets/icon/pdf.svg";
-import { ILayoutProps, L } from "@ui/views/Layout/util";
 
 /**
  * Full screen layout container with a header, main and navigation section.
  * If child components are provided, those are rendered in the main section.
  * Otherwise the <Outlet /> of provided routes.
  */
-const Layout: React.FC<ILayoutProps> = ({ debug = false, ...props }) => {
+const Layout: React.FC<LayoutProps> = ({ debug = false, ...props }) => {
   const File = x.div;
   const FileName = x.h1;
   const FileIcon = styled(PDFIcon)`

@@ -1,16 +1,16 @@
-import { Circle, LucideProps } from "lucide-react";
-
 import React from "react";
+
+import { Circle, LucideProps } from "lucide-react";
 
 import { x } from "@xstyled/emotion";
 
-import { ILayoutProps, L } from "@ui/views/Layout/util";
+import { L, LayoutProps } from "@ui/views/Layout/util";
 
 export type NavigationItemProps = typeof x.div.defaultProps & {
   /**
    * Sets a random background color of layout elements.
    */
-  debug?: ILayoutProps["debug"];
+  debug?: LayoutProps["debug"];
   /**
    * Size of the SVG Icon. Is passed to SVG Icon.
    */

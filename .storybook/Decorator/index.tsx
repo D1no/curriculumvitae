@@ -61,8 +61,11 @@ const Decorator = (Story, context) => {
         let mode = paper;
 
         // Disable some width formats for components that are not meant to be
-        // multi-purpose.
-        if (fileName.includes("views/")) {
+        // multi-purpose contained.
+        if (
+          fileName.toLowerCase().includes("views/") ||
+          fileName.toLowerCase().includes("layout/")
+        ) {
           mode = mode === "narrow" ? "full" : mode;
           mode = mode === "wide" ? "full" : mode;
         }

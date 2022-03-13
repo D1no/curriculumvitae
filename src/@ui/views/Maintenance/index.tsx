@@ -2,9 +2,9 @@ import React from "react";
 
 import { x } from "@xstyled/emotion";
 
-import { ILayoutProps, L } from "@ui/views/Layout/util";
+import { L, LayoutProps } from "@ui/views/Layout/util";
 
-const Introduction: React.FC<ILayoutProps> = ({ debug = false, ...props }) => {
+const Introduction: React.FC<LayoutProps> = ({ debug = false, ...props }) => {
   return (
     <L debug={debug}>
       <x.div display="flex">

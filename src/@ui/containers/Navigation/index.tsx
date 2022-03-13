@@ -1,16 +1,15 @@
 import { Briefcase, Lightbulb, MoreVertical, Phone } from "lucide-react";
-
 import { useNavigate } from "react-router-dom";
-
-import { x } from "@xstyled/emotion";
-
-import { FixedBottom } from "@ui/views/Layout/FixedBottom";
-import { ILayoutProps, L } from "@ui/views/Layout/util";
 
 import NavigationItem from "./Item";
 import NavigationTrackLine from "./TrackLine";
 
-export interface INavigationProps {
+import { x } from "@xstyled/emotion";
+
+import { FixedBottom } from "@ui/views/Layout/FixedBottom";
+import { L, LayoutProps } from "@ui/views/Layout/util";
+
+export interface NavigationProps {
   /**
    * Hides the Navigation by setting CSS Display="none". Component is not unmounted.
    */
@@ -20,7 +19,7 @@ export interface INavigationProps {
 /**
  * Main (bottom) Navigation which is used in the default fullscreen Layout.
  */
-const Navigation: React.FC<ILayoutProps & INavigationProps> = ({
+const Navigation: React.FC<LayoutProps & NavigationProps> = ({
   debug = false,
   hide = false,
   ...props
