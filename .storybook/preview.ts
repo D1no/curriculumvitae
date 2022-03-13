@@ -1,6 +1,5 @@
 import { globalLineHeight } from "../src/@cv/views/DesignSystem";
 import Decorator, { DecoratorArgTypes } from "./Decorator";
-import theme from "./theme";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -14,6 +13,7 @@ export const parameters = {
   },
   layout: "fullscreen",
   backgrounds: {
+    default: "dark",
     grid: {
       cellSize: 2,
       opacity: 0.3,
@@ -21,13 +21,6 @@ export const parameters = {
       offsetX: globalLineHeight,
       offsetY: globalLineHeight,
     },
-  },
-  darkMode: {
-    // Override the default dark theme
-    dark: { ...theme.dark },
-    // Override the default light theme
-    light: { ...theme.normal },
-    current: "dark",
   },
 };
 
