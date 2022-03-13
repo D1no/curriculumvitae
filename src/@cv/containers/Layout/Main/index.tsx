@@ -8,9 +8,9 @@ import {
   pxH,
 } from "@cv/views/DesignSystem";
 
-import Record from "@cv/containers/Record";
-import TableLabeledList from "@cv/containers/TableLabeledList";
-import Topic from "@cv/containers/Topic";
+import Record from "@cv/containers/facets/Record";
+import TableLabeledList from "@cv/containers/facets/TableLabeledList";
+import Topic from "@cv/containers/facets/Topic";
 
 import Remark from "@cv/components/decorators/Remark";
 import { LabeledListItemTopLevel } from "@cv/components/lists/LabeledListItem";
