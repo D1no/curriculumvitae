@@ -3,8 +3,17 @@ import React from "react";
 import styled, { x } from "@xstyled/emotion";
 
 import DesignSystem from "@cv/views/DesignSystem";
+import {
+  goldenRatioContentSpacer,
+  goldenRatioPageHeight,
+  goldenRatioPageMargin,
+  goldenRatioPageWidth,
+  pxH,
+  pxW,
+} from "@cv/views/DesignSystem";
 
 import Layout from "@cv/containers/Layout";
+import Page from "@cv/containers/Page";
 
 /**
  * Animation for responsiveness.
@@ -30,7 +39,9 @@ const CV: React.FC<ICVProps> = (props) => {
           /* TODO: Discriminate between iphone mini and iphone max style phones. */
           scale={{ _: "0.45", sm: "0.75", md: "0.9", lg: "1", xl: "1.4" }}
         >
-          <Layout />
+          <Page>
+            <Layout />
+          </Page>
         </PageScale>
       </x.div>
     </DesignSystem>

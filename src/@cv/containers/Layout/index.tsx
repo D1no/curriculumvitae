@@ -22,16 +22,6 @@ interface Layout {}
 const Layout: React.FC<Layout> = ({ children, ...props }) => {
   return (
     <x.div
-      bg="white"
-      color="black"
-      /* Page Dimensions (A4) */
-      w={pxW(goldenRatioPageWidth)}
-      h={pxH(goldenRatioPageHeight)}
-      /* Trim (A4) */
-      px={pxW(goldenRatioPageMargin)}
-      pt={pxH(goldenRatioPageMargin)}
-      pb={pxH(goldenRatioContentSpacer)}
-      /* Box Model */
       display="flex"
       flexDirection="column"
       spaceY={pxH(goldenRatioElementSpacer)}

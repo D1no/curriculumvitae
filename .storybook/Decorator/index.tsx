@@ -60,6 +60,9 @@ const Decorator = (Story, context) => {
          */
         let mode = paper;
 
+        // In case of page component, use private render mode (margin only).
+        if (fileName.toLowerCase().includes("page/")) mode = "page";
+
         // Disable some width formats for components that are not meant to be
         // multi-purpose contained.
         if (

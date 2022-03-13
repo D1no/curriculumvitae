@@ -15,7 +15,7 @@ interface Paper {
   /**
    * Modes for paper display.
    */
-  widthMode: false | "narrow" | "wide" | "full";
+  widthMode: false | "narrow" | "wide" | "full" | "page";
   /**
    * Reduce background opacity i.e. to see render backgrounds / grids.
    */
@@ -65,6 +65,11 @@ const Paper: React.FC<Paper> = ({
       // Full Vertical Slice
       paperWidth.inner = goldenRatioWhole;
       paperWidth.outer = goldenRatioWhole + 2 * outerPadding;
+      break;
+    }
+    case "page": {
+      // Only add margin.
+      return <x.div m={pxB(goldenRatioContentSpacer)}>{children}</x.div>;
       break;
     }
     default: {
