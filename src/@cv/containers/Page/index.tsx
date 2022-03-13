@@ -1,12 +1,12 @@
 import React from "react";
 
+import Layout from "@cv/containers/Layout";
+import Header from "@cv/containers/Layout/sections/Header";
+
 import FooterSection from "../Layout/sections/Footer";
 import MainSection from "../Layout/sections/Main";
 import MetaSection from "../Layout/sections/Meta";
 import Paper from "./paper";
-
-import Layout from "@cv/containers/Layout";
-import Header from "@cv/containers/Layout/sections/Header";
 
 interface Page extends Paper {}
 

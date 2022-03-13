@@ -3,16 +3,7 @@ import React from "react";
 import styled, { x } from "@xstyled/emotion";
 
 import DesignSystem from "@cv/views/DesignSystem";
-import {
-  goldenRatioContentSpacer,
-  goldenRatioPageHeight,
-  goldenRatioPageMargin,
-  goldenRatioPageWidth,
-  pxH,
-  pxW,
-} from "@cv/views/DesignSystem";
 
-import Layout from "@cv/containers/Layout";
 import Page from "@cv/containers/Page";
 
 /**
