@@ -10,7 +10,7 @@ import { x } from "@xstyled/emotion";
 import { goldenRatioElementSpacer, pxH } from "@cv/views/DesignSystem";
 
 /**
- * Renders sections in a column flexbox layout with vertical spacing. Labels are
+ * Sections stacked in a column flexbox layout with vertical spacing. Labels are
  * used for the document outline and accessability. So they should describe the
  * section content and not the position / role within the document (i.e. "footer"
  * Vs. "Additional References").
@@ -27,12 +27,11 @@ interface Layout {
   subHeaderLabel?: string;
   subHeader?: React.Component;
   /**
-   * Used for document outline & accessability.
+   * Decorates children. Used for document outline & accessability.
    */
   mainLabel?: string;
-  main?: React.Component;
   /**
-   * Overwrites `main` prop.
+   * Children are inside the `main` section.
    */
   children?: React.Component;
   /**
@@ -48,8 +47,7 @@ const Layout: React.FC<Layout> = ({
   subHeaderLabel = "Keywords & Contact",
   subHeader = <MetaSection />,
   mainLabel = "Overview",
-  main = <MainSection />,
-  children = main,
+  children = <MainSection />,
   footerLabel = "Export & Footnotes",
   footer = <FooterSection />,
 }) => {
