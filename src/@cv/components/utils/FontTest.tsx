@@ -4,20 +4,38 @@ import { x } from "@xstyled/emotion";
 
 import { pxB } from "@cv/views/DesignSystem";
 
-// eslint-disable-next-line
-const FontTest = () => (
-  <x.div lineHeight={pxB(14)} fontSize={pxB(12)}>
-    <x.p>Test: Default Font</x.p>
+interface FontTest {
+  sampleText: string;
+  /**
+   * Number will be scaled by DesignSystem via `pxB()`.
+   */
+  fontSize: number;
+  /**
+   * Number will be scaled by DesignSystem via `pxB()`.
+   */
+  lineHeight: number;
+}
+
+/**
+ * Demo showcasing font mapping.
+ */
+const FontTest: React.FC<FontTest> = ({
+  sampleText = "Test",
+  fontSize = 12,
+  lineHeight = 14,
+}) => (
+  <x.div lineHeight={pxB(lineHeight)} fontSize={pxB(fontSize)}>
+    <x.p>{sampleText} (default Font)</x.p>
     <x.p>----</x.p>
-    <x.p fontWeight="hairline">Test: hairline</x.p>
-    <x.p fontWeight="thin">Test: thin</x.p>
-    <x.p fontWeight="light">Test: light</x.p>
-    <x.p fontWeight="normal">Test: normal</x.p>
-    <x.p fontWeight="medium">Test: medium</x.p>
-    <x.p fontWeight="semibold">Test: semibold</x.p>
-    <x.p fontWeight="bold">Test: bold</x.p>
-    <x.p fontWeight="extrabold">Test: extrabold</x.p>
-    <x.p fontWeight="black">Test: black</x.p>
+    <x.p fontWeight="hairline">{sampleText} (hairline)</x.p>
+    <x.p fontWeight="thin">{sampleText} (thin)</x.p>
+    <x.p fontWeight="light">{sampleText} (light)</x.p>
+    <x.p fontWeight="normal">{sampleText} (normal)</x.p>
+    <x.p fontWeight="medium">{sampleText} (medium)</x.p>
+    <x.p fontWeight="semibold">{sampleText} (semibold)</x.p>
+    <x.p fontWeight="bold">{sampleText} (bold)</x.p>
+    <x.p fontWeight="extrabold">{sampleText} (extrabold)</x.p>
+    <x.p fontWeight="black">{sampleText} (black)</x.p>
   </x.div>
 );
 

@@ -1,31 +1,20 @@
-import React from "react";
-
-import FooterSection from "./sections/Footer";
-import Header from "./sections/Header";
-import MainSection from "./sections/Main";
-import MetaSection from "./sections/Meta";
+import React, { ReactNode } from "react";
 
 import { x } from "@xstyled/emotion";
 
 import { goldenRatioElementSpacer, pxH } from "@cv/views/DesignSystem";
 
-/**
- * Sections stacked in a column flexbox layout with vertical spacing. Labels are
- * used for the document outline and accessability. So they should describe the
- * section content and not the position / role within the document (i.e. "footer"
- * Vs. "Additional References").
- */
 interface Layout {
   /**
    * Used for document outline & accessability.
    */
   headerLabel?: string;
-  header?: React.Component;
+  header?: ReactNode;
   /**
    * Used for document outline & accessability.
    */
   subHeaderLabel?: string;
-  subHeader?: React.Component;
+  subHeader?: ReactNode;
   /**
    * Decorates children. Used for document outline & accessability.
    */
@@ -33,23 +22,28 @@ interface Layout {
   /**
    * Children are inside the `main` section.
    */
-  children?: React.Component;
+  children?: ReactNode;
   /**
    * Used for document outline & accessability.
    */
   footerLabel?: string;
-  footer?: React.Component;
+  footer?: ReactNode;
 }
 
+/**
+ * Returns a stacked column flexbox layout with vertical spacing. Labels are used for the document outline and accessability. So they should describe the
+ * section content and not the position / role within the document (i.e. "footer"
+ * Vs. "Additional References").
+ */
 const Layout: React.FC<Layout> = ({
   headerLabel = "Profile",
-  header = <Header />,
+  header,
   subHeaderLabel = "Keywords & Contact",
-  subHeader = <MetaSection />,
+  subHeader,
   mainLabel = "Overview",
-  children = <MainSection />,
+  children,
   footerLabel = "Export & Footnotes",
-  footer = <FooterSection />,
+  footer,
 }) => {
   return (
     <x.div
@@ -57,14 +51,26 @@ const Layout: React.FC<Layout> = ({
       flexDirection="column"
       spaceY={pxH(goldenRatioElementSpacer)}
     >
-      {/* START: CV Sections */}
+      {/* START: Page Sections */}
 
-      <x.section aria-label={headerLabel}>{header}</x.section>
-      <x.section aria-label={subHeaderLabel}>{subHeader}</x.section>
-      <x.section aria-label={mainLabel}>{children}</x.section>
-      <x.section aria-label={footerLabel}>{footer}</x.section>
+      {header ? (
+        <x.section aria-label={headerLabel}>{header}</x.section>
+      ) : undefined}
 
-      {/* END: CV Sections */}
+      {subHeader ? (
+        <x.section aria-label={subHeaderLabel}>{subHeader}</x.section>
+      ) : undefined}
+
+      {children ? (
+        <x.section aria-label={mainLabel}>{children}</x.section>
+      ) : undefined}
+
+      {/* BUG: Footer needs to stretch to end of page. Refactor removed flexbox properties. Re-Add. */}
+      {footer ? (
+        <x.section aria-label={footerLabel}>{footer}</x.section>
+      ) : undefined}
+
+      {/* END: Page Sections */}
     </x.div>
   );
 };

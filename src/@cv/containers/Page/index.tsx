@@ -11,7 +11,7 @@ import Header from "@cv/containers/Layout/sections/Header";
 interface Page extends Paper {}
 
 /**
- * Renders a page according to the box model.
+ * Renders a page according to size scaled by the design system.
  */
 const Page: React.FC<Page> = ({
   children,
