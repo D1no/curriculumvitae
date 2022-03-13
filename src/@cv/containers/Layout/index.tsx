@@ -1,9 +1,9 @@
 import React from "react";
 
-import FooterSection from "./Footer";
-import Header from "./Header";
-import MainSection from "./Main";
-import MetaSection from "./Meta";
+import FooterSection from "./sections/Footer";
+import Header from "./sections/Header";
+import MainSection from "./sections/Main";
+import MetaSection from "./sections/Meta";
 
 import { x } from "@xstyled/emotion";
 

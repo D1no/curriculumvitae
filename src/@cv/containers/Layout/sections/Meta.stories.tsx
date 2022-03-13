@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import Component from "./index";
+import Component from "./Meta";
 
 export default {
   component: Component,
@@ -8,5 +8,5 @@ export default {
 
 const Template: ComponentStory<typeof Component> = (args) => <Component />;
 
-export const Index = Template.bind({});
-Index.args = {};
+export const Meta = Template.bind({});
+Meta.args = {};
