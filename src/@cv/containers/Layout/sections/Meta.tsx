@@ -110,8 +110,7 @@ const MetaSection = () => {
   };
 
   return (
-    <x.section
-      aria-label="Information"
+    <x.div
       display="flex"
       flexDirection="row"
       alignSelf="stretch"
@@ -191,7 +190,7 @@ const MetaSection = () => {
           </x.div>
         </x.div>
       </x.div>
-    </x.section>
+    </x.div>
   );
 };
 

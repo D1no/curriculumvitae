@@ -86,7 +86,7 @@ const Header = () => {
   };
 
   return (
-    <x.section display="flex" flexDirection="row" alignSelf="stretch">
+    <x.div display="flex" flexDirection="row" alignSelf="stretch">
       <x.div mr={pxW(28)}>
         <x.h1
           fontSize={pxB(18)}
@@ -121,7 +121,7 @@ const Header = () => {
         </x.p>
       </x.div>
       <CoverImage anonym />
-    </x.section>
+    </x.div>
   );
 };
 
