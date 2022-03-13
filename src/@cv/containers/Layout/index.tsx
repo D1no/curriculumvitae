@@ -7,15 +7,7 @@ import MetaSection from "./sections/Meta";
 
 import { x } from "@xstyled/emotion";
 
-import {
-  goldenRatioContentSpacer,
-  goldenRatioElementSpacer,
-  goldenRatioPageHeight,
-  goldenRatioPageMargin,
-  goldenRatioPageWidth,
-  pxH,
-  pxW,
-} from "@cv/views/DesignSystem";
+import { goldenRatioElementSpacer, pxH } from "@cv/views/DesignSystem";
 
 interface Layout {}
 
