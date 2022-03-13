@@ -11,21 +11,23 @@ import { goldenRatioElementSpacer, pxH } from "@cv/views/DesignSystem";
 
 /**
  * Renders sections in a column flexbox layout with vertical spacing. Labels are
- * used for accessability, describing the section content and not document position.
+ * used for the document outline and accessability. So they should describe the
+ * section content and not the position / role within the document (i.e. "footer"
+ * Vs. "Additional References").
  */
 interface Layout {
   /**
-   * Short section heading. Used for accessability.
+   * Used for document outline & accessability.
    */
   headerLabel?: string;
   header?: React.Component;
   /**
-   * Short section heading. Used for accessability.
+   * Used for document outline & accessability.
    */
   subHeaderLabel?: string;
   subHeader?: React.Component;
   /**
-   * Short section heading. Used for accessability.
+   * Used for document outline & accessability.
    */
   mainLabel?: string;
   main?: React.Component;
@@ -34,7 +36,7 @@ interface Layout {
    */
   children?: React.Component;
   /**
-   * Short section heading. Used for accessability.
+   * Used for document outline & accessability.
    */
   footerLabel?: string;
   footer?: React.Component;
