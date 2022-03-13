@@ -8,7 +8,7 @@ export default {
 
 const Template: ComponentStory<typeof Component> = ({ children, ...args }) => (
   <Component {...args}>
-    <div style={{ backgroundColor: "lightgray", height: "100%" }}>
+    <div style={{ backgroundColor: "#F4F4F4", height: "100%" }}>
       <p>{children}</p>
     </div>
   </Component>
@@ -16,5 +16,6 @@ const Template: ComponentStory<typeof Component> = ({ children, ...args }) => (
 
 export const Index = Template.bind({});
 Index.args = {
+  size: "A4",
   children: "Layout Area",
 };

@@ -159,6 +159,10 @@ export const theme = {
       "cv-muted": "#545454",
       // CV Vertical Decor Line
       "cv-decor": "#c4c4c4",
+      // Page defaults
+      "page-text-color": "black",
+      // Page defaults
+      "page-bg-color": "white",
     }),
   },
 };

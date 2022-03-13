@@ -1,36 +1,38 @@
 import React from "react";
 
-import { x } from "@xstyled/emotion";
+import FooterSection from "../Layout/sections/Footer";
+import MainSection from "../Layout/sections/Main";
+import MetaSection from "../Layout/sections/Meta";
+import Paper from "./paper";
 
-import {
-  goldenRatioContentSpacer,
-  goldenRatioPageHeight,
-  goldenRatioPageMargin,
-  goldenRatioPageWidth,
-  pxH,
-  pxW,
-} from "@cv/views/DesignSystem";
+import Layout from "@cv/containers/Layout";
+import Header from "@cv/containers/Layout/sections/Header";
 
-interface Page {
-  // TODO: Add format "A4", "Letter"
-}
+interface Page extends Paper {}
 
-const Page: React.FC<Page> = ({ children, ...props }) => {
+/**
+ * Renders a page according to the box model.
+ */
+const Page: React.FC<Page> = ({
+  children,
+  size,
+  overwriteCssSpec,
+  ...props
+}) => {
   return (
-    <x.div
-      // TODO: Decide if colors should be over writable / only managed via design system.
-      bg="white"
-      color="black"
-      /* Page Dimensions (A4) */
-      w={pxW(goldenRatioPageWidth)}
-      h={pxH(goldenRatioPageHeight)}
-      /* Trim (A4) */
-      px={pxW(goldenRatioPageMargin)}
-      pt={pxH(goldenRatioPageMargin)}
-      pb={pxH(goldenRatioContentSpacer)}
-    >
-      {children}
-    </x.div>
+    <Paper size={size} overwriteCssSpec={overwriteCssSpec}>
+      <Layout
+        headerLabel="Profile"
+        header={<Header />}
+        subHeaderLabel="Keywords & Contact"
+        subHeader={<MetaSection />}
+        footerLabel="Export & Footnotes"
+        footer={<FooterSection />}
+        mainLabel="Overview"
+      >
+        <MainSection />
+      </Layout>
+    </Paper>
   );
 };
 
