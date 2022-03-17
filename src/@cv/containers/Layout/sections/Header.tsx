@@ -6,10 +6,41 @@ import { goldenRatioShortPX, pxB, pxH, pxW } from "@cv/views/DesignSystem";
 
 import profileImage from "@cv/assets/profileImage/01.png";
 
+interface Header {
+  /**
+   * Anonymized mode. I.e. cover image is substituted for a placeholder.
+   */
+  anonym?: boolean;
+  anonymText?: string;
+  /**
+   * Name on top of the profile.
+   */
+  name?: string;
+  /**
+   * Text under the profile. A clue like "Software Engineer", "Professional XYZ"; semantically anchoring the profile.
+   */
+  clueLine?: string;
+  /**
+   * Profile summary written in 3rd person so it can be copy and pasted by recruiters.
+   */
+  summary?: string;
+  /**
+   * URI to the profile image. Displayed as the cover image on the top right of the profile.
+   */
+  profileImageSrc?: string;
+}
+
 /**
  * CV Header: Contains the profile information and cover image.
  */
-const Header = () => {
+const Header: React.FC<Header> = ({
+  anonym = false,
+  anonymText = "anonymized version",
+  name = "Name Surname",
+  clueLine = "Clue Line",
+  summary = "Summary text text text text text text text text text. Summary text text text text text text text text text. Summary text text text text text text text text text. Summary text text text text text text text text text. Summary text text text text text text text text text. Summary text text text text text text text text text. ",
+  profileImageSrc = profileImage,
+}) => {
   /**
    * Profile CoverImage with anonymized function.
    */
@@ -20,8 +51,10 @@ const Header = () => {
   }> = ({
     anonym = false,
     anonymText = "anonymized version",
-    imageSrc = profileImage,
+    imageSrc = undefined,
   }) => {
+    if (!imageSrc) anonym = true;
+
     // TODO This needs to be extracted into a higher order component.
     const lightStripe = useColor("white-a100");
     const darkStripe = useColor("cv-decor-a50");
@@ -39,7 +72,7 @@ const Header = () => {
       );
     `;
     /**
-     * Shows either an anonymous stripe background or the profile image
+     * Shows either an anonymous stripe background or the profile image (if exists)
      */
     const CoverContainer = styled(x.div)`
       ${(p) => {
@@ -95,7 +128,7 @@ const Header = () => {
           mb={pxH(4)}
           letterSpacing="0"
         >
-          Dino Scheidt
+          {name}
         </x.h1>
         <x.p
           fontSize={pxB(12)}
@@ -103,7 +136,7 @@ const Header = () => {
           mb={pxH(4)}
           letterSpacing="0"
         >
-          Senior Software Engineer
+          {clueLine}
         </x.p>
         <x.p
           fontSize={pxB(12)}
@@ -113,14 +146,14 @@ const Header = () => {
           textAlign="justify"
           fontStyle="italic"
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-          dictum vehicula lectus, id vehicula est pharetra ac. Sed fermentum
-          mauris non lorem vulputate, ac dictum dui commodo. Nullam ultrices
-          suscipit justo, eu posuere erat ultrices eget. Curabitur at mollis
-          risus, in consectetur est bla consectetur est bla .
+          {summary}
         </x.p>
       </x.div>
-      <CoverImage anonym />
+      <CoverImage
+        anonym={anonym}
+        anonymText={anonymText}
+        imageSrc={profileImageSrc}
+      />
     </x.div>
   );
 };
