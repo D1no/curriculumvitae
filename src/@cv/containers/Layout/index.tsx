@@ -40,13 +40,14 @@ const Layout: React.FC<Layout> = ({
   header,
   subHeaderLabel = "Keywords & Contact",
   subHeader,
-  mainLabel = "Overview",
+  mainLabel = "Main",
   children,
   footerLabel = "Export & Footnotes",
   footer,
 }) => {
   return (
     <x.div
+      h="100%"
       display="flex"
       flexDirection="column"
       spaceY={pxH(goldenRatioElementSpacer)}
@@ -61,11 +62,10 @@ const Layout: React.FC<Layout> = ({
         <x.section aria-label={subHeaderLabel}>{subHeader}</x.section>
       ) : undefined}
 
-      {children ? (
-        <x.section aria-label={mainLabel}>{children}</x.section>
-      ) : undefined}
+      <x.section aria-label={mainLabel} flexGrow={1}>
+        {children}
+      </x.section>
 
-      {/* BUG: Footer needs to stretch to end of page. Refactor removed flexbox properties. Re-Add. */}
       {footer ? (
         <x.section aria-label={footerLabel}>{footer}</x.section>
       ) : undefined}
