@@ -1,3 +1,9 @@
+# Workspace Ignors (Smi Permanent)
+
+.favorites.json
+
+################################
+
 # Yarn 2
 .pnp.*
 .yarn/*
