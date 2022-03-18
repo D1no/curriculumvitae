@@ -11,6 +11,9 @@ interface Header {
    * Anonymized mode. I.e. cover image is substituted for a placeholder.
    */
   anonym?: boolean;
+  /**
+   * Text shown inside the cover image when Anonymized mode is turned on.
+   */
   anonymText?: string;
   /**
    * Name on top of the profile.
