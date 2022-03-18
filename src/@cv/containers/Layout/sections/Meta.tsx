@@ -13,10 +13,79 @@ import shopkickLogo from "@cv/assets/orgLogo/shopkick.png";
 import siemensLogo from "@cv/assets/orgLogo/siemens.png";
 import solyticLogo from "@cv/assets/orgLogo/solytic.png";
 
+interface MetaSection {
+  /**
+   * Anonymized mode. I.e. contact information is hidden and company icons are placeholders.
+   */
+  anonym?: boolean;
+  /**
+   * Tag label inside the CV. I.e. "Keywords" followed by the tags. This is also the heading of the tags subsection.
+   */
+  tagLabel?: string;
+  /**
+   * Array of tags listed inline after the tag label.
+   */
+  tags?: string[];
+  /**
+   * Separation between tags. Default ", " (comma and space)
+   */
+  tagsSeparator?: string;
+  /**
+   * In case no tags are provided. Default: "" (empty string).
+   */
+  tagsEmptyText?: string;
+}
+
 /**
  * CV Meta Section: Contains quick infos and contact.
  */
-const MetaSection = () => {
+const MetaSection: React.FC<MetaSection> = ({
+  anonym = false,
+  tagLabel = "Tags Label",
+  tags = [
+    "Tag",
+    "Another Tag",
+    "Keyword Tag",
+    "Important Tag",
+    "Tag",
+    "Another Tag",
+    "Keyword Tag",
+    "Important Tag",
+    "Tag",
+    "Another Tag",
+    "Keyword Tag",
+    "Important Tag",
+    "Tag",
+  ],
+  tagsSeparator = ", ",
+  tagsEmptyText = "",
+}) => {
+  /**
+   * Takes tags and returns a concatenated string.
+   */
+  const getTagList = (
+    tags: MetaSection["tags"],
+    tagsSeparator: MetaSection["tagsSeparator"],
+    tagsEmptyText: MetaSection["tagsEmptyText"],
+  ): string => {
+    if (!tags) {
+      // No tags found.
+      return tagsEmptyText ?? "";
+    } else {
+      let listString = "";
+
+      // Concatenating the tags
+      tags.forEach((tag: string, i) => {
+        // Add separator only if not beginning of list
+        listString += i === 0 ? "" : tagsSeparator;
+        // Add tag to list
+        listString += tag;
+      });
+
+      return listString;
+    }
+  };
+
   /**
    * Renders small logo icons used in the meta section.
    */
@@ -34,7 +103,7 @@ const MetaSection = () => {
       { imageSrc: solyticLogo, orgName: "Solytic" },
       { imageSrc: shopkickLogo, orgName: "Shopkick" },
     ],
-    showPlaceholders = true,
+    showPlaceholders = false,
   }) => {
     // FIXME StripedBackGround: Code duplicate of CoverImage (!)
     const lightStripe = useColor("white-a100");
@@ -131,11 +200,9 @@ const MetaSection = () => {
           {/* Keywords */}
           {/* TODO: Accessibility this should be a header but outside of the p tag. */}
           <x.span fontSize={pxB(12)} fontWeight="bolder" display="inline-block">
-            Keywords
+            {tagLabel}
           </x.span>{" "}
-          Front-End, Back-End, ReactJS, React-Native, Artificial Intelligence,
-          Node.js, Python, CQRS, Microsoft, Google, Azure, Dask, Ray, Digital
-          Twins
+          {getTagList(tags, tagsSeparator, tagsEmptyText)}
         </x.p>
       </x.div>
       {/* Right Side */}
@@ -160,7 +227,7 @@ const MetaSection = () => {
             /* bg="green-200" */
           >
             {/* Single Icon */}
-            <OrgLogoGallery />
+            <OrgLogoGallery showPlaceholders={anonym} />
           </x.div>
         </x.div>
         <x.div
