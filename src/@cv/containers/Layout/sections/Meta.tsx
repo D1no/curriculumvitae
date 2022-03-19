@@ -34,6 +34,44 @@ interface Meta {
    * In case no tags are provided. Default: "" (empty string).
    */
   tagsEmptyText?: string;
+  /**
+   * Contact Details
+   */
+  contact?: {
+    /**
+     * Contact phone number
+     */
+    phone?: string;
+    /**
+     * Contact email
+     */
+    email?: string;
+    /**
+     * Contact location / timezone. I.e. "Berlin, Germany (GMT+1)"
+     */
+    locationShort?: string;
+  };
+  /**
+   * Social Contacts. Only the first 3 are rendered.
+   */
+  web?: {
+    /**
+     * Short text of the platform. I.e. "LinkedIn", "Twitteer", "Website" etc.
+     */
+    shortName: string;
+    /**
+     * Text behind short name in "()" Default ("link").
+     */
+    linkText?: string;
+    /**
+     * URL to the resource (http...). Opens in a new window on click.
+     */
+    linkSrc: string;
+  }[];
+  /**
+   * Up to 8 logos shown
+   */
+  orgLogos?: { imageSrc: string; orgName: string }[];
 }
 
 /**
@@ -59,6 +97,13 @@ const Meta: React.FC<Meta> = ({
   ],
   tagsSeparator = ", ",
   tagsEmptyText = "",
+  contact: {
+    phone = "Phone",
+    email = "email",
+    locationShort = "locationShort",
+  } = {},
+  web: [web1, web2, web3] = [],
+  orgLogos,
 }) => {
   /**
    * Takes tags and returns a concatenated string.
@@ -87,29 +132,18 @@ const Meta: React.FC<Meta> = ({
   };
 
   /**
-   * Renders small logo icons used in the meta section.
+   * Renders small org logo icons used in the meta section. Displays placeholders instead if set to true
    */
   const OrgLogoGallery: React.FC<{
-    orgLogos?: [{ imageSrc: string; orgName: string }];
+    orgLogos?: Meta["orgLogos"];
     showPlaceholders?: boolean;
-  }> = ({
-    orgLogos: orgIcons = [
-      { imageSrc: googleLogo, orgName: "Google" },
-      { imageSrc: accentureLogo, orgName: "Accenture" },
-      { imageSrc: dexisLogo, orgName: "Dexis" },
-      { imageSrc: siemensLogo, orgName: "Siemens" },
-      { imageSrc: flLogo, orgName: "FoundersLane" },
-      { imageSrc: everphoneLogo, orgName: "Everphone" },
-      { imageSrc: solyticLogo, orgName: "Solytic" },
-      { imageSrc: shopkickLogo, orgName: "Shopkick" },
-    ],
-    showPlaceholders = false,
-  }) => {
+  }> = ({ orgLogos, showPlaceholders = false }) => {
     // FIXME StripedBackGround: Code duplicate of CoverImage (!)
     const lightStripe = useColor("white-a100");
     const darkStripe = useColor("cv-decor-a50");
     const messageBg = useColor("white");
     const messageText = darkStripe;
+    const maxNumberOfLogos = 8;
     // TODO Remove or destructure placeholder org logos
     if (showPlaceholders) {
       // Striped Background
@@ -125,7 +159,8 @@ const Meta: React.FC<Meta> = ({
 
       return (
         <>
-          {[...Array(8)].map((e, i) => (
+          {/* TODO: Decide if we always want to show 8 anonymous org logos or if we want to match the number of the input or randomize it. */}
+          {[...Array(maxNumberOfLogos)].map((e, i) => (
             <AnonymOrgLogos
               key={i}
               h={pxH(18)}
@@ -145,6 +180,7 @@ const Meta: React.FC<Meta> = ({
               justifyContent="center"
               alignItems="center"
             >
+              {/* Option for Text inside Placeholders. */}
               {/* <x.p display="inline-block" verticalAlign="middle">
                 {i + 1}
               </x.p> */}
@@ -156,24 +192,26 @@ const Meta: React.FC<Meta> = ({
 
     return (
       <>
-        {orgIcons.map(({ imageSrc, orgName }, i) => (
-          <x.div
-            key={i}
-            h={pxH(18)}
-            w={pxW(18)}
-            my={pxH(2)}
-            mr={pxW(4)}
-            /* TODO: Decide if the icons should have highlighting. If so, box shadow is probably better. */
-            borderRadius={pxB(3)}
-            overflow="hidden"
-            /* Center Number*/
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <x.img src={imageSrc} alt={orgName} h={pxH(18)} w={pxW(18)} />
-          </x.div>
-        ))}
+        {orgLogos
+          ?.slice(0, maxNumberOfLogos)
+          ?.map(({ imageSrc, orgName }, i) => (
+            <x.div
+              key={i}
+              h={pxH(18)}
+              w={pxW(18)}
+              my={pxH(2)}
+              mr={pxW(4)}
+              /* TODO: Decide if the icons should have highlighting. If so, box shadow is probably better. */
+              borderRadius={pxB(3)}
+              overflow="hidden"
+              /* Center Number*/
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <x.img src={imageSrc} alt={orgName} h={pxH(18)} w={pxW(18)} />
+            </x.div>
+          ))}
       </>
     );
   };
@@ -227,7 +265,7 @@ const Meta: React.FC<Meta> = ({
             /* bg="green-200" */
           >
             {/* Single Icon */}
-            <OrgLogoGallery showPlaceholders={anonym} />
+            <OrgLogoGallery showPlaceholders={anonym} orgLogos={orgLogos} />
           </x.div>
         </x.div>
         <x.div
@@ -244,16 +282,42 @@ const Meta: React.FC<Meta> = ({
           {/* Contact */}
           <x.div flexGrow={1} textAlign="right">
             <x.p fontSize={pxB(12)} fontWeight="bolder">
-              +4915123456789
+              {phone}
             </x.p>
-            <x.p>verylonglongna@gmail.com</x.p>
-            <x.p>Berlin, Germany (GMT+1)</x.p>
+            <x.p>{email}</x.p>
+            <x.p>{locationShort}</x.p>
           </x.div>
           {/* Social */}
           <x.div /* bg="blue-100" */>
-            <x.p>LinkedIn (link)</x.p>
-            <x.p>GitHub (link)</x.p>
-            <x.p>Website (link)</x.p>
+            {/* TODO: This needs to be extracted and links be over loadable via a router. */}
+            {/* TODO: Collapses Flexbox when empty. Decide how to handle. */}
+            {web1 ? (
+              <x.p>
+                {web1.shortName} (
+                <x.a href={web1.linkSrc} target="_blank">
+                  {web1.linkText ?? "link"}
+                </x.a>
+                )
+              </x.p>
+            ) : undefined}
+            {web2 ? (
+              <x.p>
+                {web2.shortName} (
+                <x.a href={web2.linkSrc} target="_blank">
+                  {web2.linkText ?? "link"}
+                </x.a>
+                )
+              </x.p>
+            ) : undefined}
+            {web3 ? (
+              <x.p>
+                {web3.shortName} (
+                <x.a href={web3.linkSrc} target="_blank">
+                  {web3.linkText ?? "link"}
+                </x.a>
+                )
+              </x.p>
+            ) : undefined}
           </x.div>
         </x.div>
       </x.div>
