@@ -3,9 +3,9 @@ import React from "react";
 import Layout from "@cv/containers/Layout";
 import Header from "@cv/containers/Layout/sections/Header";
 
-import FooterSection from "../Layout/sections/Footer";
-import MainSection from "../Layout/sections/Main";
-import MetaSection from "../Layout/sections/Meta";
+import Footer from "../Layout/sections/Footer";
+import Main from "../Layout/sections/Main";
+import Meta from "../Layout/sections/Meta";
 import Paper from "./paper";
 
 interface Page extends Paper {}
@@ -25,12 +25,12 @@ const Page: React.FC<Page> = ({
         headerLabel="Profile"
         header={<Header />}
         subHeaderLabel="Keywords & Contact"
-        subHeader={<MetaSection />}
+        subHeader={<Meta />}
         footerLabel="Export & Footnotes"
-        footer={<FooterSection />}
+        footer={<Footer />}
         mainLabel="Overview"
       >
-        <MainSection />
+        <Main />
       </Layout>
     </Paper>
   );

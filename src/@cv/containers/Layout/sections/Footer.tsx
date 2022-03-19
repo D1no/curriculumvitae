@@ -17,7 +17,10 @@ import {
   theme,
 } from "@cv/views/DesignSystem";
 
-const FooterSection: React.FC<{}> = () => {
+/**
+ * Footer of the Page
+ */
+const Footer: React.FC<{}> = () => {
   const PinDigit: React.FC<{}> = ({ children }) => {
     return (
       <x.span
@@ -182,4 +185,4 @@ const FooterSection: React.FC<{}> = () => {
   );
 };
 
-export default FooterSection;
+export default Footer;

@@ -13,7 +13,7 @@ import shopkickLogo from "@cv/assets/orgLogo/shopkick.png";
 import siemensLogo from "@cv/assets/orgLogo/siemens.png";
 import solyticLogo from "@cv/assets/orgLogo/solytic.png";
 
-interface MetaSection {
+interface Meta {
   /**
    * Anonymized mode. I.e. contact information is hidden and company icons are placeholders.
    */
@@ -39,7 +39,7 @@ interface MetaSection {
 /**
  * CV Meta Section: Contains quick infos and contact.
  */
-const MetaSection: React.FC<MetaSection> = ({
+const Meta: React.FC<Meta> = ({
   anonym = false,
   tagLabel = "Tags Label",
   tags = [
@@ -64,9 +64,9 @@ const MetaSection: React.FC<MetaSection> = ({
    * Takes tags and returns a concatenated string.
    */
   const getTagList = (
-    tags: MetaSection["tags"],
-    tagsSeparator: MetaSection["tagsSeparator"],
-    tagsEmptyText: MetaSection["tagsEmptyText"],
+    tags: Meta["tags"],
+    tagsSeparator: Meta["tagsSeparator"],
+    tagsEmptyText: Meta["tagsEmptyText"],
   ): string => {
     if (!tags) {
       // No tags found.
@@ -261,4 +261,4 @@ const MetaSection: React.FC<MetaSection> = ({
   );
 };
 
-export default MetaSection;
+export default Meta;

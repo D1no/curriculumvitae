@@ -21,7 +21,7 @@ import Title from "@cv/components/texts/Title";
 /**
  * CV Main Section: Contains Aside Section and Main Container
  */
-const MainSection = () => (
+const Main = () => (
   <x.div
     display="flex"
     flexDirection="row"
@@ -154,4 +154,4 @@ const MainSection = () => (
   </x.div>
 );
 
-export default MainSection;
+export default Main;
