@@ -4,6 +4,8 @@ import { FontSizeProps, LineHeightProps, x } from "@xstyled/emotion";
 
 import { pxB, pxH, pxW } from "@cv/views/DesignSystem";
 
+// TODO: The font scaling and spacing etc should be handled by CSS. This depends on a proper implementation of the DesignSystem away from PxX().
+
 /**
  * Single pin digit. Props are xStyled props.
  */
