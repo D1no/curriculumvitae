@@ -17,62 +17,14 @@ import {
   theme,
 } from "@cv/views/DesignSystem";
 
+import InlinePin from "@cv/components/texts/InlinePin";
+
+interface Footer {}
+
 /**
  * Footer of the Page
  */
-const Footer: React.FC<{}> = () => {
-  const PinDigit: React.FC<{}> = ({ children }) => {
-    return (
-      <x.span
-        display="inline-block"
-        h={pxH(11)}
-        w={pxH(4)}
-        lineHeight={pxB(8)}
-        textAlign="center"
-        color="cv-muted"
-        mr={pxW(1)}
-        letterSpacing="0"
-      >
-        {children}
-      </x.span>
-    );
-  };
-
-  /**
-   * Takes a 6 digit string and returns an inline text format.
-   */
-  const InlinePin: React.FC<{ sixDigitPinString?: string }> = ({
-    sixDigitPinString = "748262",
-  }) => {
-    if (sixDigitPinString.length !== 6) {
-      console.warn(
-        "Prop 'sixDigitPinString': Invalid number of digits. Received:",
-        sixDigitPinString,
-      );
-
-      sixDigitPinString = "------";
-    }
-
-    const digitArray = [...sixDigitPinString];
-
-    return (
-      <>
-        <x.span>Pin </x.span>
-        <x.span mx={pxW(1)}>
-          <PinDigit>{digitArray[0]}</PinDigit>
-          <PinDigit>{digitArray[1]}</PinDigit>
-          <PinDigit>{digitArray[2]}</PinDigit>
-        </x.span>
-        <x.span mx={pxW(1)}>
-          <PinDigit>{digitArray[3]}</PinDigit>
-          <PinDigit>{digitArray[4]}</PinDigit>
-          <PinDigit>{digitArray[5]}</PinDigit>
-        </x.span>
-        <x.span mr={pxW(2)}>.</x.span>
-      </>
-    );
-  };
-
+const Footer: React.FC<Footer> = () => {
   return (
     <x.div
       flexGrow={1}
@@ -151,7 +103,9 @@ const Footer: React.FC<{}> = () => {
               https://cvdrive.link/0c44298fc1c149af
             </x.p>
             <x.p color="cv-decor">
-              <InlinePin />
+              <x.span fontSize={pxB(8)}>Pin </x.span>
+              <InlinePin pin="123456" />
+              <x.span mr={pxW(2)}>.</x.span>
               <i>
                 Provided in kind GDPR compliance to “Recruiting Company Inc,
                 London-UK”.
