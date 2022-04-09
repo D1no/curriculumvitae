@@ -16,6 +16,8 @@ if (container) {
    * Render of the application entrypoint (routing).
    */
   root.render(<Routing />);
+} else {
+  console.warn("Root container not found to mount.");
 }
 
 // TODO: Firebase Analytics+
