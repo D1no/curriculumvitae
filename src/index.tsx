@@ -1,20 +1,22 @@
-import React from "react";
+import { createRoot } from "react-dom/client";
 
-import ReactDOM from "react-dom";
-
+// Application entry point
 import Routing from "routing";
 
 // import reportWebVitals from "./reportWebVitals";
 
-/**
- * Render of the Website.
- */
-ReactDOM.render(
-  <React.StrictMode>
-    <Routing />
-  </React.StrictMode>,
-  document.getElementById("root"),
-);
+// Get root container from html via id.
+const container = document.getElementById("root");
+
+// If container is not found, create root and render.
+if (container) {
+  const root = createRoot(container);
+
+  /**
+   * Render of the application entrypoint (routing).
+   */
+  root.render(<Routing />);
+}
 
 // TODO: Firebase Analytics+
 // If you want to start measuring performance in your app, pass a function
