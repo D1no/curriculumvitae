@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 
 import { LabeledListItemTopLevel } from "@cv/components/lists/LabeledListItem";
 import Body from "@cv/components/texts/Body";
@@ -7,7 +7,10 @@ import Title from "@cv/components/texts/Title";
 /**
  * CV Container: Topic
  */
-const Topic: React.FC<{ title: string }> = ({ title, children }) => {
+const Topic: React.FC<PropsWithChildren<{ title: string }>> = ({
+  title,
+  children,
+}) => {
   return (
     <>
       <Title>{title}</Title>

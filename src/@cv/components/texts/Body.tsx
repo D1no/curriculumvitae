@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 
 import { x } from "@xstyled/emotion";
 
@@ -7,7 +7,7 @@ import { pxB, pxH } from "@cv/views/DesignSystem";
 /**
  * CV Component: Topic Body
  */
-const Body: React.FC<{}> = ({ children }) => {
+const Body: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   return (
     <x.p fontSize={pxB(12)} lineHeight={pxH(14)} textAlign="justify">
       {children}

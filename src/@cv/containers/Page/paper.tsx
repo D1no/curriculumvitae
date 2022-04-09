@@ -37,6 +37,10 @@ interface Paper {
     marginBottom?: ReturnType<typeof pxH>;
     marginLeft?: ReturnType<typeof pxW>;
   };
+  /**
+   * Content of the page.
+   */
+  children?: React.ReactNode;
 }
 
 /**

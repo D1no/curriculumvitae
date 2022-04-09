@@ -17,17 +17,17 @@ import Main from "../Layout/sections/Main";
 import Meta from "../Layout/sections/Meta";
 import Paper from "./paper";
 
-interface Page extends Paper {}
+interface Page extends Paper {
+  /**
+   * Main Section
+   */
+  children?: React.ReactNode;
+}
 
 /**
  * Renders a page according to size scaled by the design system.
  */
-const Page: React.FC<Page> = ({
-  children,
-  size,
-  overwriteCssSpec,
-  ...props
-}) => {
+const Page: React.FC<Page> = ({ size, overwriteCssSpec, ...props }) => {
   return (
     <Paper size={size} overwriteCssSpec={overwriteCssSpec}>
       <Layout

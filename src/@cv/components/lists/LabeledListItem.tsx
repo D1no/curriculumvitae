@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 
 import { x } from "@xstyled/emotion";
 
@@ -13,10 +13,12 @@ import { pxB, pxH, pxW, sizeFromBase } from "@cv/views/DesignSystem";
  * CV Component: Topic Labeled List Item (two lines 2x14px)
  * List item for the topic section.
  */
-const LabeledListItemTopLevel: React.FC<{
-  label?: string;
-  double?: boolean;
-}> = ({
+const LabeledListItemTopLevel: React.FC<
+  PropsWithChildren<{
+    label?: string;
+    double?: boolean;
+  }>
+> = ({
   label = "Empty Label",
   double = false,
   children = "This is a test to see if the line fits and does wrap to the next line for alignment.",
@@ -57,7 +59,9 @@ const LabeledListItemTopLevel: React.FC<{
  * CV Component: Remark Labeled List Item (two lines 2x14px)
  * Labeled List item used i.e. in the experience section within the Remark area
  */
-const LabeledListItemInline: React.FC<{ label?: string; double?: boolean }> = ({
+const LabeledListItemInline: React.FC<
+  PropsWithChildren<{ label?: string; double?: boolean }>
+> = ({
   label = "Empty Label",
   double = false,
   children = "This is a test to see if the line fits and does wrap to the next line for alignment.",

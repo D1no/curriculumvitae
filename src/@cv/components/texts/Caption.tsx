@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 
 import { x } from "@xstyled/emotion";
 
@@ -7,9 +7,11 @@ import { pxH, sizeFromBase } from "@cv/views/DesignSystem";
 /**
  * CV Component: Caption. The small text usually under titles.
  */
-const Caption: React.FC<{
-  double?: boolean;
-}> = ({ double = false, children }) => {
+const Caption: React.FC<
+  PropsWithChildren<{
+    double?: boolean;
+  }>
+> = ({ double = false, children }) => {
   return (
     <x.div
       h={sizeFromBase({ double: double })}

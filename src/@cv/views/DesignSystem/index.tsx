@@ -1,8 +1,5 @@
 import React from "react";
 
-import defaultThemeBoxModel from "./defaultThemeBoxModel";
-import "./fonts/lato.css";
-
 import {
   Preflight,
   ThemeProvider,
@@ -10,6 +7,9 @@ import {
   generateHexAlphaVariants,
   x,
 } from "@xstyled/emotion";
+
+import defaultThemeBoxModel from "./defaultThemeBoxModel";
+import "./fonts/lato.css";
 
 /**
  * =================================================================
@@ -180,7 +180,10 @@ const ApplyFontStyle = createGlobalStyle`
   }
 `;
 
-interface IDesignSystemProps {}
+interface IDesignSystemProps {
+  /** Render outlet. Components consuming design systems.  */
+  children: React.ReactNode;
+}
 
 // TODO: Add react suspense for font loading (maybe not necessary).
 // Via Vanilla JS: https://melvingeorge.me/blog/wait-for-fonts-to-load-javascript

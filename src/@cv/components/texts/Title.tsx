@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 
 import { x } from "@xstyled/emotion";
 
@@ -7,7 +7,10 @@ import { pxB, pxBraw, pxH, pxW } from "@cv/views/DesignSystem";
 /**
  * CV Component: Element Header. Use
  */
-const Title: React.FC<{ subtitle?: string }> = ({ children, subtitle }) => {
+const Title: React.FC<PropsWithChildren<{ subtitle?: string }>> = ({
+  children,
+  subtitle,
+}) => {
   /**
    * Renders small text next to title.
    */

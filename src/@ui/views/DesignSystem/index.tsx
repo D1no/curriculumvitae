@@ -1,3 +1,5 @@
+import { PropsWithChildren } from "react";
+
 import {
   Preflight,
   ThemeProvider,
@@ -31,10 +33,10 @@ export const theme = {
  * Required for any styled outside rendering (like storybook, jest).
  * Higher order component that wraps child components into required theme provider.
  */
-const DesignSystem: React.FC = (props) => (
+const DesignSystem: React.FC<PropsWithChildren<{}>> = ({ children }) => (
   <ThemeProvider theme={theme}>
     <Preflight />
-    {props.children}
+    {children}
   </ThemeProvider>
 );
 

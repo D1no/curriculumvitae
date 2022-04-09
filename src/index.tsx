@@ -1,7 +1,8 @@
-import Routing from "routing";
-
 import React from "react";
+
 import ReactDOM from "react-dom";
+
+import Routing from "routing";
 
 // import reportWebVitals from "./reportWebVitals";
 

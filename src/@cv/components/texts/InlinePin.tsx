@@ -18,6 +18,10 @@ interface PinDigit {
    * Default pxB(8). Theme replacement are applied. Consider using the `pxB` utility.
    */
   lineHeight?: LineHeightProps["lineHeight"];
+  /**
+   * Digits to display.
+   */
+  children: React.ReactNode;
 }
 
 export const PinDigit: React.FC<PinDigit> = ({

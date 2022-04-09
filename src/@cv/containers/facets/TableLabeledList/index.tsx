@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 
 import { x } from "@xstyled/emotion";
 
@@ -66,7 +66,7 @@ const TableLabeledList: React.FC<{
 
     /**
      *  Label style used in first and second column. */
-    const Label: React.FC<{}> = ({ children }) => {
+    const Label: React.FC<PropsWithChildren<{}>> = ({ children }) => {
       return (
         <x.span
           pt={pxH(2)}
@@ -81,13 +81,13 @@ const TableLabeledList: React.FC<{
 
     /**
      *  Third column Subject content */
-    const SubjectLine: React.FC<{}> = ({ children }) => {
+    const SubjectLine: React.FC<PropsWithChildren<{}>> = ({ children }) => {
       return <x.span>{children}</x.span>;
     };
 
     /**
      *  Second line in smaller font under Subject */
-    const RemarkLine: React.FC<{ show?: boolean }> = ({
+    const RemarkLine: React.FC<PropsWithChildren<{ show?: boolean }>> = ({
       children,
       show = detailed,
     }) => {

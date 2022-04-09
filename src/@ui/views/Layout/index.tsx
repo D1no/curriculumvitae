@@ -15,7 +15,11 @@ import { ReactComponent as PDFIcon } from "@ui/assets/icon/pdf.svg";
  * If child components are provided, those are rendered in the main section.
  * Otherwise the <Outlet /> of provided routes.
  */
-const Layout: React.FC<LayoutProps> = ({ debug = false, ...props }) => {
+const Layout: React.FC<LayoutProps> = ({
+  debug = false,
+  children,
+  ...props
+}) => {
   const File = x.div;
   const FileName = x.h1;
   const FileIcon = styled(PDFIcon)`
@@ -94,7 +98,7 @@ const Layout: React.FC<LayoutProps> = ({ debug = false, ...props }) => {
         {/* Main Content (Outlet) */}
         <L debug={debug}>
           <x.main flexGrow={1} p={2} mt={14}>
-            {props.children ? props.children : <Outlet />}
+            {children ? children : <Outlet />}
           </x.main>
         </L>
       </x.div>

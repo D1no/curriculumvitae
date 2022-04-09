@@ -10,6 +10,7 @@ interface Remark {
    */
   body?: string;
   small?: boolean;
+  children?: React.ReactNode;
 }
 
 const Remark: React.FC<Remark> = ({ body, small = false, children }) => {
