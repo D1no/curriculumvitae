@@ -18,10 +18,21 @@ import Caption from "@cv/components/texts/Caption";
 import Heading from "@cv/components/texts/Heading";
 import Title from "@cv/components/texts/Title";
 
+interface Main {
+  /**
+   * Primary column of the page-layout.
+   */
+  primary?: React.ReactNode;
+  /**
+   * Secondary column of the page-layout.
+   */
+  secondary?: React.ReactNode;
+}
+
 /**
  * CV Main Section: Contains Aside Section and Main Container
  */
-const Main = () => (
+const Main: React.FC<Main> = () => (
   <x.div
     display="flex"
     flexDirection="row"
