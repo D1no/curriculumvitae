@@ -8,6 +8,7 @@ import {
   pxH,
 } from "@cv/views/DesignSystem";
 
+import Section from "@cv/containers/Section";
 import Record from "@cv/containers/facets/Record";
 import TableLabeledList from "@cv/containers/facets/TableLabeledList";
 import Topic from "@cv/containers/facets/Topic";
@@ -15,18 +16,17 @@ import Topic from "@cv/containers/facets/Topic";
 import Remark from "@cv/components/decorators/Remark";
 import { LabeledListItemTopLevel } from "@cv/components/lists/LabeledListItem";
 import Caption from "@cv/components/texts/Caption";
-import Heading from "@cv/components/texts/Heading";
 import Title from "@cv/components/texts/Title";
 
 interface Main {
   /**
    * Primary column of the page-layout.
    */
-  primary?: React.ReactNode;
+  primaryColumn?: React.ReactNode;
   /**
    * Secondary column of the page-layout.
    */
-  secondary?: React.ReactNode;
+  secondaryColumn?: React.ReactNode;
 }
 
 /**
@@ -52,15 +52,13 @@ const Main: React.FC<Main> = () => (
       {/* START: Aside Container */}
 
       {/* Qualification */}
-      <x.section>
-        <Heading>Qualification</Heading>
+      <Section heading="Qualification">
         <Topic title="Software Engineering" />
         <Topic title="Product Architecture" />
-      </x.section>
+      </Section>
 
       {/* Education */}
-      <x.section>
-        <Heading>Education</Heading>
+      <Section heading="Education">
         <Title subtitle="St. Petersburg Russia">GSOM</Title>
         <Caption double>
           2015 · Ranked #1 in Russia. Term of courses in finance & teaching
@@ -94,7 +92,7 @@ const Main: React.FC<Main> = () => (
           small
           body="Patroned to a scholarship by the board in the field of Digital Transformation."
         />
-      </x.section>
+      </Section>
       {/* END: Education */}
 
       {/* END: Aside Container */}
@@ -104,27 +102,17 @@ const Main: React.FC<Main> = () => (
     <x.div spaceY={pxH(14)}>
       {/* START: Experience / Main Container */}
       {/* FIXME: Safari Reader - When the main container is inside here, safari reader mode isn't recognized. */}
-      <x.main
-      /* Debug */
-      /* bg="blue-100" */
-      >
-        <Heading>Experience</Heading>
+      <Section heading="Experience">
         <Record />
         <Title subtitle="Software Engineer" />
         <Caption>Since 2123 · Berlin, Germany</Caption>
         <Record />
         <Record />
-      </x.main>
+      </Section>
       {/* END: Experience / Main Container */}
 
       {/* START: Honours & Media  */}
-      <x.section
-
-      /* Debug */
-      /* bg="blue-100" */
-      >
-        <Heading>Honours & Media</Heading>
-        {/* START: Labeled List Table */}
+      <Section heading="Honours & Media">
         <TableLabeledList
           columnNames={["Data", "Format", "Topic / Remark"]}
           rows={[
@@ -159,7 +147,7 @@ const Main: React.FC<Main> = () => (
           ]}
         />
         {/* END: Labeled List Table */}
-      </x.section>
+      </Section>
       {/* END: Honours & Media  */}
     </x.div>
   </x.div>
