@@ -16,10 +16,6 @@ interface Layout {
   subHeaderLabel?: string;
   subHeader?: ReactNode;
   /**
-   * Decorates children. Used for document outline & accessability.
-   */
-  mainLabel?: string;
-  /**
    * Children are inside the `main` section.
    */
   children?: ReactNode;
@@ -29,6 +25,8 @@ interface Layout {
   footerLabel?: string;
   footer?: ReactNode;
 }
+
+// TODO: Aria labels should be hidden h tag elements since aria labels don't show up on safari reader.
 
 /**
  * Returns a stacked column flexbox layout with vertical spacing. Labels are used for the document outline and accessability. So they should describe the
@@ -40,7 +38,6 @@ const Layout: React.FC<Layout> = ({
   header,
   subHeaderLabel = "Keywords & Contact",
   subHeader,
-  mainLabel = "Main",
   children,
   footerLabel = "Export & Footnotes",
   footer,
@@ -62,9 +59,7 @@ const Layout: React.FC<Layout> = ({
         <x.section aria-label={subHeaderLabel}>{subHeader}</x.section>
       ) : undefined}
 
-      <x.section aria-label={mainLabel} flexGrow={1}>
-        {children}
-      </x.section>
+      <x.div flexGrow={1}>{children}</x.div>
 
       {footer ? (
         <x.section aria-label={footerLabel}>{footer}</x.section>

@@ -69,7 +69,6 @@ const Page: React.FC<Page> = ({ size, overwriteCssSpec, ...props }) => {
         }
         footerLabel="Export & Footnotes"
         footer={<Footer />}
-        mainLabel="Overview"
       >
         <Main />
       </Layout>

@@ -23,6 +23,5 @@ export const Index = Template.bind({});
 Index.args = {
   headerLabel: "Profile",
   subHeaderLabel: "Keywords & Contact",
-  mainLabel: "Overview",
   footerLabel: "Export & Footnotes",
 };
