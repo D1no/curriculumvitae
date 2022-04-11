@@ -27,10 +27,7 @@ import Topic from "../facets/Topic";
 import Paper from "./paper";
 
 interface Page extends Paper {
-  /**
-   * Main Section
-   */
-  children?: React.ReactNode;
+  // TODO Data Interface
 }
 
 /**
